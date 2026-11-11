@@ -13,7 +13,7 @@ for (const file of fs.readdirSync(path.join(root, 'data'))) {
 }
 vm.runInContext(fs.readFileSync(path.join(root, 'app.js'), 'utf8').replace(
   '  document.addEventListener(',
-  '  window.testAPI = { prepare, agg, selectedQueues, queueHash, toggleQueue, filterQueues, coaching, secMejorar, secTierList, META }; document.addEventListener('
+  '  window.testAPI = { prepare, agg, selectedQueues, queueHash, toggleQueue, filterQueues, coaching, strengths, secMejorar, secTierList, META }; document.addEventListener('
 ), context);
 const api = context.window.testAPI;
 const data = Object.values(context.window.LOL_DATA);
@@ -90,6 +90,8 @@ test('advice and tier sections render for real profiles and escape player data',
     const section = api.secMejorar(api.prepare(d).valid, false);
     assert.match(collect(section), /Comentario de tu muestra/);
     assert.match(collect(section), /Tu plan para las próximas 5 partidas/);
+    const html = collect(section);
+    assert(html.indexOf('Tus puntos buenos') > html.indexOf('Patrones de tus partidas'));
   }
   const tier = api.secTierList();
   assert.equal((collect(tier).match(/class="meta-champion"/g) || []).length, 25);
@@ -97,4 +99,24 @@ test('advice and tier sections render for real profiles and escape player data',
   assert.match(collect(tier), /no se actualiza sola/);
   const games = api.prepare(data[0]).valid.slice(0, 5).map(g => ({ ...g, champ: '<script>alert(1)</script>' }));
   assert(!collect(api.secMejorar(games, false)).includes('<script>'));
+});
+
+test('strengths use evidence from the selected games and remain encouraging with losses', () => {
+  assert.equal(api.strengths([]).length, 0);
+  const base = { role: 'ADC', champ: 'Jinx', win: false, k: 1, d: 10, a: 1, kp: 20, cs: 80, dur: 1800, rank: 10, lan: 30 };
+  const losses = Array.from({ length: 10 }, () => ({ ...base }));
+  const fallback = JSON.stringify(api.strengths(losses));
+  assert.match(fallback, /no define tu capacidad/);
+  assert(!fallback.includes('racha de'));
+  assert(!fallback.includes('MVP/ACE'));
+  const wins = Array.from({ length: 10 }, () => ({ ...base, win: true, champ: '<img onerror=bad>', rank: 1, d: 2, kp: 75 }));
+  const positive = JSON.stringify(api.strengths(wins));
+  assert.match(positive, /10 victorias en 10 partidas/);
+  assert.match(positive, /MVP\/ACE/);
+  assert.match(positive, /75%/);
+  assert(!positive.includes('<img'));
+  assert(api.strengths(wins).length <= 4);
+  const trend = api.strengths(wins.concat(losses));
+  assert.match(trend[0].text, /últimas 10 partidas/);
+  assert.match(JSON.stringify(api.strengths([base])), /demasiado pronto/);
 });

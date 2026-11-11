@@ -122,6 +122,8 @@ tbody tr:hover { background: var(--panel-2); }
 .in-title { font-weight: 700; margin-bottom: 2px; }
 .in-text { color: var(--muted); font-size: 13.5px; }
 .in-text b { color: var(--text); }
+.card h3.strengths-title { color: var(--good); }
+.strengths .insight { border: 1px solid var(--line); border-left: 3px solid var(--good); }
 .coach-comment { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
 .coach-comment h3 { margin: 0 0 6px; color: var(--gold); }
 .coach-comment p { font-size: 14px; line-height: 1.7; }

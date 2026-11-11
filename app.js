@@ -239,6 +239,9 @@
     s.appendChild(el('h3', null, 'Patrones de tus partidas'));
     const list = insights(gs, aram);
     s.appendChild(el('div', 'insights', list.map(i => `<div class="insight ${i.kind}"><div class="in-title">${i.title}</div><div class="in-text">${i.text}</div></div>`).join('')));
+    s.appendChild(el('h3', 'strengths-title', 'Tus puntos buenos · también hay motivos para confiar'));
+    s.appendChild(el('div', 'insights strengths', strengths(gs).map(i => `<div class="insight good"><div class="in-title">${i.title}</div><div class="in-text">${i.text}</div></div>`).join('')));
+    s.appendChild(el('p', 'sample-note', 'Una derrota no borra lo que haces bien. Apóyate en tus fortalezas y trabaja una mejora cada vez.'));
     s.appendChild(el('p', 'sample-note', 'Los patrones describen esta muestra; no demuestran una causa. Los roles se deducen de la posición en el equipo.'));
     return s;
   }
@@ -406,6 +409,31 @@
   }
 
   /* ---------- conclusiones ---------- */
+  function strengths(gs) {
+    if (!gs.length) return [];
+    const out = [], A = agg(gs), st = streaks(gs);
+    const add = (title, text) => out.push({ title, text });
+    if (gs.length >= 20) {
+      const recent = agg(gs.slice(0, 10)), previous = agg(gs.slice(10, 20));
+      if (recent.wr - previous.wr >= 10) add('Tu bloque reciente trae buenas señales', `Has ganado ${recent.w} de las últimas 10 partidas, frente a ${previous.w} en las 10 anteriores. Es un buen bloque reciente: identifica qué decisiones te han ayudado y busca repetirlas.`);
+    }
+    const champs = groupStats(gs, g => g.champ).filter(r => r.n >= 5 && r.wr >= 50).sort((a, b) => b.wr - a.wr || b.n - a.n);
+    if (champs.length) {
+      const c = champs[0];
+      add('Tienes un campeón en el que apoyarte', `Con <b>${esc(c.key)}</b> has conseguido ${c.w} victorias en ${c.n} partidas (${pct(c.wr)}). Esa experiencia es una base para jugar con confianza y seguir afinando tus decisiones.`);
+    }
+    if (A.mvp) add('Ya has destacado entre los mejores', `Has terminado en el puesto OP 1.º en ${A.mvp} ${A.mvp === 1 ? 'partida' : 'partidas'} (MVP/ACE). Incluso en una derrota puedes tener una actuación destacada: recuerda también esas partidas.`);
+    const involved = gs.filter(g => g.kp != null);
+    const participation = agg(involved);
+    if (involved.length >= 5 && participation.kp >= 60) add('Estás presente en las jugadas del equipo', `Tu participación media en kills es del ${pct(participation.kp)} en ${involved.length} partidas con ese dato. Estás contribuyendo a las jugadas del equipo; sigue buscando oportunidades con tus compañeros.`);
+    if (A.n >= 5 && A.d <= 5) add('Sabes mantenerte en pie', `Tu media es de ${f1(A.d)} muertes en ${A.n} partidas. Sobrevivir te deja más tiempo para conseguir recursos y ayudar al equipo. Mantén ese cuidado sin dejar pasar buenas oportunidades.`);
+    if (st.bestW >= 3) add('Ya has encadenado buenas partidas', `En esta muestra has conseguido una racha de ${st.bestW} victorias. Ya has vivido una secuencia de buenos resultados: revisa qué campeones y decisiones te funcionaron entonces.`);
+    if (!out.length && A.w) add('También tienes victorias que merecen atención', `Has conseguido ${A.w} ${A.w === 1 ? 'victoria' : 'victorias'} en esta selección. Revisa una de ellas y elige una buena decisión para repetir: gestionar una oleada, acompañar una jugada o retirarte a tiempo.`);
+    if (!out.length) add('Esta muestra no define tu capacidad', 'Aquí aún no aparece una fortaleza estadística clara. Tu siguiente paso puede ser pequeño: elige una buena decisión por partida y valórala aunque el resultado final no acompañe.');
+    if (gs.length < 5) add('Date margen para encontrar tu ritmo', `Solo hay ${gs.length} ${gs.length === 1 ? 'partida' : 'partidas'} en esta selección. Es demasiado pronto para juzgar tu nivel: céntrate en practicar y en reconocer tus buenas decisiones.`);
+    return out.slice(0, 4);
+  }
+
   function coaching(gs) {
     if (!gs.length) return { comment: 'No hay partidas para esta selección. Cambia las colas o la cuenta para ver tus consejos.', actions: [] };
     const A = agg(gs), actions = [];
