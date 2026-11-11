@@ -31,6 +31,7 @@
   const wrBar = (wr, n) => `<span class="wr ${wrClass(wr, n)}"><span class="wr-track"><span class="wr-fill" style="width:${Math.max(2, wr)}%"></span></span><b>${pct(wr)}</b></span>`;
 
   /* ---------- datos ---------- */
+  const MATCH_LIMIT = 100;
   function prepare(Ds) {
     if (!Array.isArray(Ds)) Ds = [Ds];
     const ALIAS = window.LOL_ALIASES || {};
@@ -61,7 +62,7 @@
     });
     // Excluir ARAM antes de calcular estadísticas, compañeros y sesiones.
     const games = [].concat.apply([], Ds.map(parse)).filter(g => g.q !== 'A').sort((a, b) => b.t - a.t);
-    const valid = games.filter(g => !g.remake);
+    const valid = games.filter(g => !g.remake).slice(0, MATCH_LIMIT);
     // Amigos = compañeros de equipo que se repiten en 3 o más partidas
     const cnt = {};
     valid.forEach(g => g.allies.forEach(p => { if (p.n) cnt[p.n] = (cnt[p.n] || 0) + 1; }));
@@ -76,7 +77,8 @@
       if (prev && g.t - prev.t < 90 * 60000) { g.sess = prev.sess + 1; g.prevWin = prev.win; }
       prev = g;
     });
-    return { games, valid, remakes: games.length - valid.length };
+    const cutoff = valid.length ? valid[valid.length - 1].t : -Infinity;
+    return { games, valid, remakes: games.filter(g => g.remake && g.t >= cutoff).length };
   }
 
   function agg(gs) {
@@ -425,7 +427,7 @@
       <div class="hero-main">${icon(top, 'hero-ci')}
         <div><h1>${esc(title)}${multi ? ` <span>${Ds.length} cuentas</span>` : named ? '' : ` <span>#${esc(Ds[0].tag)}</span>`}</h1>
         <p>${accLine}</p>
-        <p>${P.valid.length} partidas del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + ' remakes sin contar' : ''}</p>
+        <p>Últimas ${P.valid.length} partidas (máximo ${MATCH_LIMIT}) del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + ' remakes sin contar' : ''}</p>
         <p class="src">Datos de ${Ds.map(D => `<a href="${esc(D.source)}" target="_blank" rel="noopener">op.gg${multi ? ' · ' + esc(D.name) : ''}</a>`).join(', ')} · actualizado el ${esc(updated)}
           <button type="button" class="refresh" title="Vuelve a leer los datos guardados. Las partidas nuevas las trae la tarea programada «Actualizar LoL Stats» de Claude.">↻ Recargar datos</button></p></div>
       </div>`));
