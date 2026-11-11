@@ -57,8 +57,10 @@ small { color: var(--muted); font-weight: 400; }
 }
 .tabs button span { margin-left: 6px; font-weight: 400; font-size: 12px; opacity: .8; }
 .tabs button:hover:not(:disabled) { color: var(--text); border-color: var(--muted); }
-.tabs button[aria-current="true"] { background: var(--gold); border-color: var(--gold); color: #17120a; }
+.tabs button[aria-current="true"], .tabs button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #17120a; }
 .tabs button:disabled { opacity: .4; cursor: default; }
+.queue-help { color: var(--muted); font-size: 12px; }
+.queue-summary { color: var(--text); font-size: 12px; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* Tarjetas */
@@ -120,6 +122,34 @@ tbody tr:hover { background: var(--panel-2); }
 .in-title { font-weight: 700; margin-bottom: 2px; }
 .in-text { color: var(--muted); font-size: 13.5px; }
 .in-text b { color: var(--text); }
+.coach-comment { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+.coach-comment h3 { margin: 0 0 6px; color: var(--gold); }
+.coach-comment p { font-size: 14px; line-height: 1.7; }
+.coach-plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; counter-reset: plan; padding: 0; }
+.coach-plan li { counter-increment: plan; padding: 14px; border: 1px solid var(--line); border-radius: 10px; }
+.coach-plan li::before { content: counter(plan, decimal-leading-zero); display: block; color: var(--gold); font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.coach-plan p { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.sample-note { color: var(--muted); font-size: 12px; margin-top: 14px; line-height: 1.6; }
+
+/* Meta: instantánea fechada de los cinco primeros por rol */
+.meta-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.meta-role { background: var(--panel-2); padding: 12px; border-radius: 10px; min-width: 0; }
+.meta-role h3 { color: var(--gold); margin: 0 0 12px; }
+.meta-list { list-style: none; margin: 0; padding: 0; }
+.meta-list li { display: flex; align-items: center; gap: 7px; padding: 9px 0; border-top: 1px solid var(--line); }
+.meta-position { width: 10px; flex: none; font-size: 11px; color: var(--muted); }
+.meta-champion { min-width: 0; flex: 1; }
+.meta-champion b { display: block; font-size: 12px; overflow-wrap: anywhere; }
+.meta-champion small { display: block; font-size: 10px; }
+.meta-tier { color: var(--gold); font-size: 11px; font-weight: 700; }
+.meta-stale { color: var(--mid); font-size: 12px; margin-top: 10px; }
+@media (max-width: 1080px) { .meta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .meta-grid, .coach-plan, .insights { grid-template-columns: minmax(0, 1fr); }
+  .meta-champion b { font-size: 14px; }
+  .meta-champion small { font-size: 12px; }
+  .queue-help, .queue-summary { line-height: 1.4; }
+}
 
 /* Premade */
 .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }

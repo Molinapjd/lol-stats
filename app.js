@@ -13,6 +13,41 @@
   const QNAME = { N: 'Normal', S: 'Solo/Duo', F: 'Flex' };
   const ROLES = ['Top', 'Jungla', 'Mid', 'ADC', 'Support'];
 
+  // Instantánea consultada el 11/11/2026; orden de FORFEIT.GG dentro de cada rol.
+  const META = {
+    checked: '2026-11-11', patch: '26.22', source: 'https://forfeit.gg/champions',
+    scope: 'Solo/Duo · Esmeralda+ · Mundial',
+    roles: {
+      Top: [['Malphite', 'S+', 52.5], ['Sion', 'S+', 52.3], ['Kayle', 'S', 52.5], ['Darius', 'S', 51.6], ['Teemo', 'S', 52.1]],
+      Jungla: [["Cho'Gath", 'S+', 52.9], ['Lillia', 'S+', 52.8], ['Wukong', 'S', 52.4], ['Shyvana', 'S', 52.7], ['Warwick', 'S', 52.6]],
+      Mid: [['Ekko', 'S+', 52.7], ['Ahri', 'S+', 52.0], ['Fizz', 'S', 52.4], ['Vex', 'S', 52.7], ['Katarina', 'S', 51.9]],
+      ADC: [['Xayah', 'S+', 52.6], ['Jinx', 'S', 52.1], ['Yasuo', 'S', 52.8], ['Zeri', 'S', 52.4], ['Twitch', 'A', 52.3]],
+      Support: [['Leona', 'S+', 52.5], ['Braum', 'S+', 52.8], ['Blitzcrank', 'S', 52.3], ['Senna', 'S', 52.5], ['Thresh', 'S', 51.8]]
+    }
+  };
+
+  const QUEUE_IDS = QUEUES.slice(1).map(q => q.id);
+  function selectedQueues(hash) {
+    const ids = String(hash).replace(/^#/, '').split('+');
+    const selected = QUEUE_IDS.filter(id => ids.includes(id));
+    return ids.includes('all') || !selected.length ? QUEUE_IDS.slice() : selected;
+  }
+  function queueHash(ids) {
+    const ordered = QUEUE_IDS.filter(id => ids.includes(id));
+    return ordered.length === QUEUE_IDS.length || !ordered.length ? 'all' : ordered.join('+');
+  }
+  function toggleQueue(ids, id) {
+    if (id === 'all') return QUEUE_IDS.slice();
+    if (!QUEUE_IDS.includes(id)) return ids.slice();
+    if (ids.length === QUEUE_IDS.length) return [id];
+    const next = ids.includes(id) ? ids.filter(x => x !== id) : ids.concat(id);
+    return selectedQueues(queueHash(next));
+  }
+  function filterQueues(games, ids) {
+    const codes = QUEUES.filter(q => ids.includes(q.id)).map(q => q.q);
+    return games.filter(g => codes.includes(g.q));
+  }
+
   /* ---------- utilidades ---------- */
   const $ = (s, r) => (r || document).querySelector(s);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -196,9 +231,36 @@
   }
 
   function secMejorar(gs, aram) {
-    const s = card('Para mejorar', 'Conclusiones automáticas a partir de tus partidas en esta cola.', 'wide');
+    const s = card('Para mejorar', 'Comentario y consejos sobre las partidas de las colas seleccionadas.', 'wide');
+    const coach = coaching(gs);
+    s.appendChild(el('div', 'coach-comment', `<h3>Comentario de tu muestra</h3><p>${coach.comment}</p>`));
+    s.appendChild(el('h3', null, 'Tu plan para las próximas 5 partidas'));
+    s.appendChild(el('ol', 'coach-plan', coach.actions.map(a => `<li><b>${a.title}</b><p>${a.text}</p></li>`).join('')));
+    s.appendChild(el('h3', null, 'Patrones de tus partidas'));
     const list = insights(gs, aram);
     s.appendChild(el('div', 'insights', list.map(i => `<div class="insight ${i.kind}"><div class="in-title">${i.title}</div><div class="in-text">${i.text}</div></div>`).join('')));
+    s.appendChild(el('p', 'sample-note', 'Los patrones describen esta muestra; no demuestran una causa. Los roles se deducen de la posición en el equipo.'));
+    return s;
+  }
+
+  function secTierList() {
+    const date = new Date(META.checked + 'T12:00:00Z').toLocaleDateString('es-ES');
+    const s = card('Tier list · 5 mejores por rol', `${META.scope} · Parche ${META.patch} · Consultada el ${date}`, 'wide meta-card');
+    s.appendChild(el('p', 'sub', 'Orden de la clasificación de FORFEIT.GG dentro de cada rol; no se ordena solo por % de victorias. ADC incluye los carries de bot, también Yasuo.'));
+    const grid = el('div', 'meta-grid');
+    ROLES.forEach(role => {
+      const lane = el('div', 'meta-role');
+      lane.appendChild(el('h3', null, role));
+      lane.appendChild(el('ol', 'meta-list', META.roles[role].map(([name, tier, wr], i) => `<li>
+        <span class="meta-position">${i + 1}</span>${icon(name)}
+        <div class="meta-champion"><b>${esc(name)}</b><small>${wr.toFixed(1)}% victorias</small></div>
+        <span class="meta-tier">${tier}</span></li>`).join('')));
+      grid.appendChild(lane);
+    });
+    s.appendChild(grid);
+    s.appendChild(el('p', 'sample-note', `Fuente: <a href="${META.source}" target="_blank" rel="noopener">FORFEIT.GG · ver clasificación actual</a>. S+ es la categoría superior, seguida de S y A. Esta lista es una instantánea, no se actualiza sola. El meta puede cambiar y la referencia es Solo/Duo, incluso si eliges normales o flex.`));
+    const age = Math.floor((Date.now() - Date.parse(META.checked + 'T00:00:00Z')) / 86400000);
+    if (age > 14) s.appendChild(el('p', 'meta-stale', 'Lista pendiente de revisión: han pasado más de 14 días. Consulta la fuente para comprobar el parche actual.'));
     return s;
   }
 
@@ -344,10 +406,40 @@
   }
 
   /* ---------- conclusiones ---------- */
+  function coaching(gs) {
+    if (!gs.length) return { comment: 'No hay partidas para esta selección. Cambia las colas o la cuenta para ver tus consejos.', actions: [] };
+    const A = agg(gs), actions = [];
+    const roles = groupStats(gs, g => g.role).sort((a, b) => b.n - a.n);
+    const main = roles[0];
+    let comment = `En esta selección tienes <b>${A.n} partidas</b>: ${A.w} victorias y ${A.l} derrotas (${pct(A.wr)}), con KDA ${f2(A.kda)}.`;
+    if (main) comment += ` Tu rol más jugado es <b>${esc(main.key)}</b> (${main.n} partidas).`;
+    if (gs.length >= 20) {
+      const recent = agg(gs.slice(0, 10)), before = agg(gs.slice(10, 20));
+      comment += ` En las últimas 10 ganas el ${pct(recent.wr)}, frente al ${pct(before.wr)} de las 10 anteriores. Compara tus decisiones en ambos bloques antes de cambiar de campeón.`;
+    } else comment += ' La muestra es corta: practica una rutina estable antes de sacar conclusiones.';
+    const add = (title, text) => actions.push({ title, text });
+    if (gs.length >= 5 && A.d >= 7) add('Prioridad: reduce las muertes evitables', `Tienes ${f1(A.d)} muertes de media. Revisa tus dos primeras muertes de cada partida y anota si faltó visión, escapatoria o información del jungla. Intenta bajar una muerte respecto a tu media en este bloque de práctica.`);
+    const farm = agg(gs.filter(g => ['Top', 'Mid', 'ADC'].includes(g.role)));
+    if (farm.n >= 5 && farm.csm < 6.5) add('Prioridad: asegura el farmeo', `Tu media en roles de línea es ${f1(farm.csm)} CS/min. Practica 10 minutos de últimos golpes y busca mejorar 0,5 CS/min en las siguientes cinco partidas. No abandones una oleada por una pelea sin objetivo claro.`);
+    if (gs.length >= 5 && A.kp < 45) add('Prioridad: llega a las jugadas con tu equipo', `Participas en el ${pct(A.kp)} de las kills de tu equipo. Antes de moverte, revisa la oleada y los compañeros cercanos. Prepara tu regreso a base y tu posición antes del próximo objetivo; evita entrar solo.`);
+    const roleAdvice = {
+      Top: ['Gestiona la oleada y tu salida', 'Antes de cruzar el río, localiza al jungla rival y comprueba tu visión. Si vas por detrás, deja que la oleada se acerque a tu torre; si consigues ventaja, conviértela en torre o presión lateral.'],
+      Jungla: ['Planifica tu siguiente recorrido', 'Elige el siguiente objetivo antes de salir de base. Encadena campamentos con líneas que puedan ayudarte y evita perseguir una emboscada si pierdes recursos y no hay una oportunidad clara.'],
+      Mid: ['Gana tiempo antes de rotar', 'Empuja la oleada antes de acompañar a tu jungla cuando sea seguro. Señala al rival desaparecido y evita seguirlo a oscuras: puedes presionar la torre o ayudar por una ruta con visión.'],
+      ADC: ['Pega desde una posición segura', 'Identifica la habilidad rival que puede atraparte y guarda una salida. Ataca al objetivo accesible desde detrás de tu primera línea; no te expongas para alcanzar al carry enemigo.'],
+      Support: ['Prepara visión con compañía', 'Vuelve a base con tiempo para reponer guardianes antes de un objetivo y entra al río con un aliado. Decide antes de la pelea si tu trabajo es iniciar o proteger al compañero con más recursos.']
+    };
+    if (main && roleAdvice[main.key]) add(...roleAdvice[main.key]);
+    const pool = groupStats(gs, g => g.champ).filter(r => r.n >= 5).sort((a, b) => b.wr - a.wr || b.n - a.n);
+    if (pool.length) add('Consolida tu selección de campeones', `En esta muestra, ${esc(pool[0].key)} tiene ${pct(pool[0].wr)} en ${pool[0].n} partidas. Elige dos campeones para tu rol principal y uno de reserva; practica los nuevos en normales antes de llevarlos a ranked.`);
+    add('Revisa una decisión por partida', 'Al terminar, anota una jugada que repetirías y una que cambiarías. Revisa una derrota durante cinco minutos y fija un solo objetivo para la siguiente partida.');
+    return { comment, actions: actions.slice(0, 3) };
+  }
+
   function insights(gs, aram) {
     const out = [], A = agg(gs);
     const add = (kind, title, text) => out.push({ kind, title, text });
-    if (gs.length < 10) add('tip', 'Muestra pequeña', `Solo hay ${gs.length} partidas en esta cola: toma estos números como orientación, no como conclusión.`);
+    if (gs.length < 10) add('tip', 'Muestra pequeña', `Solo hay ${gs.length} partidas en las colas seleccionadas: toma estos números como orientación, no como conclusión.`);
     if (gs.length < 5) return out;
     const W = agg(gs.filter(g => g.win)), L = agg(gs.filter(g => !g.win));
     const diff = (a, b) => Math.round(Math.abs(a - b));
@@ -404,7 +496,7 @@
     }
     if (A.rank >= 6.2) add('tip', 'Impacto por debajo de la media', `Tu puesto OP medio es ${f1(A.rank)}º de 10. Céntrate en morir menos y estar en más kills.`);
     if (A.rank && A.rank <= 4.5) add('good', 'Sueles ser de los mejores de la partida', `Puesto OP medio de ${f1(A.rank)}º de 10, con ${A.mvp} partidas como el mejor.`);
-    if (!out.length) add('tip', 'Sin patrones claros', 'Tus números están equilibrados en esta cola. Sigue jugando para tener más datos.');
+    if (!out.length) add('tip', 'Sin patrones claros', 'No aparecen diferencias claras en las colas seleccionadas. Mantén una rutina de práctica y vuelve a comparar cuando tengas más partidas.');
     return out;
   }
 
@@ -434,9 +526,12 @@
     $('.refresh', app).onclick = () => location.reload();
 
     const bar = el('div', 'tabs');
-    const nav = el('nav', 'chips'); nav.setAttribute('aria-label', 'Colas');
+    const nav = el('nav', 'chips'); nav.setAttribute('aria-label', 'Colas: selección múltiple');
     QUEUES.forEach(q => { const b = el('button'); b.type = 'button'; b.dataset.id = q.id; nav.appendChild(b); });
     bar.appendChild(nav);
+    bar.appendChild(el('p', 'queue-help', 'Puedes combinar colas: selecciona Solo/Duo y añade Normales o Flex. «Todas» restablece la selección.'));
+    const selection = el('p', 'queue-summary'); selection.setAttribute('role', 'status'); selection.setAttribute('aria-live', 'polite');
+    bar.appendChild(selection);
     let accNav = null;
     if (multi) {
       accNav = el('nav', 'chips acc'); accNav.setAttribute('aria-label', 'Cuentas');
@@ -448,31 +543,33 @@
     app.appendChild(bar);
     const content = el('main', 'grid'); app.appendChild(content);
 
-    let curAcc = '', curQ = 'all';
-    function show(id) {
+    let curAcc = '', curQueues = selectedQueues(location.hash);
+    function show(ids) {
       const pool = curAcc ? P.valid.filter(g => g.acc === curAcc) : P.valid;
       const count = q => q.q ? pool.filter(g => g.q === q.q).length : pool.length;
-      let q = QUEUES.find(x => x.id === id) || QUEUES[0];
-      if (!count(q)) q = QUEUES[0];
-      curQ = q.id;
-      const gs = q.q ? pool.filter(g => g.q === q.q) : pool;
-      const aram = q.q === 'A';
+      curQueues = selectedQueues(queueHash(ids));
+      const gs = filterQueues(pool, curQueues);
       nav.querySelectorAll('button').forEach(b => {
         const x = QUEUES.find(y => y.id === b.dataset.id), n = count(x);
+        const active = x.id === 'all' ? curQueues.length === QUEUE_IDS.length : curQueues.includes(x.id);
         b.innerHTML = `${x.label} <span>${n}</span>`; b.disabled = !n;
-        b.setAttribute('aria-current', x.id === q.id ? 'true' : 'false');
+        b.setAttribute('aria-pressed', String(active));
       });
       if (accNav) accNav.querySelectorAll('button').forEach(b => b.setAttribute('aria-current', b.dataset.acc === curAcc ? 'true' : 'false'));
-      const secs = [secResumen(gs, aram), secMejorar(gs, aram), secCampeones(gs, aram)];
-      if (!aram) secs.push(secRoles(gs));
-      secs.push(secVsDerrotas(gs, aram), secPremade(gs), secSinergias(gs, aram), secHabitos(gs, aram), secHistorial(gs, !q.q, multi && !curAcc));
+      const labels = QUEUES.filter(q => curQueues.includes(q.id)).map(q => q.label).join(' + ');
+      selection.textContent = `${gs.length} partidas · ${labels} · Dentro de las últimas ${P.valid.length} guardadas de esta persona (máximo ${MATCH_LIMIT}, sin ARAM ni remakes).`;
+      const secs = gs.length
+        ? [secResumen(gs, false), secMejorar(gs, false), secTierList(), secCampeones(gs, false), secRoles(gs),
+          secVsDerrotas(gs, false), secPremade(gs), secSinergias(gs, false), secHabitos(gs, false), secHistorial(gs, curQueues.length > 1, multi && !curAcc)]
+        : [card('Sin partidas para esta selección', 'Elige otras colas o cambia de cuenta para ver estadísticas y consejos.', 'wide'), secTierList()];
       content.replaceChildren.apply(content, secs);
-      if (location.hash.slice(1) !== q.id) history.replaceState(null, '', '#' + q.id);
+      const hash = queueHash(curQueues);
+      if (location.hash.slice(1) !== hash) history.replaceState(null, '', '#' + hash);
     }
-    nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) show(b.dataset.id); });
-    if (accNav) accNav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { curAcc = b.dataset.acc; show(curQ); } });
-    window.addEventListener('hashchange', () => show(location.hash.slice(1)));
-    show(location.hash.slice(1));
+    nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) show(toggleQueue(curQueues, b.dataset.id)); });
+    if (accNav) accNav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { curAcc = b.dataset.acc; show(curQueues); } });
+    window.addEventListener('hashchange', () => show(selectedQueues(location.hash)));
+    show(curQueues);
   }
 
   // Páginas del índice: window.LOL_PAGES (pages.js) agrupa cuentas; sin él, una página por cuenta
