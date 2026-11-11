@@ -8,11 +8,45 @@
     { id: 'all', q: null, label: 'Todas' },
     { id: 'normales', q: 'N', label: 'Normales' },
     { id: 'soloq', q: 'S', label: 'Ranked Solo/Duo' },
-    { id: 'flex', q: 'F', label: 'Ranked Flex' },
-    { id: 'aram', q: 'A', label: 'ARAM' }
+    { id: 'flex', q: 'F', label: 'Ranked Flex' }
   ];
-  const QNAME = { N: 'Normal', S: 'Solo/Duo', F: 'Flex', A: 'ARAM' };
+  const QNAME = { N: 'Normal', S: 'Solo/Duo', F: 'Flex' };
   const ROLES = ['Top', 'Jungla', 'Mid', 'ADC', 'Support'];
+
+  // Instantánea consultada el 11/11/2026; orden de FORFEIT.GG dentro de cada rol.
+  const META = {
+    checked: '2026-11-11', patch: '26.22', source: 'https://forfeit.gg/champions',
+    scope: 'Solo/Duo · Esmeralda+ · Mundial',
+    roles: {
+      Top: [['Malphite', 'S+', 52.5], ['Sion', 'S+', 52.3], ['Kayle', 'S', 52.5], ['Darius', 'S', 51.6], ['Teemo', 'S', 52.1]],
+      Jungla: [["Cho'Gath", 'S+', 52.9], ['Lillia', 'S+', 52.8], ['Wukong', 'S', 52.4], ['Shyvana', 'S', 52.7], ['Warwick', 'S', 52.6]],
+      Mid: [['Ekko', 'S+', 52.7], ['Ahri', 'S+', 52.0], ['Fizz', 'S', 52.4], ['Vex', 'S', 52.7], ['Katarina', 'S', 51.9]],
+      ADC: [['Xayah', 'S+', 52.6], ['Jinx', 'S', 52.1], ['Yasuo', 'S', 52.8], ['Zeri', 'S', 52.4], ['Twitch', 'A', 52.3]],
+      Support: [['Leona', 'S+', 52.5], ['Braum', 'S+', 52.8], ['Blitzcrank', 'S', 52.3], ['Senna', 'S', 52.5], ['Thresh', 'S', 51.8]]
+    }
+  };
+
+  const QUEUE_IDS = QUEUES.slice(1).map(q => q.id);
+  function selectedQueues(hash) {
+    const ids = String(hash).replace(/^#/, '').split('+');
+    const selected = QUEUE_IDS.filter(id => ids.includes(id));
+    return ids.includes('all') || !selected.length ? QUEUE_IDS.slice() : selected;
+  }
+  function queueHash(ids) {
+    const ordered = QUEUE_IDS.filter(id => ids.includes(id));
+    return ordered.length === QUEUE_IDS.length || !ordered.length ? 'all' : ordered.join('+');
+  }
+  function toggleQueue(ids, id) {
+    if (id === 'all') return QUEUE_IDS.slice();
+    if (!QUEUE_IDS.includes(id)) return ids.slice();
+    if (ids.length === QUEUE_IDS.length) return [id];
+    const next = ids.includes(id) ? ids.filter(x => x !== id) : ids.concat(id);
+    return selectedQueues(queueHash(next));
+  }
+  function filterQueues(games, ids) {
+    const codes = QUEUES.filter(q => ids.includes(q.id)).map(q => q.q);
+    return games.filter(g => codes.includes(g.q));
+  }
 
   /* ---------- utilidades ---------- */
   const $ = (s, r) => (r || document).querySelector(s);
@@ -32,6 +66,7 @@
   const wrBar = (wr, n) => `<span class="wr ${wrClass(wr, n)}"><span class="wr-track"><span class="wr-fill" style="width:${Math.max(2, wr)}%"></span></span><b>${pct(wr)}</b></span>`;
 
   /* ---------- datos ---------- */
+  const MATCH_LIMIT = 100;
   function prepare(Ds) {
     if (!Array.isArray(Ds)) Ds = [Ds];
     const ALIAS = window.LOL_ALIASES || {};
@@ -60,8 +95,9 @@
         acc: D.name, allies, enemies, friends: [], party: 1, sess: 1, prevWin: null
       };
     });
-    const games = [].concat.apply([], Ds.map(parse)).sort((a, b) => b.t - a.t);
-    const valid = games.filter(g => !g.remake);
+    // Excluir ARAM antes de calcular estadísticas, compañeros y sesiones.
+    const games = [].concat.apply([], Ds.map(parse)).filter(g => g.q !== 'A').sort((a, b) => b.t - a.t);
+    const valid = games.filter(g => !g.remake).slice(0, MATCH_LIMIT);
     // Amigos = compañeros de equipo que se repiten en 3 o más partidas
     const cnt = {};
     valid.forEach(g => g.allies.forEach(p => { if (p.n) cnt[p.n] = (cnt[p.n] || 0) + 1; }));
@@ -76,7 +112,8 @@
       if (prev && g.t - prev.t < 90 * 60000) { g.sess = prev.sess + 1; g.prevWin = prev.win; }
       prev = g;
     });
-    return { games, valid, remakes: games.length - valid.length };
+    const cutoff = valid.length ? valid[valid.length - 1].t : -Infinity;
+    return { games, valid, remakes: games.filter(g => g.remake && g.t >= cutoff).length };
   }
 
   function agg(gs) {
@@ -181,7 +218,7 @@
       ['% victorias', `<span class="${wrClass(A.wr)}">${pct(A.wr)}</span>`, `<span class="wr-track big"><span class="wr-fill ${wrClass(A.wr)}" style="width:${A.wr}%"></span></span>`],
       ['KDA', f2(A.kda), `${f1(A.k)} / <span class="tl">${f1(A.d)}</span> / ${f1(A.a)}`],
       ['Participación en kills', pct(A.kp), 'de las kills de tu equipo'],
-      aram ? null : ['CS por minuto', f1(agg(gs.filter(g => g.role && g.role !== 'Support')).csm), 'sin contar ARAM ni support'],
+      aram ? null : ['CS por minuto', f1(agg(gs.filter(g => g.role && g.role !== 'Support')).csm), 'sin contar support'],
       ['Duración media', durFmt(A.dur), 'min:seg'],
       ['Puesto OP medio', f1(A.rank) + 'º', `de 10 · ${A.mvp} veces 1.º (MVP/ACE)`],
       ['Racha actual', st.cur + (st.curWin ? 'V' : 'D'), `mejor ${st.bestW}V · peor ${st.bestL}D`]
@@ -194,9 +231,39 @@
   }
 
   function secMejorar(gs, aram) {
-    const s = card('Para mejorar', 'Conclusiones automáticas a partir de tus partidas en esta cola.', 'wide');
+    const s = card('Para mejorar', 'Comentario y consejos sobre las partidas de las colas seleccionadas.', 'wide');
+    const coach = coaching(gs);
+    s.appendChild(el('div', 'coach-comment', `<h3>Comentario de tu muestra</h3><p>${coach.comment}</p>`));
+    s.appendChild(el('h3', null, 'Tu plan para las próximas 5 partidas'));
+    s.appendChild(el('ol', 'coach-plan', coach.actions.map(a => `<li><b>${a.title}</b><p>${a.text}</p></li>`).join('')));
+    s.appendChild(el('h3', null, 'Patrones de tus partidas'));
     const list = insights(gs, aram);
     s.appendChild(el('div', 'insights', list.map(i => `<div class="insight ${i.kind}"><div class="in-title">${i.title}</div><div class="in-text">${i.text}</div></div>`).join('')));
+    s.appendChild(el('h3', 'strengths-title', 'Tus puntos buenos · también hay motivos para confiar'));
+    s.appendChild(el('div', 'insights strengths', strengths(gs).map(i => `<div class="insight good"><div class="in-title">${i.title}</div><div class="in-text">${i.text}</div></div>`).join('')));
+    s.appendChild(el('p', 'sample-note', 'Una derrota no borra lo que haces bien. Apóyate en tus fortalezas y trabaja una mejora cada vez.'));
+    s.appendChild(el('p', 'sample-note', 'Los patrones describen esta muestra; no demuestran una causa. Los roles se deducen de la posición en el equipo.'));
+    return s;
+  }
+
+  function secTierList() {
+    const date = new Date(META.checked + 'T12:00:00Z').toLocaleDateString('es-ES');
+    const s = card('Tier list · 5 mejores por rol', `${META.scope} · Parche ${META.patch} · Consultada el ${date}`, 'wide meta-card');
+    s.appendChild(el('p', 'sub', 'Orden de la clasificación de FORFEIT.GG dentro de cada rol; no se ordena solo por % de victorias. ADC incluye los carries de bot, también Yasuo.'));
+    const grid = el('div', 'meta-grid');
+    ROLES.forEach(role => {
+      const lane = el('div', 'meta-role');
+      lane.appendChild(el('h3', null, role));
+      lane.appendChild(el('ol', 'meta-list', META.roles[role].map(([name, tier, wr], i) => `<li>
+        <span class="meta-position">${i + 1}</span>${icon(name)}
+        <div class="meta-champion"><b>${esc(name)}</b><small>${wr.toFixed(1)}% victorias</small></div>
+        <span class="meta-tier">${tier}</span></li>`).join('')));
+      grid.appendChild(lane);
+    });
+    s.appendChild(grid);
+    s.appendChild(el('p', 'sample-note', `Fuente: <a href="${META.source}" target="_blank" rel="noopener">FORFEIT.GG · ver clasificación actual</a>. S+ es la categoría superior, seguida de S y A. Esta lista es una instantánea, no se actualiza sola. El meta puede cambiar y la referencia es Solo/Duo, incluso si eliges normales o flex.`));
+    const age = Math.floor((Date.now() - Date.parse(META.checked + 'T00:00:00Z')) / 86400000);
+    if (age > 14) s.appendChild(el('p', 'meta-stale', 'Lista pendiente de revisión: han pasado más de 14 días. Consulta la fuente para comprobar el parche actual.'));
     return s;
   }
 
@@ -342,10 +409,65 @@
   }
 
   /* ---------- conclusiones ---------- */
+  function strengths(gs) {
+    if (!gs.length) return [];
+    const out = [], A = agg(gs), st = streaks(gs);
+    const add = (title, text) => out.push({ title, text });
+    if (gs.length >= 20) {
+      const recent = agg(gs.slice(0, 10)), previous = agg(gs.slice(10, 20));
+      if (recent.wr - previous.wr >= 10) add('Tu bloque reciente trae buenas señales', `Has ganado ${recent.w} de las últimas 10 partidas, frente a ${previous.w} en las 10 anteriores. Es un buen bloque reciente: identifica qué decisiones te han ayudado y busca repetirlas.`);
+    }
+    const champs = groupStats(gs, g => g.champ).filter(r => r.n >= 5 && r.wr >= 50).sort((a, b) => b.wr - a.wr || b.n - a.n);
+    if (champs.length) {
+      const c = champs[0];
+      add('Tienes un campeón en el que apoyarte', `Con <b>${esc(c.key)}</b> has conseguido ${c.w} victorias en ${c.n} partidas (${pct(c.wr)}). Esa experiencia es una base para jugar con confianza y seguir afinando tus decisiones.`);
+    }
+    if (A.mvp) add('Ya has destacado entre los mejores', `Has terminado en el puesto OP 1.º en ${A.mvp} ${A.mvp === 1 ? 'partida' : 'partidas'} (MVP/ACE). Incluso en una derrota puedes tener una actuación destacada: recuerda también esas partidas.`);
+    const involved = gs.filter(g => g.kp != null);
+    const participation = agg(involved);
+    if (involved.length >= 5 && participation.kp >= 60) add('Estás presente en las jugadas del equipo', `Tu participación media en kills es del ${pct(participation.kp)} en ${involved.length} partidas con ese dato. Estás contribuyendo a las jugadas del equipo; sigue buscando oportunidades con tus compañeros.`);
+    if (A.n >= 5 && A.d <= 5) add('Sabes mantenerte en pie', `Tu media es de ${f1(A.d)} muertes en ${A.n} partidas. Sobrevivir te deja más tiempo para conseguir recursos y ayudar al equipo. Mantén ese cuidado sin dejar pasar buenas oportunidades.`);
+    if (st.bestW >= 3) add('Ya has encadenado buenas partidas', `En esta muestra has conseguido una racha de ${st.bestW} victorias. Ya has vivido una secuencia de buenos resultados: revisa qué campeones y decisiones te funcionaron entonces.`);
+    if (!out.length && A.w) add('También tienes victorias que merecen atención', `Has conseguido ${A.w} ${A.w === 1 ? 'victoria' : 'victorias'} en esta selección. Revisa una de ellas y elige una buena decisión para repetir: gestionar una oleada, acompañar una jugada o retirarte a tiempo.`);
+    if (!out.length) add('Esta muestra no define tu capacidad', 'Aquí aún no aparece una fortaleza estadística clara. Tu siguiente paso puede ser pequeño: elige una buena decisión por partida y valórala aunque el resultado final no acompañe.');
+    if (gs.length < 5) add('Date margen para encontrar tu ritmo', `Solo hay ${gs.length} ${gs.length === 1 ? 'partida' : 'partidas'} en esta selección. Es demasiado pronto para juzgar tu nivel: céntrate en practicar y en reconocer tus buenas decisiones.`);
+    return out.slice(0, 4);
+  }
+
+  function coaching(gs) {
+    if (!gs.length) return { comment: 'No hay partidas para esta selección. Cambia las colas o la cuenta para ver tus consejos.', actions: [] };
+    const A = agg(gs), actions = [];
+    const roles = groupStats(gs, g => g.role).sort((a, b) => b.n - a.n);
+    const main = roles[0];
+    let comment = `En esta selección tienes <b>${A.n} partidas</b>: ${A.w} victorias y ${A.l} derrotas (${pct(A.wr)}), con KDA ${f2(A.kda)}.`;
+    if (main) comment += ` Tu rol más jugado es <b>${esc(main.key)}</b> (${main.n} partidas).`;
+    if (gs.length >= 20) {
+      const recent = agg(gs.slice(0, 10)), before = agg(gs.slice(10, 20));
+      comment += ` En las últimas 10 ganas el ${pct(recent.wr)}, frente al ${pct(before.wr)} de las 10 anteriores. Compara tus decisiones en ambos bloques antes de cambiar de campeón.`;
+    } else comment += ' La muestra es corta: practica una rutina estable antes de sacar conclusiones.';
+    const add = (title, text) => actions.push({ title, text });
+    if (gs.length >= 5 && A.d >= 7) add('Prioridad: reduce las muertes evitables', `Tienes ${f1(A.d)} muertes de media. Revisa tus dos primeras muertes de cada partida y anota si faltó visión, escapatoria o información del jungla. Intenta bajar una muerte respecto a tu media en este bloque de práctica.`);
+    const farm = agg(gs.filter(g => ['Top', 'Mid', 'ADC'].includes(g.role)));
+    if (farm.n >= 5 && farm.csm < 6.5) add('Prioridad: asegura el farmeo', `Tu media en roles de línea es ${f1(farm.csm)} CS/min. Practica 10 minutos de últimos golpes y busca mejorar 0,5 CS/min en las siguientes cinco partidas. No abandones una oleada por una pelea sin objetivo claro.`);
+    if (gs.length >= 5 && A.kp < 45) add('Prioridad: llega a las jugadas con tu equipo', `Participas en el ${pct(A.kp)} de las kills de tu equipo. Antes de moverte, revisa la oleada y los compañeros cercanos. Prepara tu regreso a base y tu posición antes del próximo objetivo; evita entrar solo.`);
+    const roleAdvice = {
+      Top: ['Gestiona la oleada y tu salida', 'Antes de cruzar el río, localiza al jungla rival y comprueba tu visión. Si vas por detrás, deja que la oleada se acerque a tu torre; si consigues ventaja, conviértela en torre o presión lateral.'],
+      Jungla: ['Planifica tu siguiente recorrido', 'Elige el siguiente objetivo antes de salir de base. Encadena campamentos con líneas que puedan ayudarte y evita perseguir una emboscada si pierdes recursos y no hay una oportunidad clara.'],
+      Mid: ['Gana tiempo antes de rotar', 'Empuja la oleada antes de acompañar a tu jungla cuando sea seguro. Señala al rival desaparecido y evita seguirlo a oscuras: puedes presionar la torre o ayudar por una ruta con visión.'],
+      ADC: ['Pega desde una posición segura', 'Identifica la habilidad rival que puede atraparte y guarda una salida. Ataca al objetivo accesible desde detrás de tu primera línea; no te expongas para alcanzar al carry enemigo.'],
+      Support: ['Prepara visión con compañía', 'Vuelve a base con tiempo para reponer guardianes antes de un objetivo y entra al río con un aliado. Decide antes de la pelea si tu trabajo es iniciar o proteger al compañero con más recursos.']
+    };
+    if (main && roleAdvice[main.key]) add(...roleAdvice[main.key]);
+    const pool = groupStats(gs, g => g.champ).filter(r => r.n >= 5).sort((a, b) => b.wr - a.wr || b.n - a.n);
+    if (pool.length) add('Consolida tu selección de campeones', `En esta muestra, ${esc(pool[0].key)} tiene ${pct(pool[0].wr)} en ${pool[0].n} partidas. Elige dos campeones para tu rol principal y uno de reserva; practica los nuevos en normales antes de llevarlos a ranked.`);
+    add('Revisa una decisión por partida', 'Al terminar, anota una jugada que repetirías y una que cambiarías. Revisa una derrota durante cinco minutos y fija un solo objetivo para la siguiente partida.');
+    return { comment, actions: actions.slice(0, 3) };
+  }
+
   function insights(gs, aram) {
     const out = [], A = agg(gs);
     const add = (kind, title, text) => out.push({ kind, title, text });
-    if (gs.length < 10) add('tip', 'Muestra pequeña', `Solo hay ${gs.length} partidas en esta cola: toma estos números como orientación, no como conclusión.`);
+    if (gs.length < 10) add('tip', 'Muestra pequeña', `Solo hay ${gs.length} partidas en las colas seleccionadas: toma estos números como orientación, no como conclusión.`);
     if (gs.length < 5) return out;
     const W = agg(gs.filter(g => g.win)), L = agg(gs.filter(g => !g.win));
     const diff = (a, b) => Math.round(Math.abs(a - b));
@@ -402,7 +524,7 @@
     }
     if (A.rank >= 6.2) add('tip', 'Impacto por debajo de la media', `Tu puesto OP medio es ${f1(A.rank)}º de 10. Céntrate en morir menos y estar en más kills.`);
     if (A.rank && A.rank <= 4.5) add('good', 'Sueles ser de los mejores de la partida', `Puesto OP medio de ${f1(A.rank)}º de 10, con ${A.mvp} partidas como el mejor.`);
-    if (!out.length) add('tip', 'Sin patrones claros', 'Tus números están equilibrados en esta cola. Sigue jugando para tener más datos.');
+    if (!out.length) add('tip', 'Sin patrones claros', 'No aparecen diferencias claras en las colas seleccionadas. Mantén una rutina de práctica y vuelve a comparar cuando tengas más partidas.');
     return out;
   }
 
@@ -425,16 +547,19 @@
       <div class="hero-main">${icon(top, 'hero-ci')}
         <div><h1>${esc(title)}${multi ? ` <span>${Ds.length} cuentas</span>` : named ? '' : ` <span>#${esc(Ds[0].tag)}</span>`}</h1>
         <p>${accLine}</p>
-        <p>${P.valid.length} partidas del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + ' remakes sin contar' : ''}</p>
+        <p>Últimas ${P.valid.length} partidas (máximo ${MATCH_LIMIT}) del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + ' remakes sin contar' : ''}</p>
         <p class="src">Datos de ${Ds.map(D => `<a href="${esc(D.source)}" target="_blank" rel="noopener">op.gg${multi ? ' · ' + esc(D.name) : ''}</a>`).join(', ')} · actualizado el ${esc(updated)}
           <button type="button" class="refresh" title="Vuelve a leer los datos guardados. Las partidas nuevas las trae la tarea programada «Actualizar LoL Stats» de Claude.">↻ Recargar datos</button></p></div>
       </div>`));
     $('.refresh', app).onclick = () => location.reload();
 
     const bar = el('div', 'tabs');
-    const nav = el('nav', 'chips'); nav.setAttribute('aria-label', 'Colas');
+    const nav = el('nav', 'chips'); nav.setAttribute('aria-label', 'Colas: selección múltiple');
     QUEUES.forEach(q => { const b = el('button'); b.type = 'button'; b.dataset.id = q.id; nav.appendChild(b); });
     bar.appendChild(nav);
+    bar.appendChild(el('p', 'queue-help', 'Puedes combinar colas: selecciona Solo/Duo y añade Normales o Flex. «Todas» restablece la selección.'));
+    const selection = el('p', 'queue-summary'); selection.setAttribute('role', 'status'); selection.setAttribute('aria-live', 'polite');
+    bar.appendChild(selection);
     let accNav = null;
     if (multi) {
       accNav = el('nav', 'chips acc'); accNav.setAttribute('aria-label', 'Cuentas');
@@ -446,31 +571,33 @@
     app.appendChild(bar);
     const content = el('main', 'grid'); app.appendChild(content);
 
-    let curAcc = '', curQ = 'all';
-    function show(id) {
+    let curAcc = '', curQueues = selectedQueues(location.hash);
+    function show(ids) {
       const pool = curAcc ? P.valid.filter(g => g.acc === curAcc) : P.valid;
       const count = q => q.q ? pool.filter(g => g.q === q.q).length : pool.length;
-      let q = QUEUES.find(x => x.id === id) || QUEUES[0];
-      if (!count(q)) q = QUEUES[0];
-      curQ = q.id;
-      const gs = q.q ? pool.filter(g => g.q === q.q) : pool;
-      const aram = q.q === 'A';
+      curQueues = selectedQueues(queueHash(ids));
+      const gs = filterQueues(pool, curQueues);
       nav.querySelectorAll('button').forEach(b => {
         const x = QUEUES.find(y => y.id === b.dataset.id), n = count(x);
+        const active = x.id === 'all' ? curQueues.length === QUEUE_IDS.length : curQueues.includes(x.id);
         b.innerHTML = `${x.label} <span>${n}</span>`; b.disabled = !n;
-        b.setAttribute('aria-current', x.id === q.id ? 'true' : 'false');
+        b.setAttribute('aria-pressed', String(active));
       });
       if (accNav) accNav.querySelectorAll('button').forEach(b => b.setAttribute('aria-current', b.dataset.acc === curAcc ? 'true' : 'false'));
-      const secs = [secResumen(gs, aram), secMejorar(gs, aram), secCampeones(gs, aram)];
-      if (!aram) secs.push(secRoles(gs));
-      secs.push(secVsDerrotas(gs, aram), secPremade(gs), secSinergias(gs, aram), secHabitos(gs, aram), secHistorial(gs, !q.q, multi && !curAcc));
+      const labels = QUEUES.filter(q => curQueues.includes(q.id)).map(q => q.label).join(' + ');
+      selection.textContent = `${gs.length} partidas · ${labels} · Dentro de las últimas ${P.valid.length} guardadas de esta persona (máximo ${MATCH_LIMIT}, sin ARAM ni remakes).`;
+      const secs = gs.length
+        ? [secResumen(gs, false), secMejorar(gs, false), secTierList(), secCampeones(gs, false), secRoles(gs),
+          secVsDerrotas(gs, false), secPremade(gs), secSinergias(gs, false), secHabitos(gs, false), secHistorial(gs, curQueues.length > 1, multi && !curAcc)]
+        : [card('Sin partidas para esta selección', 'Elige otras colas o cambia de cuenta para ver estadísticas y consejos.', 'wide'), secTierList()];
       content.replaceChildren.apply(content, secs);
-      if (location.hash.slice(1) !== q.id) history.replaceState(null, '', '#' + q.id);
+      const hash = queueHash(curQueues);
+      if (location.hash.slice(1) !== hash) history.replaceState(null, '', '#' + hash);
     }
-    nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) show(b.dataset.id); });
-    if (accNav) accNav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { curAcc = b.dataset.acc; show(curQ); } });
-    window.addEventListener('hashchange', () => show(location.hash.slice(1)));
-    show(location.hash.slice(1));
+    nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) show(toggleQueue(curQueues, b.dataset.id)); });
+    if (accNav) accNav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { curAcc = b.dataset.acc; show(curQueues); } });
+    window.addEventListener('hashchange', () => show(selectedQueues(location.hash)));
+    show(curQueues);
   }
 
   // Páginas del índice: window.LOL_PAGES (pages.js) agrupa cuentas; sin él, una página por cuenta
@@ -478,27 +605,60 @@
     return window.LOL_PAGES || Object.keys(all).map(id => ({ page: id + '.html', ids: [id] }));
   }
 
+  // Ilustraciones individuales de la muestra del 11/11/2026.
+  const PORTRAITS = {
+    'j3pi-euw.html': { champion: 'Jinx', nickname: 'El gancho travieso', story: 'Llegó a la Grieta con un gancho y ganas de liarla. Con Thresh como favorito, alterna entre proteger al equipo y ponerse en primera línea: si hay pelea, j3pi ya está dentro.', slot: 0, color: '#75baff' },
+    'josiso.html': { champion: 'Wukong', nickname: 'El terror de la jungla', story: 'Se sabe los caminos de la jungla, pero también tiene cuentas pendientes en las demás líneas. Con Wukong al frente de su repertorio, Josiso aparece entre los árboles cuando la partida pide una buena pelea.', slot: 1, color: '#edbd68' },
+    'rustu.html': { champion: 'Senna', nickname: 'El seguro de vida', story: 'Mientras otros cuentan bajas, Rustu va sumando asistencias. Entre almas de Senna y plantas de Zyra, se ha ganado el oficio de acompañar al equipo y poner su granito de arena en cada pelea.', slot: 2, color: '#69d8bd' },
+    'joe.html': { champion: 'Galio', nickname: 'El alcalde de mid', story: 'Hay quien recorre el mapa y quien tiene domicilio fijo en medio. Joe ha convertido mid en su barrio: Mel, Galio y Vel’Koz se turnan para recibir a cualquiera que pase por allí.', slot: 3, color: '#b0c7fa' },
+    'nachete.html': { champion: 'Jhin', nickname: 'Don Cuatro Balas', story: 'Cuatro balas, mucha paciencia y una cuenta de bajas que no para de crecer. Nachete vive en bot y tiene en Jhin a su compañero habitual: farmea, apunta y prepara el siguiente acto.', slot: 4, color: '#d899ed' }
+  };
+
   function renderIndex(all) {
     const app = $('#app');
-    app.appendChild(el('header', 'hero', '<div class="hero-main"><div><h1>LoL Stats</h1><p>Estadísticas de partidas por invocador, separadas por cola.</p></div></div>'));
-    const list = el('main', 'summoners');
-    pagesOf(all).forEach(pg => {
+    document.body.classList.add('roster-page');
+    const pages = pagesOf(all).filter(pg => pg.ids.some(id => all[id]));
+    app.appendChild(el('header', 'hero roster-hero',
+      '<div><p class="eyebrow">LA GRIETA · NUESTRO EQUIPO</p><h1>Los de siempre.<br><span>Una partida más.</span></h1><p class="roster-intro">Cada invocador tiene su historia. Entra en la tuya y descubre qué te hace ganar.</p></div>' +
+      '<div class="roster-brand" aria-label="LoL Stats"><span>LOL</span><b>STATS</b><small>' + pages.length + ' jugadores · EUW</small></div>'));
+    app.appendChild(el('div', 'roster-heading', '<h2>Elige a tu invocador</h2><p>Últimas 100 partidas por persona · sin ARAM</p>'));
+    const list = el('main', 'summoners roster');
+    list.setAttribute('aria-label', 'Invocadores del equipo');
+    pages.forEach((pg, i) => {
       const Ds = pg.ids.map(id => all[id]).filter(Boolean);
-      if (!Ds.length) return;
       const multi = Ds.length > 1, P = prepare(Ds), A = agg(P.valid);
-      const top = groupStats(P.valid, g => g.champ).sort((a, b) => b.n - a.n).slice(0, 3);
-      const qs = QUEUES.slice(1).map(q => { const a = agg(P.valid.filter(g => g.q === q.q)); return a.n ? `<div class="sq"><span>${q.label}</span>${wrBar(a.wr, a.n)}<small>${a.n} partidas</small></div>` : ''; }).join('');
+      const pool = groupStats(P.valid, g => g.champ);
+      const eligible = pool.filter(c => c.n >= 5);
+      const best = (eligible.length ? eligible : pool).sort((a, b) => b.wr - a.wr || b.n - a.n || b.kda - a.kda)[0];
+      const art = PORTRAITS[pg.page];
       const name = pg.name || (multi ? Ds.map(D => D.name).join(' + ') : Ds[0].name);
-      const named = !multi && !!pg.name && pg.name !== Ds[0].name;
-      const sub = multi ? Ds.map(D => `${esc(D.name)} #${esc(D.tag)}`).join(' · ')
-        : `${named ? esc(Ds[0].name) + ' #' + esc(Ds[0].tag) + ' · ' : ''}${esc(Ds[0].region)}${Ds[0].rank && Ds[0].rank.solo ? ' · ' + esc(Ds[0].rank.solo) : ''}`;
-      list.appendChild(el('a', 'card summoner', `
-        <div class="s-head">${top.map(t => icon(t.key, 'lg')).join('')}<div><h2>${esc(name)}${multi || named ? '' : ` <span>#${esc(Ds[0].tag)}</span>`}</h2>
-        <p>${sub}</p></div></div>
-        <div class="s-kpis"><div><b class="${wrClass(A.wr)}">${pct(A.wr)}</b><span>${A.w}V ${A.l}D</span></div><div><b>${f2(A.kda)}</b><span>KDA</span></div><div><b>${A.n}</b><span>partidas</span></div></div>
-        <div class="s-queues">${qs}</div><p class="src">Actualizado el ${esc(Ds.map(D => D.updated).sort()[0])}</p>`)).href = pg.page;
+      const accounts = Ds.map(D => esc(D.name) + ' #' + esc(D.tag)).join(' · ');
+      const qs = QUEUES.slice(1).map(q => {
+        const a = agg(P.valid.filter(g => g.q === q.q));
+        return a.n ? `<div class="sq"><span>${q.label}</span>${wrBar(a.wr, a.n)}<small>${a.n} partidas</small></div>` : '';
+      }).join('');
+      const illustrated = art && best && art.champion === best.key;
+      const portrait = illustrated
+        ? `<svg class="roster-art" viewBox="${art.slot * 434.4} 0 434.4 724" role="img" aria-label="${esc(best.key)}, campeón de ${esc(name)}, estilo South Park" preserveAspectRatio="xMidYMid meet"><image href="assets/squad-portraits.png" width="2172" height="724" /></svg>`
+        : best ? `<img class="roster-fallback" src="${DD}${champKey(best.key)}.png" alt="${esc(best.key)}">` : '<span class="portrait-empty">?</span>';
+      const link = el('a', 'card summoner player-card', `
+        <div class="player-identity">
+          <div class="portrait-window">${portrait}</div>
+          <div class="player-name"><span class="player-number">${esc(art ? art.nickname : 'El aspirante')}</span><h2>${esc(name)}</h2><p>${Ds.length} ${multi ? 'cuentas' : 'cuenta'} · EUW</p>${art && art.story ? `<p class="player-story">${esc(art.story)}</p>` : ''}</div>
+        </div>
+        <div class="player-body">
+          <p class="player-accounts">${accounts}</p>
+          ${best ? `<div class="signature"><div>${icon(best.key)}<span><small>CAMPEÓN DESTACADO</small><b>${esc(best.key)}</b></span></div><p><strong>${pct(best.wr)}</strong> victorias <span>· ${best.n} partidas</span></p></div>` : '<p class="empty">Sin partidas guardadas todavía.</p>'}
+          <div class="s-kpis"><div><b class="${wrClass(A.wr)}">${pct(A.wr)}</b><span>victorias · ${A.w}V / ${A.l}D</span></div><div><b>${f2(A.kda)}</b><span>KDA medio</span></div><div><b>${A.n}</b><span>partidas</span></div></div>
+          <div class="s-queues">${qs}</div>
+          <div class="player-footer"><p class="src">Actualizado el ${esc(Ds.map(D => D.updated).sort()[0])}</p><span class="profile-cta">Ver estadísticas <span aria-hidden="true">↗</span></span></div>
+        </div>`);
+      link.style.setProperty('--player-color', art ? art.color : '#d2a85a');
+      link.href = pg.page;
+      list.appendChild(link);
     });
     app.appendChild(list);
+    app.appendChild(el('p', 'roster-note', 'Campeón destacado: mayor porcentaje de victorias con al menos 5 partidas; desempate por partidas y KDA. Si no hay 5, se utiliza la muestra disponible. Ilustraciones de la selección del 11/11/2026.'));
   }
 
   document.addEventListener('DOMContentLoaded', () => {

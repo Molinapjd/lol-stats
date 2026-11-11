@@ -4,12 +4,13 @@
 // Cuentas conocidas -> nick principal. En las tablas de compañeros se suman bajo ese nick.
 window.LOL_ALIASES = {
   'Josiso #Mongo': 'Josiso', 'DonPimPon #Espin': 'Josiso',
+  'Joeker Mexicano #Yowi': 'Josiso', 'Nosigasalguiri #Yowi': 'Josiso',
   'Filosofofo #dncia': 'Joe', 'AllMuted49 #EUW': 'Nachete',
   'Rustu #rst': 'Rustu', 'elquenuncahacena #EUW': 'Rustu', 'Yan Diomandé #Yan D': 'Rustu'
 };
 window.LOL_PAGES = [
   { page: 'j3pi-euw.html', ids: ['j3pi-euw'] },
-  { page: 'josiso.html', name: 'Josiso', ids: ['josiso-mongo', 'donpimpon-espin'] },
+  { page: 'josiso.html', name: 'Josiso', ids: ['josiso-mongo', 'donpimpon-espin', 'joeker-mexicano-yowi'] },
   { page: 'rustu.html', name: 'Rustu', ids: ['rustu-rst', 'elquenuncahacena-euw', 'yan-diomande-yan-d'] },
   { page: 'joe.html', name: 'Joe', ids: ['filosofofo-dncia'] },
   { page: 'nachete.html', name: 'Nachete', ids: ['allmuted49-euw'] }

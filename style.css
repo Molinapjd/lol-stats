@@ -57,8 +57,10 @@ small { color: var(--muted); font-weight: 400; }
 }
 .tabs button span { margin-left: 6px; font-weight: 400; font-size: 12px; opacity: .8; }
 .tabs button:hover:not(:disabled) { color: var(--text); border-color: var(--muted); }
-.tabs button[aria-current="true"] { background: var(--gold); border-color: var(--gold); color: #17120a; }
+.tabs button[aria-current="true"], .tabs button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #17120a; }
 .tabs button:disabled { opacity: .4; cursor: default; }
+.queue-help { color: var(--muted); font-size: 12px; }
+.queue-summary { color: var(--text); font-size: 12px; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* Tarjetas */
@@ -120,6 +122,36 @@ tbody tr:hover { background: var(--panel-2); }
 .in-title { font-weight: 700; margin-bottom: 2px; }
 .in-text { color: var(--muted); font-size: 13.5px; }
 .in-text b { color: var(--text); }
+.card h3.strengths-title { color: var(--good); }
+.strengths .insight { border: 1px solid var(--line); border-left: 3px solid var(--good); }
+.coach-comment { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+.coach-comment h3 { margin: 0 0 6px; color: var(--gold); }
+.coach-comment p { font-size: 14px; line-height: 1.7; }
+.coach-plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; counter-reset: plan; padding: 0; }
+.coach-plan li { counter-increment: plan; padding: 14px; border: 1px solid var(--line); border-radius: 10px; }
+.coach-plan li::before { content: counter(plan, decimal-leading-zero); display: block; color: var(--gold); font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.coach-plan p { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.sample-note { color: var(--muted); font-size: 12px; margin-top: 14px; line-height: 1.6; }
+
+/* Meta: instantánea fechada de los cinco primeros por rol */
+.meta-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.meta-role { background: var(--panel-2); padding: 12px; border-radius: 10px; min-width: 0; }
+.meta-role h3 { color: var(--gold); margin: 0 0 12px; }
+.meta-list { list-style: none; margin: 0; padding: 0; }
+.meta-list li { display: flex; align-items: center; gap: 7px; padding: 9px 0; border-top: 1px solid var(--line); }
+.meta-position { width: 10px; flex: none; font-size: 11px; color: var(--muted); }
+.meta-champion { min-width: 0; flex: 1; }
+.meta-champion b { display: block; font-size: 12px; overflow-wrap: anywhere; }
+.meta-champion small { display: block; font-size: 10px; }
+.meta-tier { color: var(--gold); font-size: 11px; font-weight: 700; }
+.meta-stale { color: var(--mid); font-size: 12px; margin-top: 10px; }
+@media (max-width: 1080px) { .meta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .meta-grid, .coach-plan, .insights { grid-template-columns: minmax(0, 1fr); }
+  .meta-champion b { font-size: 14px; }
+  .meta-champion small { font-size: 12px; }
+  .queue-help, .queue-summary { line-height: 1.4; }
+}
 
 /* Premade */
 .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -161,4 +193,77 @@ tbody tr:hover { background: var(--panel-2); }
   .ci.hero-ci { width: 56px; height: 56px; }
   .hrow { grid-template-columns: 1fr 1fr; }
   .h-date { text-align: left; }
+}
+
+/* Portada del equipo: retratos individuales y marcos por invocador. */
+.roster-page { background: radial-gradient(ellipse at 15% 0%, #1c2941 0, transparent 45%), #0b1017; }
+.roster-page #app { max-width: 1320px; padding: 0 28px 48px; }
+.roster-hero { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 60px 0 40px; }
+.roster-hero .eyebrow { color: var(--gold); font-size: 11px; letter-spacing: 2.7px; font-weight: 700; margin: 0 0 18px; }
+.roster-hero h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; letter-spacing: -2px; }
+.roster-hero h1 span { color: #8fa4c2; font-size: inherit; font-weight: 700; }
+.roster-hero .roster-intro { max-width: 510px; margin-top: 20px; font-size: 15px; }
+.roster-brand { min-width: 160px; padding: 22px 30px; border-left: 1px solid #39465b; }
+.roster-brand > span { display: block; font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: 5px; color: var(--gold); }
+.roster-brand b { display: block; font-size: 24px; letter-spacing: 7px; }
+.roster-brand small { display: block; margin-top: 12px; font-size: 12px; }
+.roster-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 0; border-top: 1px solid var(--line); }
+.roster-heading h2 { font-size: 17px; }
+.roster-heading p { font-size: 12px; color: var(--muted); }
+.summoners.roster { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.player-card { padding: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--player-color) 48%, #263243); border-radius: 18px; box-shadow: inset 0 0 0 4px #0d1420, 0 12px 32px #0003; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.player-card:hover { transform: translateY(-4px); border-color: var(--player-color); box-shadow: 0 16px 40px #0005; }
+.player-card:focus-visible { outline-color: var(--player-color); outline-offset: 5px; }
+.player-identity { display: flex; gap: 24px; align-items: center; padding: 16px 24px 0 16px; background: linear-gradient(120deg, color-mix(in srgb, var(--player-color) 12%, #111c2a), #131b26); border-bottom: 1px solid color-mix(in srgb, var(--player-color) 25%, #263243); }
+.portrait-window { width: 160px; height: auto; aspect-ratio: 3 / 5; flex: none; position: relative; overflow: hidden; border: 2px solid color-mix(in srgb, var(--player-color) 65%, #263243); border-radius: 14px 14px 0 0; background: #182234; }
+.roster-art { display: block; width: 100%; height: 100%; overflow: hidden; }
+.roster-fallback { width: 100%; height: 100%; object-fit: cover; }
+.portrait-empty { display: grid; place-items: center; height: 100%; font-size: 70px; }
+.player-number, .player-name .player-story { font-size: 10px; letter-spacing: 2px; color: var(--player-color); font-weight: 700; }
+.player-name { min-width: 0; padding-bottom: 16px; }
+.player-card .player-name h2 { margin: 8px 0 4px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.8px; overflow-wrap: anywhere; }
+.player-name p { font-size: 12px; color: var(--muted); }
+.player-body { padding: 20px 24px; }
+.player-accounts { color: var(--muted); font-size: 11px; line-height: 1.7; min-height: 37px; overflow-wrap: anywhere; }
+.signature { margin-top: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.signature > div { display: flex; gap: 9px; align-items: center; }
+.signature .ci { width: 36px; height: 36px; border-radius: 9px; }
+.signature small { display: block; font-size: 9px; letter-spacing: 1px; }
+.signature b { display: block; font-size: 16px; color: var(--player-color); }
+.signature > p { font-size: 11px; text-align: right; color: var(--muted); }
+.signature strong { font-size: 17px; color: var(--text); }
+.signature > p span { display: block; }
+.player-card .s-kpis { margin: 16px 0; }
+.player-card .s-kpis div { padding: 11px; }
+.player-card .s-kpis span { font-size: 10px; }
+.player-card .sq { font-size: 12px; grid-template-columns: 1fr auto 76px; }
+.player-footer { display: flex; justify-content: space-between; gap: 12px; align-items: center; border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; }
+.player-card .src { font-size: 10px; margin: 0; }
+.profile-cta { font-size: 12px; font-weight: 600; color: var(--player-color); white-space: nowrap; }
+.profile-cta span { display: inline-block; margin-left: 6px; }
+.roster-note { margin-top: 24px; max-width: 900px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+@media (prefers-reduced-motion: reduce) { .player-card { transition: none; } .player-card:hover { transform: none; } }
+@media (max-width: 900px) {
+  .summoners.roster { grid-template-columns: minmax(0, 1fr); }
+  .roster-hero { padding-top: 36px; }
+}
+@media (max-width: 520px) {
+  .roster-page #app { padding: 0 16px 36px; }
+  .roster-brand { display: none; }
+  .roster-hero { padding: 32px 0; }
+  .roster-heading { display: block; }
+  .roster-heading p { margin-top: 6px; }
+  .player-identity { padding: 12px 12px 0; gap: 16px; }
+  .portrait-window { width: 112px; height: auto; }
+  .player-card .player-name h2 { font-size: 28px; }
+  .player-body { padding: 16px; }
+  .player-footer { flex-wrap: wrap; }
+  .player-card .sq { gap: 7px; grid-template-columns: 1fr auto 70px; }
+  .player-card .wr-track { width: 44px; }
+}
+
+.player-name .player-story { margin-top: 12px; line-height: 1.8; max-width: 38ch; }
+@media (max-width: 520px) {
+  .player-identity { flex-wrap: wrap; }
+  .player-name { flex: 1 1 145px; }
 }
