@@ -8,10 +8,9 @@
     { id: 'all', q: null, label: 'Todas' },
     { id: 'normales', q: 'N', label: 'Normales' },
     { id: 'soloq', q: 'S', label: 'Ranked Solo/Duo' },
-    { id: 'flex', q: 'F', label: 'Ranked Flex' },
-    { id: 'aram', q: 'A', label: 'ARAM' }
+    { id: 'flex', q: 'F', label: 'Ranked Flex' }
   ];
-  const QNAME = { N: 'Normal', S: 'Solo/Duo', F: 'Flex', A: 'ARAM' };
+  const QNAME = { N: 'Normal', S: 'Solo/Duo', F: 'Flex' };
   const ROLES = ['Top', 'Jungla', 'Mid', 'ADC', 'Support'];
 
   /* ---------- utilidades ---------- */
@@ -60,7 +59,8 @@
         acc: D.name, allies, enemies, friends: [], party: 1, sess: 1, prevWin: null
       };
     });
-    const games = [].concat.apply([], Ds.map(parse)).sort((a, b) => b.t - a.t);
+    // Excluir ARAM antes de calcular estadísticas, compañeros y sesiones.
+    const games = [].concat.apply([], Ds.map(parse)).filter(g => g.q !== 'A').sort((a, b) => b.t - a.t);
     const valid = games.filter(g => !g.remake);
     // Amigos = compañeros de equipo que se repiten en 3 o más partidas
     const cnt = {};
@@ -181,7 +181,7 @@
       ['% victorias', `<span class="${wrClass(A.wr)}">${pct(A.wr)}</span>`, `<span class="wr-track big"><span class="wr-fill ${wrClass(A.wr)}" style="width:${A.wr}%"></span></span>`],
       ['KDA', f2(A.kda), `${f1(A.k)} / <span class="tl">${f1(A.d)}</span> / ${f1(A.a)}`],
       ['Participación en kills', pct(A.kp), 'de las kills de tu equipo'],
-      aram ? null : ['CS por minuto', f1(agg(gs.filter(g => g.role && g.role !== 'Support')).csm), 'sin contar ARAM ni support'],
+      aram ? null : ['CS por minuto', f1(agg(gs.filter(g => g.role && g.role !== 'Support')).csm), 'sin contar support'],
       ['Duración media', durFmt(A.dur), 'min:seg'],
       ['Puesto OP medio', f1(A.rank) + 'º', `de 10 · ${A.mvp} veces 1.º (MVP/ACE)`],
       ['Racha actual', st.cur + (st.curWin ? 'V' : 'D'), `mejor ${st.bestW}V · peor ${st.bestL}D`]
