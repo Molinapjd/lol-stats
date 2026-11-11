@@ -3,6 +3,7 @@
 window.LOL_DATA = window.LOL_DATA || {};
 window.LOL_DATA['joeker-mexicano-yowi'] = {
   id: 'joeker-mexicano-yowi',
+  slug: 'joeker mexicano-yowi',
   name: 'Joeker Mexicano',
   tag: 'Yowi',
   region: 'EUW',

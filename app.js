@@ -383,6 +383,8 @@
     ];
     if (!aram) rows.push(['CS/min', f1(W.csm), f1(L.csm)], ['Puntuación de línea', Math.round(W.lan), Math.round(L.lan)]);
     rows.push(['Puesto OP medio', f1(W.rank) + 'º', f1(L.rank) + 'º'], ['Duración', durFmt(W.dur), durFmt(L.dur)]);
+    // Sin victorias o sin derrotas en la selección no hay media que enseñar: raya en vez de ceros
+    rows.forEach(r => { if (!W.n) r[1] = '–'; if (!L.n) r[2] = '–'; });
     const w = el('div', 'tablewrap');
     w.innerHTML = `<table><thead><tr><th></th><th class="num"><span class="tw">Victorias (${W.n})</span></th><th class="num"><span class="tl">Derrotas (${L.n})</span></th></tr></thead><tbody>` +
       rows.map(r => `<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td></tr>`).join('') + '</tbody></table>';
@@ -547,7 +549,7 @@
       <div class="hero-main">${icon(top, 'hero-ci')}
         <div><h1>${esc(title)}${multi ? ` <span>${Ds.length} cuentas</span>` : named ? '' : ` <span>#${esc(Ds[0].tag)}</span>`}</h1>
         <p>${accLine}</p>
-        <p>Últimas ${P.valid.length} partidas (máximo ${MATCH_LIMIT}) del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + ' remakes sin contar' : ''}</p>
+        <p>Últimas ${P.valid.length} partidas (máximo ${MATCH_LIMIT}) del ${dateFmt(P.valid[P.valid.length - 1].t)} al ${dateFmt(P.valid[0].t)}${P.remakes ? ' · ' + P.remakes + (P.remakes === 1 ? ' remake' : ' remakes') + ' sin contar' : ''}</p>
         <p class="src">Datos de ${Ds.map(D => `<a href="${esc(D.source)}" target="_blank" rel="noopener">op.gg${multi ? ' · ' + esc(D.name) : ''}</a>`).join(', ')} · actualizado el ${esc(updated)}
           <button type="button" class="refresh" title="Vuelve a leer los datos guardados. Las partidas nuevas las trae la tarea programada «Actualizar LoL Stats» de Claude.">↻ Recargar datos</button></p></div>
       </div>`));
@@ -557,9 +559,11 @@
     const nav = el('nav', 'chips'); nav.setAttribute('aria-label', 'Colas: selección múltiple');
     QUEUES.forEach(q => { const b = el('button'); b.type = 'button'; b.dataset.id = q.id; nav.appendChild(b); });
     bar.appendChild(nav);
-    bar.appendChild(el('p', 'queue-help', 'Puedes combinar colas: selecciona Solo/Duo y añade Normales o Flex. «Todas» restablece la selección.'));
+    // La ayuda y el resumen van fuera de la barra fija para que no tape media pantalla en móvil
+    const info = el('div', 'queue-info');
+    info.appendChild(el('p', 'queue-help', 'Puedes combinar colas: selecciona Solo/Duo y añade Normales o Flex. «Todas» restablece la selección.'));
     const selection = el('p', 'queue-summary'); selection.setAttribute('role', 'status'); selection.setAttribute('aria-live', 'polite');
-    bar.appendChild(selection);
+    info.appendChild(selection);
     let accNav = null;
     if (multi) {
       accNav = el('nav', 'chips acc'); accNav.setAttribute('aria-label', 'Cuentas');
@@ -569,6 +573,7 @@
       bar.appendChild(accNav);
     }
     app.appendChild(bar);
+    app.appendChild(info);
     const content = el('main', 'grid'); app.appendChild(content);
 
     let curAcc = '', curQueues = selectedQueues(location.hash);
@@ -610,7 +615,7 @@
     'j3pi-euw.html': { champion: 'Jinx', nickname: 'El gancho travieso', story: 'Llegó a la Grieta con un gancho y ganas de liarla. Con Thresh como favorito, alterna entre proteger al equipo y ponerse en primera línea: si hay pelea, j3pi ya está dentro.', slot: 0, color: '#75baff' },
     'josiso.html': { champion: 'Wukong', nickname: 'El terror de la jungla', story: 'Se sabe los caminos de la jungla, pero también tiene cuentas pendientes en las demás líneas. Con Wukong al frente de su repertorio, Josiso aparece entre los árboles cuando la partida pide una buena pelea.', slot: 1, color: '#edbd68' },
     'rustu.html': { champion: 'Senna', nickname: 'El seguro de vida', story: 'Mientras otros cuentan bajas, Rustu va sumando asistencias. Entre almas de Senna y plantas de Zyra, se ha ganado el oficio de acompañar al equipo y poner su granito de arena en cada pelea.', slot: 2, color: '#69d8bd' },
-    'joe.html': { champion: 'Galio', nickname: 'El alcalde de mid', story: 'Hay quien recorre el mapa y quien tiene domicilio fijo en medio. Joe ha convertido mid en su barrio: Mel, Galio y Vel’Koz se turnan para recibir a cualquiera que pase por allí.', slot: 3, color: '#b0c7fa' },
+    'joe.html': { champion: 'Galio', nickname: 'El alcalde de mid', story: "Hay quien recorre el mapa y quien tiene domicilio fijo en medio. Joe ha convertido mid en su barrio: Mel, Galio y Vel'Koz se turnan para recibir a cualquiera que pase por allí.", slot: 3, color: '#b0c7fa' },
     'nachete.html': { champion: 'Jhin', nickname: 'Don Cuatro Balas', story: 'Cuatro balas, mucha paciencia y una cuenta de bajas que no para de crecer. Nachete vive en bot y tiene en Jhin a su compañero habitual: farmea, apunta y prepara el siguiente acto.', slot: 4, color: '#d899ed' }
   };
 
