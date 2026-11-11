@@ -11,6 +11,7 @@ const context = vm.createContext({ window: {}, document: {
 for (const file of fs.readdirSync(path.join(root, 'data'))) {
   vm.runInContext(fs.readFileSync(path.join(root, 'data', file), 'utf8'), context);
 }
+vm.runInContext(fs.readFileSync(path.join(root, 'pages.js'), 'utf8'), context);
 vm.runInContext(fs.readFileSync(path.join(root, 'app.js'), 'utf8').replace(
   '  document.addEventListener(',
   '  window.testAPI = { prepare, agg, selectedQueues, queueHash, toggleQueue, filterQueues, coaching, strengths, secMejorar, secTierList, META }; document.addEventListener('
@@ -119,4 +120,27 @@ test('strengths use evidence from the selected games and remain encouraging with
   const trend = api.strengths(wins.concat(losses));
   assert.match(trend[0].text, /últimas 10 partidas/);
   assert.match(JSON.stringify(api.strengths([base])), /demasiado pronto/);
+});
+
+test('Josiso includes Joeker Mexicano and merges current and historical aliases', () => {
+  const pg = context.window.LOL_PAGES.find(p => p.name === 'Josiso');
+  assert.equal(pg.ids.length, 3);
+  assert(pg.ids.includes('joeker-mexicano-yowi'));
+  const account = context.window.LOL_DATA['joeker-mexicano-yowi'];
+  const p = api.prepare(account);
+  assert.equal(p.valid.length, 3);
+  assert.deepEqual(plain(p.valid.map(g => g.champ)), ["Kai'Sa", 'Diana', 'Vi']);
+  assert.equal(api.agg(p.valid).w, 1);
+  assert.equal(p.valid[0].t, Date.parse('2026-11-09T20:26:00Z'));
+  assert(p.valid.every(g => g.q === 'N'));
+  assert.equal(context.window.LOL_ALIASES['Joeker Mexicano #Yowi'], 'Josiso');
+  assert.equal(context.window.LOL_ALIASES['Nosigasalguiri #Yowi'], 'Josiso');
+  const group = api.prepare(pg.ids.map(id => context.window.LOL_DATA[id]));
+  assert.equal(group.valid.length, 100);
+  assert.equal(group.valid.filter(g => g.acc === 'Joeker Mexicano').length, 3);
+  assert(group.valid.every(g => !g.friends.includes('Josiso')));
+  const html = fs.readFileSync(path.join(root, 'josiso.html'), 'utf8');
+  assert(html.includes('data/joeker-mexicano-yowi.js'));
+  assert(html.includes('josiso-mongo,donpimpon-espin,joeker-mexicano-yowi'));
+  assert(fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('data/joeker-mexicano-yowi.js'));
 });
