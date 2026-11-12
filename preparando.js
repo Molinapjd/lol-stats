@@ -158,7 +158,7 @@
           <p class="pick-experience">${esc(explanation)}</p>
           ${directHistory(best)}
           <div class="matchup-skills">${(best.kit.skills || []).map(s => `<span>${esc(s.champion)}<b>${esc(s.name)}</b></span>`).join('')}</div>
-          <h4>${best.kit.reviewed ? 'Por qué encaja en este duelo' : 'Tus herramientas para este duelo'}</h4><p class="plan-status">${best.kit.reviewed ? 'Interacción revisada entre estos dos campeones.' : 'Plan de preparación por habilidades; no hay una interacción de counter revisada para esta pareja.'}</p><ul class="pick-reasons">${best.kit.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+          <h4>${best.kit.reviewed ? 'Por qué encaja en este duelo' : 'Cómo jugar este duelo'}</h4><p class="plan-status">${best.kit.reviewed ? 'Interacción revisada entre estos dos campeones.' : 'Guía general según el alcance, el tipo de campeón y las habilidades de ambos.'}</p><ul class="pick-reasons">${best.kit.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
           <h4>Lo que debes vigilar de ${esc(enemy)}</h4><ul class="pick-warnings">${best.kit.warnings.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
           <h4>Cuándo actuar y qué reservar</h4><ol class="pick-plan">${best.kit.plan.map(r => `<li>${esc(r)}</li>`).join('')}</ol>
           <p class="matchup-sources">Habilidades de Riot · ${esc(best.kit.version || '')} · revisadas el ${esc(best.kit.checked || '')}: ${(best.kit.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(' · ')}. El plan táctico es una interpretación, no una recomendación oficial de Riot.</p>

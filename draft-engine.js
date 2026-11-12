@@ -91,7 +91,7 @@
     if (has('antiTank', enemy) && you.tags.includes('Tank')) value -= 12;
     if (foe.tags.includes('Tank') && name === 'Jhin') value -= 12;
     if (has('antiAuto', enemy) && has('auto', name)) value -= 14;
-    const feedback = coach.explain(name, enemy, role);
+    const feedback = coach.explain(name, enemy, role, catalog);
     const known = roleData.countersFor(enemy).find(c => c.name === name);
     if (known) {
       value += 20;

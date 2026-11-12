@@ -7,7 +7,7 @@
   const OWN = {
     Thresh: ['E', 'Mantén E para separar al rival de tu tirador. Después de acertar Q, decide si necesitas la segunda activación: acercarte también puede regalar una iniciación sobre ti. Coloca W hacia la retirada de tu compañero, no encima del enemigo.'],
     Senna: ['W', 'Busca Q desde un ángulo que permita golpear y curar. La inmovilización de W llega con retraso: úsala para preparar la siguiente acción, no como si frenara una entrada al instante.'],
-    Galio: ['W', 'Conserva W para el enemigo que llegue a corta distancia. E te compromete hacia delante: úsala cuando tu compañero pueda seguir o cuando el rival haya gastado su salida. R necesita un aliado y tiempo de llegada; no sustituye una defensa inmediata en el duelo.'],
+    Galio: ['W', 'Mantenla para cuando el rival te lance su combo: reduce el daño mágico que recibes y, al soltarla, provoca a quien tengas cerca. E te lanza hacia delante, así que úsala solo cuando el rival haya gastado su forma de escapar. R viaja hasta un aliado: sirve para ayudar en otra línea, no para huir.'],
     Jhin: ['W', 'Prepara la cuarta bala antes de intercambiar y aprovecha el movimiento posterior para salir. Para inmovilizar con W, primero tiene que existir la marca de daño de un aliado, una trampa o tu propio daño; W a un objetivo sin marcar no lo enraíza.'],
     Wukong: ['W', 'Reserva W para cambiar de posición después de tu primera entrada. Si gastas E y W solo para acercarte, te quedas sin una salida propia; usa la definitiva cuando tu equipo pueda aprovechar el derribo.'],
     Vi: ['Q', 'Carga Q desde fuera de la visión rival cuando puedas. Si Q falla, no conviertas automáticamente el intento en una entrada con R: comprueba antes dónde terminarás y qué aliado podrá seguirte.'],
@@ -65,6 +65,8 @@
   };
   // [key, concrete risk, action window]. These describe abilities, not global counter win rates.
   const THREATS = {
+    Garen: ['Q', 'Su Q le acelera y te silencia: si te alcanza con ella no podrás usar habilidades durante un momento y después te hará girar con E. Con poca vida, su R te remata.', 'Cuando gaste Q para acercarse, aléjate antes de que llegue: sin ella le cuesta mucho alcanzarte.'],
+    Veigar: ['E', 'Su E crea una jaula: si tocas el borde quedas aturdido y te puede rematar con su R, que hace más daño cuanta menos vida te quede.', 'Cuando gaste E tienes unos segundos sin jaula: es el momento de acercarte e intercambiar.'],
     Morgana: ['E', 'El escudo negro impide el control mientras permanece. No comprometas tu cadena de control sobre el objetivo que lo conserva.', 'Busca tu acción cuando E haya expirado o se haya roto antes de que impacte tu control.'],
     Leona: ['E', 'Su E atraviesa esbirros y la desplaza hasta el último campeón alcanzado. La oleada no es una barrera contra esta entrada.', 'Cuando falle o gaste E, puedes disputar espacio sin su misma entrada directa; vuelve a respetarla al recuperarla.'],
     Blitzcrank: ['Q', 'Su Q te acerca al equipo enemigo. Mantén una unidad de la oleada entre ambos y no abras el ángulo solo para golpear una vez.', 'Después de una Q fallada, cambia de posición y busca tu intercambio antes de que vuelva a disponer del agarre.'],
@@ -137,7 +139,32 @@
 
   function spell(name, key) { return data && data.champions[name] && data.champions[name].spells.find(s => s.key === key); }
   function ability(name, key) { const s = spell(name,key); return s ? `${key} (${s.name})` : key; }
-  function explain(name, enemy, role) {
+  // Perfil básico del catálogo de Riot: clase principal y si ataca a distancia.
+  function profile(catalog, name) {
+    const c = catalog && catalog[name];
+    return c ? { cls: c.tags[0], tags: c.tags, ranged: c.range >= 300 } : null;
+  }
+  function laneDynamic(name, enemy, P, F, key, role) {
+    if (!P || !F || role === 'Jungla') return null; // en jungla no hay duelo de línea
+    if (role === 'Support') return P.ranged === F.ranged
+      ? `En bot, el duelo de supports lo decide quién controla el espacio delante de su tirador. Ocupa ese espacio cuando ${enemy} gaste ${key}.`
+      : P.ranged ? `Tienes más alcance que ${enemy}: hostígale cada vez que se acerque y protege a tu tirador cuando intente entrar.`
+      : `${enemy} tiene más alcance que tú: no os expongáis a su desgaste. Espera a que falle o gaste ${key} para entrar con tu tirador.`;
+    if (!P.ranged && F.ranged) return `${enemy} te supera en alcance y te hará daño desde lejos. No intentes ganarle a base de intercambios largos: farmea con seguridad y acércate solo cuando falle o gaste ${key}.`;
+    if (P.ranged && !F.ranged) return `Tienes ventaja de alcance: ${enemy} necesita acercarse para hacerte daño. Castígale cada vez que vaya a farmear y retrocede cuando intente entrar.`;
+    if (P.ranged && F.ranged) return `Duelo a distancia: suele ganarlo quien acierta antes sus habilidades. Usa tus súbditos para bloquear sus proyectiles y responde justo cuando falle una.`;
+    return `Duelo cuerpo a cuerpo: los intercambios los gana quien usa mejor sus habilidades. Entra cuando ${enemy} acabe de gastar ${key} y sal antes de quedarte sin las tuyas.`;
+  }
+  function earlyPlan(enemy, P, F, role) {
+    if (!P || !F || role === 'Jungla') return null;
+    if (role === 'Support') return `Niveles 1 a 3: colócate a la altura de tu tirador, nunca por delante de los súbditos, y coordina el primer intercambio con él cuando ${enemy} se adelante.`;
+    if (!P.ranged && F.ranged) return 'Niveles 1 a 3: prioriza farmear sin perder vida. Si te castiga demasiado, deja que la oleada se acerque a tu torre para jugar donde él no puede presionarte.';
+    if (P.ranged && !F.ranged) return `Niveles 1 a 3: golpea a ${enemy} con ataques básicos cada vez que se acerque a un súbdito y mantén la distancia; no le dejes llegar a ti gratis.`;
+    if (P.ranged && F.ranged) return 'Niveles 1 a 3: colócate detrás de tus súbditos para que bloqueen sus habilidades y castígale justo después de que falle una.';
+    return `Niveles 1 a 3: intercambia cuando ${enemy} vaya a golpear a un súbdito y retírate antes de que pueda devolverte el golpe completo.`;
+  }
+
+  function explain(name, enemy, role, catalog) {
     const you = data && data.champions[name], foe = data && data.champions[enemy];
     if (!you || !foe) return { reviewed: false, reasons: ['No hay habilidades verificadas para este emparejamiento.'], warnings: ['Consulta las habilidades de ambos campeones antes de basar una decisión en este plan.'], plan: [], sources: [] };
     const own = OWN[name];
@@ -147,13 +174,36 @@
     const keySpell = foe.spells.find(s => s.types.includes('untargetable')) || foe.spells.find(s => s.types.includes('invulnerable')) || foe.spells.find(s => s.types.includes('control')) || foe.spells.find(s => s.types.includes('movement')) || foe.spells[3];
     const enemyKey = threat ? threat[0] : keySpell.key;
     const reviewed = PAIRS[name+'|'+enemy];
-    const ownPlan = own ? own[1] : `Identifica el uso de ${ability(name,ownKey)} antes de comprometer el intercambio. Compara su disponibilidad con ${ability(enemy,enemyKey)} de ${enemy}; las etiquetas de habilidades por sí solas no confirman una ventaja en este duelo.`;
-    const risk = threat ? threat[1] : `${enemy} conserva ${ability(enemy,enemyKey)} como recurso a revisar. ${keySpell.types.includes('untargetable') ? 'Su momento de inalcanzabilidad puede negar una acción lanzada demasiado pronto.' : keySpell.types.includes('invulnerable') ? 'La inmunidad al daño no equivale a inalcanzabilidad ni a inmunidad al control: distingue qué efecto necesitas conseguir antes de gastar tu habilidad.' : keySpell.types.includes('control') ? 'La descripción de Riot recoge control en esa habilidad: contempla esa respuesta antes de encadenar tu combo.' : keySpell.types.includes('movement') ? 'Su desplazamiento puede cambiar el punto donde necesitas acertar tu siguiente habilidad.' : 'No hay una interacción concreta revisada aquí: comprueba su efecto antes de comprometer tu recurso principal.'}`;
+    const mine = ability(name, ownKey), key = ability(enemy, enemyKey);
+    const ownPlan = own ? own[1] : `Guárdala para responder a ${enemy} en lugar de gastarla solo para hacer daño: si la usas mal, te quedas sin defensa durante su recarga.`;
+    const tool = `Tu herramienta clave es ${mine}. ${ownPlan}`;
+    const types = (threat ? (foe.spells.find(s => s.key === enemyKey) || keySpell) : keySpell).types;
+    const risk = threat ? threat[1]
+      : types.includes('untargetable') ? `Durante ${key} no puedes alcanzar a ${enemy}. No lances tu habilidad clave mientras la esté usando: espera a que termine.`
+      : types.includes('invulnerable') ? `${key} le hace inmune al daño durante un momento. Aprovecha ese tiempo para colocarte, no para gastar habilidades.`
+      : types.includes('control') ? `${key} puede inmovilizarte o frenarte, y desde ahí ${enemy} encadena todo su daño. Mientras la tenga disponible, no te quedes a su alcance.`
+      : types.includes('movement') ? `${key} le permite entrar o escapar rápidamente. No le persigas ni te acerques demasiado mientras la tenga disponible.`
+      : `Vigila ${key}: es la habilidad con la que ${enemy} decide sus intercambios.`;
+    const P = profile(catalog, name), F = profile(catalog, enemy);
+    const extra = !F ? null
+      : F.cls === 'Assassin' ? `${enemy} es un asesino: desde el nivel 6 puede matarte con una sola rotación si te encuentra con poca vida. Respeta su ${ability(enemy, 'R')} y no te quedes aislado.`
+      : F.cls === 'Tank' ? `${enemy} es muy resistente: no esperes ganarle un intercambio largo solo con daño. Juega por el farmeo y por los objetivos del mapa.`
+      : F.cls === 'Mage' && F.ranged && P && !P.ranged ? `${enemy} hace daño mágico desde lejos: si pierdes mucha vida en línea, compra resistencia mágica pronto.`
+      : null;
+    const generic = {
+      reasons: [laneDynamic(name, enemy, P, F, key, role), tool].filter(Boolean),
+      warnings: [risk, extra].filter(Boolean),
+      plan: [earlyPlan(enemy, P, F, role),
+        threat ? threat[2] : types.length
+          ? `Tu momento: cuando ${enemy} gaste ${key}, tienes unos segundos sin esa amenaza. Aprovéchalos para acercarte y hacer tu intercambio.`
+          : `Cuenta sus tiempos de recarga: intercambia justo después de que ${enemy} use sus habilidades y retírate cuando las recupere.`,
+        `Desde el nivel 6, ${ability(name, 'R')} cambia el duelo: úsala cuando ${enemy} no tenga ${key} disponible o cuando ${role === "Jungla" ? "tu equipo pueda seguirte" : "tu jungla pueda llegar a ayudarte"}.`].filter(Boolean)
+    };
     return {
       reviewed: !!reviewed,
-      reasons: reviewed ? [reviewed.reason] : [`Tu recurso a preparar es ${ability(name,ownKey)} frente a ${ability(enemy,enemyKey)} de ${enemy}.`, ownPlan],
-      warnings: reviewed ? [reviewed.warning] : [risk],
-      plan: reviewed ? [reviewed.window, ownPlan] : [threat ? threat[2] : `Prepara una primera acción sin gastar ${ability(name,ownKey)} y comprueba si ${enemy} utiliza ${ability(enemy,enemyKey)}. Este es un plan de preparación, no un counter confirmado.`],
+      reasons: reviewed ? [reviewed.reason] : generic.reasons,
+      warnings: reviewed ? [reviewed.warning] : generic.warnings,
+      plan: reviewed ? [reviewed.window, ownPlan] : generic.plan,
       skills: [{ champion: name, key: ownKey, name: ability(name,ownKey) }, { champion: enemy, key: enemyKey, name: ability(enemy,enemyKey) }],
       sources: [{ name, url: you.source }, { name: enemy, url: foe.source }],
       checked: data.checked, version: data.version
