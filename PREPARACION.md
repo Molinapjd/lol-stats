@@ -49,3 +49,23 @@ Fuentes de las características de campeón:
 - https://www.leagueoflegends.com/es-es/champions/
 
 Comprobación: `node --test tests/*.test.cjs`.
+
+## Feedback de emparejamientos
+
+`matchup-abilities.js` contiene nombres en español y etiquetas mecánicas de las
+692 habilidades Q/W/E/R del catálogo de 173 campeones. Proceden de Riot Data
+Dragon; se actualizan con `python tools/update_matchup_abilities.py`.
+El actualizador distingue inalcanzabilidad e inmunidad al daño. Las etiquetas
+son una ayuda de clasificación, no una simulación completa del combate.
+
+`matchup-coach.js` separa interacciones revisadas entre parejas concretas de
+planes orientativos por habilidades. Los planes mencionan recursos propios,
+amenazas rivales y ventanas de actuación. Para parejas sin revisión específica,
+la interfaz lo indica y no las presenta como counters confirmados.
+
+El historial del duelo exige misma persona, posición, campeón propio y rival
+directo. Incluye V/D de la partida, KDA agregado, medias K/D/A, participación y
+las últimas cinco partidas. Los resultados contra ese rival con otros campeones
+aparecen separados. La interfaz avisa de muestras cortas y de los roles inferidos.
+Los botones de alternativas permiten consultar su plan sin presentarlas como
+la primera recomendación del motor.

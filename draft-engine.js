@@ -1,9 +1,10 @@
 /* Motor local de selección: historial personal + reglas de estilo, nunca winrates globales inventados. */
 (function (root, factory) {
-  const api = factory();
+  const coach = typeof module === 'object' && module.exports ? require('./matchup-coach.js') : root.LOL_MATCHUP_COACH;
+  const api = factory(coach);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.LOL_DRAFT_ENGINE = api;
-})(typeof window !== 'undefined' ? window : globalThis, function () {
+})(typeof window !== 'undefined' ? window : globalThis, function (coach) {
   'use strict';
   const ROLES = ['Top', 'Jungla', 'Mid', 'ADC', 'Support'];
   const POOLS = {
@@ -59,29 +60,49 @@
   function mechanics(name, enemy, role, catalog) {
     const you = catalog[name], foe = catalog[enemy];
     let value = 50;
-    const reasons = [], warnings = [];
-    const add = (points, text) => { value += points; reasons.push(text); };
-    const warn = (points, text) => { value -= points; warnings.push(text); };
-    if (has('dash', enemy) && name === 'Poppy') add(23, 'Tu W puede cortar desplazamientos cercanos. Guárdala para la entrada rival; no detiene teletransportes.');
-    if (has('dash', enemy) && name === 'Vex') add(17, 'Tu pasiva castiga los desplazamientos: conserva el miedo para frenar su entrada.');
-    if (has('auto', enemy) && has('antiAuto', name)) add(17, 'Tu kit tiene herramientas contra ataques básicos. Reserva la defensa para sus intercambios, en lugar de gastarla al acercarte.');
-    if (has('magic', enemy) && name === 'Galio') add(16, 'El escudo mágico de tu W ayuda a absorber daño mágico. Juega alrededor de su disponibilidad.');
-    if (has('engage', enemy) && name === 'Morgana') add(20, 'El escudo negro puede evitar el control mientras aguanta. Resérvalo para la iniciación rival.');
-    if (has('engage', enemy) && has('peel', name)) add(14, 'Tienes herramientas para separar al iniciador de tu carry. Contra su entrada, prioriza proteger antes que perseguir.');
-    if (has('engage', enemy) && has('safe', name)) add(12, 'Tienes una herramienta de reposicionamiento o defensa para responder a su iniciación. Consérvala hasta que se comprometa.');
-    if (foe.tags.includes('Assassin') && has('lockdown', name)) add(15, 'Tu control fiable puede limitar a un asesino cuando entra. Evita gastarlo antes de que se exponga.');
-    if (foe.tags.includes('Tank') && has('antiTank', name)) add(16, 'Tu kit incluye daño porcentual, verdadero o reducción de resistencias útil contra objetivos resistentes.');
-    if (has('poke', enemy) && has('sustain', name)) add(10, 'Tu curación o escudos ayudan a sostener el desgaste. Gestiona el maná y evita regalar intercambios.');
-    if (has('immobile', enemy) && has('engage', name)) add(12, 'El rival tiene poca movilidad propia: amenaza la entrada cuando su herramienta defensiva esté en enfriamiento.');
-    if (has('immobile', enemy) && has('poke', name)) add(8, 'Puedes buscar desgaste contra un rival con pocas salidas propias. Mantén visión para no exponerte al avanzar.');
-    if (role !== 'Jungla' && you.range >= 500 && foe.range < 250 && !has('dash', enemy)) add(7, 'Tu alcance de ataque permite castigar a un rival cuerpo a cuerpo sin desplazamiento habitual. No rompas la distancia por una baja.');
-    if (has('poke', enemy) && you.range < 250 && !has('engage', name) && !has('dash', name)) warn(10, 'Puede desgastarte antes de que llegues. Cede recursos peligrosos y busca entradas con ayuda.');
-    if (has('engage', enemy) && has('immobile', name)) warn(9, 'Tu movilidad es limitada frente a su iniciación. Necesitas buena posición y una ruta de salida.');
-    if (has('antiTank', enemy) && you.tags.includes('Tank')) warn(12, 'El rival tiene herramientas contra tanques. Tu resistencia por sí sola no garantiza intercambios favorables.');
-    if (foe.tags.includes('Tank') && name === 'Jhin') warn(12, 'Tu recarga puede limitar el daño continuo contra un tanque. Coordina el foco con tu equipo y evita alargar un duelo a solas.');
-    if (has('antiAuto', enemy) && has('auto', name)) warn(14, 'El rival puede mitigar tus ataques básicos. Espera a que gaste su defensa antes de comprometer todo tu daño.');
-    if (!reasons.length) reasons.push('No hay una ventaja de kit específica identificada por estas reglas. La recomendación se apoya principalmente en tu comodidad y tus partidas.');
-    return { score: clamp(value, 0, 100), reasons, warnings };
+    if (has('dash', enemy) && name === 'Poppy') value += 23;
+    if (has('dash', enemy) && name === 'Vex') value += 17;
+    if (has('auto', enemy) && has('antiAuto', name)) value += 17;
+    if (has('magic', enemy) && name === 'Galio') value += 16;
+    if (has('engage', enemy) && name === 'Morgana') value += 20;
+    if (has('engage', enemy) && has('peel', name)) value += 14;
+    if (has('engage', enemy) && has('safe', name)) value += 12;
+    if (foe.tags.includes('Assassin') && has('lockdown', name)) value += 15;
+    if (foe.tags.includes('Tank') && has('antiTank', name)) value += 16;
+    if (has('poke', enemy) && has('sustain', name)) value += 10;
+    if (has('immobile', enemy) && has('engage', name)) value += 12;
+    if (has('immobile', enemy) && has('poke', name)) value += 8;
+    if (role !== 'Jungla' && you.range >= 500 && foe.range < 250 && !has('dash', enemy)) value += 7;
+    if (has('poke', enemy) && you.range < 250 && !has('engage', name) && !has('dash', name)) value -= 10;
+    if (has('engage', enemy) && has('immobile', name)) value -= 9;
+    if (has('antiTank', enemy) && you.tags.includes('Tank')) value -= 12;
+    if (foe.tags.includes('Tank') && name === 'Jhin') value -= 12;
+    if (has('antiAuto', enemy) && has('auto', name)) value -= 14;
+    const feedback = coach.explain(name, enemy, role);
+    return { score: clamp(value, 0, 100), ...feedback };
+  }
+
+  function duelSummary(games) {
+    const base = stats(games);
+    const kdaGames = games.filter(g => [g.k,g.d,g.a].every(Number.isFinite));
+    const sum = key => kdaGames.reduce((total,g) => total + g[key], 0);
+    const kills = sum('k'), deaths = sum('d'), assists = sum('a');
+    const kp = games.filter(g => Number.isFinite(g.kp));
+    return { ...base, l: base.n - base.w, wr: base.n ? base.w / base.n * 100 : null,
+      k: kdaGames.length ? kills / kdaGames.length : null,
+      d: kdaGames.length ? deaths / kdaGames.length : null,
+      a: kdaGames.length ? assists / kdaGames.length : null,
+      kda: kdaGames.length ? (deaths ? (kills + assists) / deaths : kills + assists) : null,
+      kp: kp.length ? kp.reduce((total,g) => total + g.kp,0) / kp.length : null,
+      recent: games.slice().sort((a,b) => (b.t || 0) - (a.t || 0)).slice(0,5)
+    };
+  }
+  function matchupHistory(games, role, name, enemy) {
+    const versus = games.filter(g => g.role === role && g.opp === enemy);
+    const selected = versus.filter(g => g.champ === name);
+    const rest = games.filter(g => g.role === role && g.champ === name && g.opp !== enemy);
+    const byChampion = [...new Set(versus.map(g => g.champ))].map(champ => ({ name: champ, ...duelSummary(versus.filter(g => g.champ === champ)) })).sort((a,b) => b.n-a.n || a.name.localeCompare(b.name));
+    return { selected: duelSummary(selected), all: duelSummary(versus), rest: duelSummary(rest), byChampion };
   }
 
   function recommend(games, role, enemy, catalog) {
@@ -89,12 +110,12 @@
     return tierList(games, role, catalog).filter(c => c.name !== enemy).map(c => {
       const kit = mechanics(c.name, enemy, role, catalog);
       // Para jungla: rival de jungla, no un duelo de línea. Support: se valora el support rival.
-      const direct = games.filter(g => g.role === role && g.champ === c.name && g.opp === enemy);
-      const head = stats(direct);
+      const history = matchupHistory(games, role, c.name, enemy);
+      const head = history.selected;
       const historyScore = 50 + ((head.w + 5) / (head.n + 10) - 0.5) * 100;
       const score = clamp(c.base * 0.4 + kit.score * 0.5 + historyScore * 0.1, 0, 100);
-      return { ...c, kit, head, score };
+      return { ...c, kit, head, history, score };
     }).sort((a, b) => b.score - a.score || b.personal.n - a.personal.n || a.name.localeCompare(b.name));
   }
-  return { ROLES, POOLS, stats, normalize, resolveChampion, tierList, recommend, mechanics };
+  return { ROLES, POOLS, stats, normalize, resolveChampion, tierList, recommend, mechanics, duelSummary, matchupHistory };
 });

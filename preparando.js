@@ -19,8 +19,9 @@
       return { id: pg.page.replace(/\.html$/, ''), name: pg.name || ds[0].name, page: pg.page, ds, games, art, champion: (api.featuredChampion(games) || {}).key || art.champion };
     }).filter(Boolean);
     if (!players.length) { app.textContent = 'No hay invocadores con datos guardados.'; return; }
-    let player, role, enemy;
+    let player, role, enemy, inspectedPick = null;
     function readState() {
+      inspectedPick = null;
       const q = new URLSearchParams(location.search);
       player = players.find(p => p.id === q.get('invocador')) || players[0];
       const preferred = E.ROLES.slice().sort((a, b) => player.games.filter(g => g.role === b).length - player.games.filter(g => g.role === a).length)[0];
@@ -63,27 +64,32 @@
       renderTiers();
       renderMatchup();
       app.querySelectorAll('[data-player]').forEach(b => b.addEventListener('click', () => {
+        inspectedPick = null;
         player = players.find(p => p.id === b.dataset.player);
         saveState(); render();
         app.querySelector(`[data-player="${player.id}"]`).focus();
       }));
       app.querySelectorAll('[data-role]').forEach(b => b.addEventListener('click', () => {
+        inspectedPick = null;
         role = b.dataset.role; saveState(); render();
         app.querySelector(`[data-role="${role}"]`).focus();
       }));
       const input = document.getElementById('enemy');
       input.addEventListener('input', () => {
+        inspectedPick = null;
         enemy = null; saveState();
         input.removeAttribute('aria-invalid');
         document.getElementById('enemy-error').textContent = '';
         renderMatchup();
       });
       document.getElementById('clear-enemy').onclick = () => {
+        inspectedPick = null;
         enemy = null; saveState(); input.value = ''; input.removeAttribute('aria-invalid');
         document.getElementById('enemy-error').textContent = ''; renderMatchup(); input.focus();
       };
       document.getElementById('matchup-form').addEventListener('submit', event => {
         event.preventDefault();
+        inspectedPick = null;
         enemy = E.resolveChampion(input.value, catalog);
         if (!enemy) {
           document.getElementById('enemy-error').textContent = 'Elige un campeón del catálogo. Puedes escribir su nombre sin tildes ni apóstrofos.';
@@ -102,6 +108,25 @@
         return `<section class="tier-group tier-${tier.toLowerCase()}"><div class="tier-label"><b>${tier}</b><span>${tierLabels[tier]}</span></div><div class="tier-champions">${group.length ? group.map(c => `<article class="tier-champion">${icon(c.name)}<div><h3>${esc(c.name)}</h3><p>${esc(championMeta(c))}</p></div><span class="tier-sample ${c.personal.n >= 5 ? 'sample-known' : ''}">${c.personal.n >= 5 ? 'Con rodaje' : c.personal.n ? 'Muestra corta' : 'Por probar'}</span></article>`).join('') : `<p class="tier-empty">${tier === 'S' ? 'Todavía faltan partidas en este rol para destacar una apuesta sólida.' : tier === 'A' ? 'Sin experiencia suficiente en esta muestra.' : 'Las opciones seleccionadas ya tienen experiencia previa.'}</p>`}</div></section>`;
       }).join('');
     }
+    function directHistory(c) {
+      const h = c.history, s = h.selected;
+      const number = (value, digits = 1) => Number.isFinite(value) ? value.toFixed(digits) : '–';
+      const headline = s.n ? `${s.n} ${s.n === 1 ? 'duelo' : 'duelos'} con ${c.name} contra ${enemy}: ${record(s)}.` : `No hay duelos guardados con ${c.name} contra ${enemy} en ${labels[role]}.`;
+      const rest = h.byChampion.filter(row => row.name !== c.name);
+      let observation = '';
+      if (s.n >= 3 && h.rest.n >= 3 && Number.isFinite(s.d) && Number.isFinite(h.rest.d) && s.d - h.rest.d >= 1.5) {
+        observation = `En estos ${s.n} duelos mueres ${number(s.d)} veces de media; con ${c.name} ante otros rivales del mismo rol, ${number(h.rest.d)} en ${h.rest.n} partidas. Es una señal para revisar esas muertes; el dato no explica por sí solo qué las causó.`;
+      }
+      const recent = s.n ? s.recent : h.all.recent;
+      const date = t => Number.isFinite(t) ? new Date(t).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', timeZone: 'Europe/Madrid' }) : 'Sin fecha';
+      const queues = { N: 'Normal', S: 'Solo/Duo', F: 'Flex' };
+      return `<section class="duel-history" aria-label="Tus enfrentamientos directos"><h4>Tus enfrentamientos directos</h4><p class="duel-headline">${esc(headline)}</p>
+        ${s.n ? `<div class="duel-metrics"><span>KDA del duelo<b>${s.d === 0 ? 'Sin muertes' : number(s.kda,2)}</b></span><span>K / D / A medios<b>${number(s.k)} / ${number(s.d)} / ${number(s.a)}</b></span><span>Participación en kills<b>${s.kp == null ? '–' : Math.round(s.kp) + '%'}</b></span></div><p class="duel-sample">${s.n < 5 ? 'Muestra muy corta: estos resultados no confirman una ventaja ni un counter.' : s.n < 10 ? 'Muestra corta: usa estos resultados como contexto, junto al plan de habilidades.' : 'Resultados de tus partidas guardadas; no son estadísticas globales del emparejamiento.'}</p>` : ''}
+        ${observation ? `<p class="duel-observation">${esc(observation)}</p>` : ''}
+        ${rest.length ? `<p class="duel-other">Con otros campeones frente a ${esc(enemy)} en ${labels[role]}: ${rest.map(r => `<b>${esc(r.name)}</b> · ${r.n} ${r.n === 1 ? 'partida' : 'partidas'} (${r.w}V/${r.l}D)`).join('; ')}.</p>` : !h.all.n ? `<p class="duel-sample">No hay enfrentamientos registrados frente a ${esc(enemy)} en esta posición dentro de tus últimas ${player.games.length} partidas guardadas.</p>` : ''}
+        ${recent.length ? `<details class="duel-recent"><summary>Ver las últimas ${recent.length} ${s.n ? 'partidas de este duelo' : 'partidas frente al rival con otros campeones'}</summary><ul>${recent.map(g => `<li><span>${esc(date(g.t))}<small>${esc(queues[g.q] || g.q || '')}${g.acc ? ' · ' + esc(g.acc) : ''}</small></span><span class="duel-champ">${icon(g.champ)}${esc(g.champ)}</span><span class="${g.win ? 'tw' : 'tl'}">${g.win ? 'Victoria' : 'Derrota'}</span><b>${g.k} / ${g.d} / ${g.a}</b></li>`).join('')}</ul></details>` : ''}
+        <p class="duel-definition">V/D es el resultado de la partida, no el resultado aislado de la línea. Se cuenta el rival de la misma posición, deducida del orden del equipo. En bot no describe el 2 contra 2 completo.</p></section>`;
+    }
     function renderMatchup() {
       const target = document.getElementById('matchup-result');
       if (!enemy) {
@@ -110,24 +135,34 @@
       }
       const ranked = E.recommend(player.games, role, enemy, catalog);
       if (!ranked.length) { target.innerHTML = '<p class="empty">No quedan opciones para este emparejamiento.</p>'; return; }
-      const best = ranked[0];
+      const best = ranked.find(c => c.name === inspectedPick) || ranked[0];
+      const recommended = best.name === ranked[0].name;
       const trusted = best.personal.n >= 5;
-      const history = best.head.n ? `${best.head.w}V · ${best.head.n - best.head.w}D en ${best.head.n} ${best.head.n === 1 ? 'duelo guardado' : 'duelos guardados'} con este campeón contra ${enemy}.` : 'Sin duelos guardados con este campeón contra este rival en la posición elegida.';
-      const explanation = best.personal.n ? `${best.personal.n} partidas en ${labels[role]} con ${best.name}: ${record(best.personal)}. Su experiencia y resultados cuentan más que un counter teórico.` : best.overall.n ? `Tienes ${best.overall.n} partidas con ${best.name} en otras posiciones. No hay resultados personales en ${labels[role]}: pruébalo primero en normales.` : `No hay partidas guardadas con ${best.name}. Es una propuesta de aprendizaje, basada en su kit y facilidad de uso; practícalo en normales.`;
+      const explanation = best.personal.n ? `${best.personal.n} ${best.personal.n === 1 ? 'partida' : 'partidas'} en ${labels[role]} con ${best.name}: ${record(best.personal)}. ${best.head.n ? `Dentro de esa muestra, contra ${enemy}: ${best.head.n} ${best.head.n === 1 ? 'partida' : 'partidas'}, ${record(best.head)}.` : `Dentro de esa muestra no hay duelos con este campeón contra ${enemy}.`}` : best.overall.n ? `Tienes ${best.overall.n} partidas con ${best.name} en otras posiciones. No hay resultados personales en ${labels[role]}: el plan de este duelo se basa en sus habilidades.` : `No hay partidas guardadas con ${best.name}. Esta opción requiere práctica: el plan del duelo se basa en las habilidades de ambos campeones.`;
       target.innerHTML = `
         <div class="draft-versus">${icon(enemy)}<div><small>EL RIVAL · ${labels[role]}</small><b>${esc(enemy)}</b></div><span>VS</span></div>
         <article class="recommended-pick">
-          <p class="draft-eyebrow">${trusted ? 'TU PRIMERA OPCIÓN' : 'OPCIÓN PARA PRACTICAR'}</p>
+          <p class="draft-eyebrow">${!recommended ? 'ALTERNATIVA CONSULTADA' : trusted ? 'TU PRIMERA OPCIÓN' : 'OPCIÓN PARA PRACTICAR'}</p>
           <div class="pick-title">${icon(best.name, 'winner-icon')}<div><span class="pick-tier">TIER ${best.tier} PERSONAL</span><h3>${esc(best.name)}</h3><p>Para ${esc(player.name)} · ${labels[role]}</p></div><div class="pick-score"><b>${Math.round(best.score)}</b><span>/ 100<br>encaje</span></div></div>
           <p class="confidence-note">${best.head.n >= 10 && trusted ? 'Con historial personal del duelo; sigue siendo orientativo.' : 'Confianza limitada · muestra de duelos escasa o inexistente.'}</p>
           <p class="pick-experience">${esc(explanation)}</p>
-          <h4>Por qué encaja</h4><ul class="pick-reasons">${best.kit.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
-          <h4>Lo que debes vigilar</h4><p class="pick-warning">${esc(best.kit.warnings.join(' ') || (role === 'Jungla' ? 'La recomendación no garantiza ganar los duelos de jungla. Respeta la prioridad de las líneas, prepara visión y evita invadir sin información.' : 'La recomendación no garantiza ganar la línea. Respeta los enfriamientos, prepara visión y adapta los intercambios a tu oleada.'))}</p>
-          <p class="head-to-head">${esc(history)} ${best.head.n && best.head.n < 10 ? 'La muestra es demasiado pequeña para concluir una ventaja.' : ''}</p>
+          ${directHistory(best)}
+          <div class="matchup-skills">${(best.kit.skills || []).map(s => `<span>${esc(s.champion)}<b>${esc(s.name)}</b></span>`).join('')}</div>
+          <h4>${best.kit.reviewed ? 'Por qué encaja en este duelo' : 'Tus herramientas para este duelo'}</h4><p class="plan-status">${best.kit.reviewed ? 'Interacción revisada entre estos dos campeones.' : 'Plan de preparación por habilidades; no hay una interacción de counter revisada para esta pareja.'}</p><ul class="pick-reasons">${best.kit.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+          <h4>Lo que debes vigilar de ${esc(enemy)}</h4><ul class="pick-warnings">${best.kit.warnings.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+          <h4>Cuándo actuar y qué reservar</h4><ol class="pick-plan">${best.kit.plan.map(r => `<li>${esc(r)}</li>`).join('')}</ol>
+          <p class="matchup-sources">Habilidades de Riot · ${esc(best.kit.version || '')} · revisadas el ${esc(best.kit.checked || '')}: ${(best.kit.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(' · ')}. El plan táctico es una interpretación, no una recomendación oficial de Riot.</p>
           <div class="score-breakdown"><span>Preparación <b>${Math.round(best.base)}</b><small>40% del índice</small></span><span>Kit frente al rival <b>${Math.round(best.kit.score)}</b><small>50% del índice</small></span><span>Historial del duelo <b>${best.head.n ? Math.round(50 + ((best.head.w + 5) / (best.head.n + 10) - 0.5) * 100) : '50 · neutro'}</b><small>10% del índice</small></span></div>
         </article>
-        <div class="alternatives"><h3>Otras cartas sobre la mesa</h3>${ranked.slice(1, 4).map((c, i) => `<article>${icon(c.name)}<div><h4>${esc(c.name)} <small>Tier ${c.tier}</small></h4><p>${esc(championMeta(c))}</p><p class="alternative-reason">${esc(c.kit.reasons[0])}</p></div><span class="alternative-score">${Math.round(c.score)}<small>encaje</small></span></article>`).join('')}</div>
+        ${!recommended ? `<button type="button" class="inspect-pick return-pick" data-inspect-pick="${esc(ranked[0].name)}">Volver a la recomendación: ${esc(ranked[0].name)}</button>` : ''}
+        <div class="alternatives"><h3>Otras cartas sobre la mesa</h3>${ranked.filter(c => c.name !== best.name).slice(0, 3).map(c => `<article>${icon(c.name)}<div><h4>${esc(c.name)} <small>Tier ${c.tier}</small></h4><p>${esc(championMeta(c))}</p><p>${c.head.n ? `${c.head.n} ${c.head.n === 1 ? 'duelo' : 'duelos'} contra ${esc(enemy)} · ${c.head.w}V/${c.head.l}D` : 'Sin duelos guardados con este campeón frente al rival'}</p><p class="alternative-reason">${esc(c.kit.reasons[0])}</p><button type="button" class="inspect-pick" data-inspect-pick="${esc(c.name)}">Ver plan de ${esc(c.name)}</button></div><span class="alternative-score">${Math.round(c.score)}<small>encaje</small></span></article>`).join('')}</div>
         <p class="result-footnote">Índice orientativo, no porcentaje de victoria. Se comparan únicamente los 8 campeones de tu tier list de ${labels[role]}. El campeón enemigo queda excluido.</p>`;
+      target.querySelectorAll('[data-inspect-pick]').forEach(button => button.addEventListener('click', () => {
+        inspectedPick = button.dataset.inspectPick;
+        renderMatchup();
+        const title = target.querySelector('.pick-title h3');
+        title.setAttribute('tabindex','-1'); title.focus({ preventScroll: false });
+      }));
     }
     window.addEventListener('popstate', () => { readState(); render(); });
     readState(); saveState(); render();

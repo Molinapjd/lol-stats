@@ -95,6 +95,38 @@ body[data-view="preparation"] #app { max-width: 1360px; padding: 28px 32px 40px;
 .pick-reasons li::marker { color: var(--draft-accent); }
 .pick-warning { color: #b5c5d5; font-size: 12px; line-height: 1.75; margin-top: 6px; }
 .head-to-head { padding-top: 12px; margin-top: 18px; border-top: 1px solid var(--line); color: #91a2b9; font-size: 10px; line-height: 1.8; }
+.duel-history { margin-top: 20px; padding: 15px; background: #0b1420; border: 1px solid #344459; border-radius: 9px; }
+.recommended-pick .duel-history h4 { margin: 0 0 8px; color: #c8d9ec; font-size: 12px; }
+.duel-headline { font-size: 12px; color: #d1deed; line-height: 1.7; }
+.duel-metrics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 9px; margin-top: 12px; }
+.duel-metrics span { color: #8eabc8; font-size: 9px; }
+.duel-metrics b { display: block; color: #d2e4f5; font-size: 13px; margin-top: 4px; overflow-wrap: anywhere; }
+.duel-sample, .duel-other, .duel-definition, .duel-observation { margin-top: 11px; color: #9eb2cb; font-size: 10px; line-height: 1.8; }
+.duel-observation { border-left: 2px solid #e4b873; padding-left: 10px; color: #d1c5b0; }
+.duel-other b { color: #c7d7eb; font-weight: 600; }
+.duel-definition { color: #8298b3; font-size: 9px; }
+.duel-recent { border-top: 1px solid #28394e; margin-top: 12px; padding-top: 12px; font-size: 11px; }
+.duel-recent summary { color: var(--draft-accent); cursor: pointer; }
+.duel-recent ul { padding: 0; margin: 10px 0 0; list-style: none; }
+.duel-recent li { display: grid; grid-template-columns: 1fr 1.2fr .8fr auto; gap: 8px; align-items: center; padding: 9px 0; border-bottom: 1px solid #253449; font-size: 10px; }
+.duel-recent small { display: block; font-size: 8px; overflow-wrap: anywhere; }
+.duel-champ { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.duel-champ img { width: 25px; height: 25px; }
+.duel-recent b { font-size: 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.matchup-skills { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+.matchup-skills span { padding: 10px; background: #0e1825; border: 1px solid #2a3b51; border-radius: 7px; font-size: 10px; color: #93aac6; }
+.matchup-skills b { display: block; margin-top: 5px; font-size: 11px; color: #ceddf0; font-weight: 600; }
+.plan-status { margin-top: 6px; color: #88a5c5; font-size: 9px; line-height: 1.7; }
+.pick-warnings, .pick-plan { color: #b5c5d5; font-size: 12px; line-height: 1.8; padding-left: 18px; margin: 7px 0 0; }
+.pick-warnings li + li, .pick-plan li + li { margin-top: 8px; }
+.pick-warnings li::marker { color: #e8b57f; }
+.pick-plan li::marker { color: var(--draft-accent); font-weight: 700; }
+.matchup-sources { font-size: 9px; line-height: 1.8; color: #89a1be; margin-top: 18px; }
+.matchup-sources a { color: #aac4e5; }
+.inspect-pick { border: 1px solid #405673; border-radius: 6px; background: #17263a; color: #bed5ee; padding: 5px 10px; font: inherit; font-size: 10px; margin-top: 8px; cursor: pointer; }
+.inspect-pick:hover { border-color: var(--draft-accent); color: var(--draft-accent); }
+.return-pick { margin-top: 15px; }
+@media (max-width:540px) { .duel-history { padding: 12px 10px; } .duel-metrics { grid-template-columns: 1fr 1fr; } .duel-recent li { grid-template-columns: 1fr 1fr; } .matchup-skills { grid-template-columns: 1fr; } }
 .score-breakdown { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
 .score-breakdown > span { font-size: 9px; color: #8d9bb0; background: #0b142077; padding: 8px; border-radius: 5px; }
 .score-breakdown b { display: block; color: #d3deed; font-size: 14px; margin-top: 3px; }
