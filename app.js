@@ -626,6 +626,18 @@
     app.appendChild(el('header', 'hero roster-hero',
       '<div><p class="eyebrow">LA GRIETA · NUESTRO EQUIPO</p><h1>Los de siempre.<br><span>Una partida más.</span></h1><p class="roster-intro">Cada invocador tiene su historia. Entra en la tuya y descubre qué te hace ganar.</p></div>' +
       '<div class="roster-brand" aria-label="LoL Stats"><span>LOL</span><b>STATS</b><small>' + pages.length + ' jugadores · EUW</small></div>'));
+    const draft = el('section', 'draft-entry');
+    draft.innerHTML = '<div><p class="draft-eyebrow">ANTES DE ENTRAR A LA GRIETA</p><h2>Preparando la pelada de lomo</h2><p>Tu selección de campeones, tu rival y un plan para la próxima partida.</p></div><a class="draft-entry-cta" href="preparando.html">Preparar mi partida <span aria-hidden="true">↗</span></a>';
+    const draftPlayers = el('nav', 'draft-entry-players');
+    draftPlayers.setAttribute('aria-label', 'Preparación por invocador');
+    pages.forEach(pg => {
+      const id = pg.page.replace(/\.html$/, '');
+      const a = el('a', '', esc(pg.name || all[pg.ids[0]].name));
+      a.href = 'preparando.html?invocador=' + encodeURIComponent(id);
+      draftPlayers.appendChild(a);
+    });
+    draft.appendChild(draftPlayers);
+    app.appendChild(draft);
     app.appendChild(el('div', 'roster-heading', '<h2>Elige a tu invocador</h2><p>Últimas 100 partidas por persona · sin ARAM</p>'));
     const list = el('main', 'summoners roster');
     list.setAttribute('aria-label', 'Invocadores del equipo');
@@ -666,7 +678,10 @@
     app.appendChild(el('p', 'roster-note', 'Campeón destacado: mayor porcentaje de victorias con al menos 5 partidas; desempate por partidas y KDA. Si no hay 5, se utiliza la muestra disponible. Ilustraciones de la selección del 11/11/2026.'));
   }
 
+  // La preparación reutiliza exactamente el mismo límite, alias y exclusiones.
+  window.LOL_STATS = Object.freeze({ prepare, agg, champKey, portraits: PORTRAITS });
   document.addEventListener('DOMContentLoaded', () => {
+    if (document.body.dataset.view === 'preparation') return;
     const all = window.LOL_DATA || {};
     const attr = document.body.dataset.summoner;
     if (attr) {

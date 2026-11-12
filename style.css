@@ -13,6 +13,15 @@
   --bad: #ef5d68;
   --radius: 12px;
 }
+.draft-entry { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; background: linear-gradient(120deg, #27334a, #182331 60%); border: 1px solid #57617a; border-radius: 14px; padding: 26px 30px 20px; margin-bottom: 32px; }
+.draft-entry .draft-eyebrow { font-size: 9px; letter-spacing: 2px; color: var(--gold); font-weight: 700; }
+.draft-entry h2 { font-size: clamp(21px, 3vw, 28px); letter-spacing: -.7px; margin-top: 6px; }
+.draft-entry p:not(.draft-eyebrow) { color: #a7b6ca; margin-top: 8px; font-size: 12px; }
+.draft-entry-cta { display: inline-flex; align-items: center; gap: 20px; padding: 13px 18px; font-size: 12px; font-weight: 700; border-radius: 8px; background: var(--gold); color: #17120a; text-decoration: none; white-space: nowrap; }
+.draft-entry-players { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; padding-top: 17px; border-top: 1px solid #3b465d; }
+.draft-entry-players a { border: 1px solid #45526b; color: #b6c6db; border-radius: 999px; font-size: 11px; padding: 4px 13px; text-decoration: none; }
+.draft-entry-players a:hover { color: var(--gold); border-color: var(--gold); }
+@media (max-width: 640px) { .draft-entry { grid-template-columns: 1fr; padding: 22px; gap: 18px; } .draft-entry-cta { justify-content: space-between; } }
 * { box-sizing: border-box; }
 html { color-scheme: dark; }
 body {
