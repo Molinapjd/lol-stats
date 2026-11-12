@@ -8,10 +8,14 @@ window.LOL_DATA["donpimpon-espin"] = {
   tag: "Espin",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/DonPimPon-Espin",
-  updated: "2026-11-11",
+  updated: "2026-11-12 12:36",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `
+N|29907149|W|2153|Karma|16|3|9|26|63|49|50|4|Resilient|9|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;AllMuted49 #EUW;
+F|29907103|D|1469|Vi|14|2|7|11|65|140|33|6|Unlucky|6|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;;Filosofofo #dncia;AllMuted49 #EUW;Yan Diomandé #Yan D
+A|29907035|W|1344|Malphite|18|11|16|31|70|41||10|Struggle|2|Senna;Galio;Malphite;Darius;Ashe;Wukong;Pyke;Rumble;Zilean;Zyra|j3pi #EUW;Filosofofo #dncia;;Yan Diomandé #Yan D;pbp16pablo #EUW;Sadowsick #EUW;Karl Ludwig #EUW;xSuechtigx #EUW;Isonalam0 #5261;Broshavi3 #9230
+A|29907009|D|1250|Fiora|18|7|13|24|79|30||8|Unyielding|7|Fizz;Ezreal;Janna;Nautilus;Milio;Graves;Kayle;Fiora;Lillia;Yorick|High ôn Bush #92687;Baptman5 #EUW;ItWasLuckx #EUW;MoTRoD #3009;ıIı Azrael ıIı #EUW;j3pi #EUW;Filosofofo #dncia;;Yan Diomandé #Yan D;Ned #LMD
 A|29905638|W|1097|Olaf|17|11|14|25|64|48||8|Downfall|8|Zac;Elise;Zilean;Anivia;Sivir;Karthus;Jinx;Morgana;Olaf;Caitlyn|johny97 #4750;B1oodwork #EUW;Occiffect #EUW;gweig #EUW;Niephanium #EUW;Str4Njr #IND;j3pi #EUW;Filosofofo #dncia;;elquenuncahacena #EUW
 N|29905614|W|1953|Miss Fortune|18|32|4|10|74|248|83|0|Unstoppable|8|K'Sante;Qiyana;Yone;Azir;Zyra;Malphite;Jarvan IV;Galio;Miss Fortune;Lux|Maiden my Girl #EUW;AFK Angel #0410;TilliWilli69 #EUW;LilGeek #161;TomAltF4 #EUW;j3pi #EUW;Kalimba Táctico #OGT;Filosofofo #dncia;;elquenuncahacena #EUW
 N|29905573|W|1351|Senna|12|4|3|17|58|32|56|2|Leader|4|Malphite;Rengar;Galio;Ashe;Senna;Gwen;Vi;LeBlanc;Zeri;Lulu|j3pi #EUW;B2K2015 #EUW;Filosofofo #dncia;elquenuncahacena #EUW;;Dregsche Dan #EUW;MrTerminator #WEST;alTair #RMDN;kjcdshdae #8636;nayzjr #EUW

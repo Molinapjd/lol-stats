@@ -9,10 +9,11 @@ window.LOL_DATA["elquenuncahacena-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/elquenuncahacena-EUW",
-  updated: "2026-11-11",
+  updated: "2026-11-12 12:37",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `
+S|29907233|W|1787|Senna|15|9|3|11|51|147|53|2|Late bloomer|8|Yorick;Viego;Aurelion Sol;Miss Fortune;Karma;Yone;Warwick;Vel'Koz;Senna;Nami|00Fies #0000;tatouille #4248;luiginuspower #EUW;NWA KYKY #77220;Loneinduo #EUW;Shrawo #4065;GhostOfPesre #2353;Filosofofo #dncia;;Detsu #meep
 A|29905638|W|1097|Caitlyn|18|10|13|27|66|61||9|Struggle|9|Zac;Elise;Zilean;Anivia;Sivir;Karthus;Jinx;Morgana;Olaf;Caitlyn|johny97 #4750;B1oodwork #EUW;Occiffect #EUW;gweig #EUW;Niephanium #EUW;Str4Njr #IND;j3pi #EUW;Filosofofo #dncia;DonPimPon #Espin;
 N|29905614|W|1953|Lux|17|14|3|27|72|58|73|2|Unstoppable|9|K'Sante;Qiyana;Yone;Azir;Zyra;Malphite;Jarvan IV;Galio;Miss Fortune;Lux|Maiden my Girl #EUW;AFK Angel #0410;TilliWilli69 #EUW;LilGeek #161;TomAltF4 #EUW;j3pi #EUW;Kalimba Táctico #OGT;Filosofofo #dncia;DonPimPon #Espin;
 N|29905573|W|1351|Ashe|13|17|2|7|67|178|57|0|Unstoppable|3|Malphite;Rengar;Galio;Ashe;Senna;Gwen;Vi;LeBlanc;Zeri;Lulu|j3pi #EUW;B2K2015 #EUW;Filosofofo #dncia;;DonPimPon #Espin;Dregsche Dan #EUW;MrTerminator #WEST;alTair #RMDN;kjcdshdae #8636;nayzjr #EUW

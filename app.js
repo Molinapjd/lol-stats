@@ -64,7 +64,13 @@
     const entry = assets && assets.champions[n];
     return entry ? entry[kind] : 'assets/champions/unknown.svg';
   };
-  const icon = (n, cls) => `<img class="ci ${cls || ''}" src="${imageFor(n)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='assets/champions/unknown.svg'">`;
+  // Miniaturas: icono oficial del campeón en perfiles y preparación; las caras South Park solo en la portada.
+  const DD = 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/champion/';
+  const iconFor = n => DD + champKey(n) + '.png';
+  let southParkIcons = false; // lo activa renderIndex
+  const icon = (n, cls) => southParkIcons
+    ? `<img class="ci ${cls || ''}" src="${imageFor(n)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='assets/champions/unknown.svg'">`
+    : `<img class="ci ${cls || ''}" src="${iconFor(n)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
   const champ = n => `<span class="champ">${icon(n)}<span>${esc(n)}</span></span>`;
   const wrClass = (wr, n) => (n != null && n < 3) ? 'mid' : wr >= 55 ? 'good' : wr <= 45 ? 'bad' : 'mid';
   const wrBar = (wr, n) => `<span class="wr ${wrClass(wr, n)}"><span class="wr-track"><span class="wr-fill" style="width:${Math.max(2, wr)}%"></span></span><b>${pct(wr)}</b></span>`;
@@ -632,6 +638,7 @@
   function renderIndex(all) {
     const app = $('#app');
     document.body.classList.add('roster-page');
+    southParkIcons = true;
     const pages = pagesOf(all).filter(pg => pg.ids.some(id => all[id]));
     app.appendChild(el('header', 'hero roster-hero',
       '<div><p class="eyebrow">LA GRIETA · NUESTRO EQUIPO</p><h1>Los de siempre.<br><span>Una partida más.</span></h1><p class="roster-intro">Cada invocador tiene su historia. Entra en la tuya y descubre qué te hace ganar.</p></div>' +
@@ -687,7 +694,7 @@
   }
 
   // La preparación reutiliza exactamente el mismo límite, alias y exclusiones.
-  window.LOL_STATS = Object.freeze({ prepare, agg, champKey, imageFor, featuredChampion, portraits: PORTRAITS });
+  window.LOL_STATS = Object.freeze({ prepare, agg, champKey, imageFor, iconFor, featuredChampion, portraits: PORTRAITS });
   document.addEventListener('DOMContentLoaded', () => {
     if (document.body.dataset.view === 'preparation') return;
     const all = window.LOL_DATA || {};

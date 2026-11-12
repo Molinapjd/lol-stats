@@ -9,10 +9,12 @@ window.LOL_DATA["allmuted49-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/AllMuted49-EUW",
-  updated: "2026-11-11",
+  updated: "2026-11-12 12:35",
   rank: { solo: "Platinum 2 · 42 LP" },
   names: [], champs: [], badges: [],
   raw: `
+N|29907149|W|2153|Jinx|18|18|7|11|63|293|51|0|Unstoppable|8|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;;DonPimPon #Espin
+F|29907103|D|1469|Jhin|13|11|7|4|75|176|69|4|Unlucky|8|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;DonPimPon #Espin;Filosofofo #dncia;;Yan Diomandé #Yan D
 F|29904167|W|1271|Jhin|12|8|5|2|48|170|52|2|Leader|8|Kai'Sa;Nocturne;Sivir;Kalista;Zilean;Malphite;Vi;Galio;Jhin;Leona|Ra ghanbda nt3sb #zga;Dimmu Borgir #7096;Yasuos victim #juicy;Αρετή #EUW;GuessAllJuice271 #93598;j3pi #EUW;eastsidenibba #EUW;Filosofofo #dncia;;Choky #gen1
 S|29902403|W|938|Jhin|9|6|3|9|54|97|78|3|Unstoppable|3|Sett;Sejuani;Taliyah;Jhin;Maokai;Yone;Sylas;Yasuo;Aphelios;Braum|Fat Shady #ozy;Smoothie1312 #EUW;DarkNowitzki #mav;;spy #9051;Brian Bo #1071;Rengаr #GOAT;Demonyr #EUW;Benimaru #0909;serendipityy #1979
 S|29902367|W|1955|Jinx|17|12|6|6|49|287|47|2|Late bloomer|8|Yorick;Viego;Xerath;Miss Fortune;Nami;Mordekaiser;Lee Sin;Akshan;Jinx;Lulu|NaySparrøw #EUW;RedBloodOO #EUW;B2F Vadi #EUW;MA1N M1D Sucks #EUW;Julietex #EUW;IlLordB33 #EUW;Jaimichu03 #EUW;CloseObiwan #EUW;;Rustu #rst

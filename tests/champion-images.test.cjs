@@ -54,8 +54,10 @@ test('all stats entry pages load the image collection before rendering', () => {
   }
   const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   assert(!app.includes('squad-portraits.png'));
-  assert(!app.includes('ddragon.leagueoflegends.com'));
-  assert(!fs.readFileSync(path.join(root, 'preparando.js'), 'utf8').includes('/img/champion/'));
+  // Las caras South Park solo se usan en la portada; el resto usa el icono oficial vía iconFor.
+  assert(/southParkIcons = true/.test(app.slice(app.indexOf('function renderIndex'))));
+  assert.match(api.iconFor("Kai'Sa"), /^https:\/\/ddragon\.leagueoflegends\.com\/cdn\/[\d.]+\/img\/champion\/Kaisa\.png$/);
+  assert(fs.readFileSync(path.join(root, 'preparando.js'), 'utf8').includes('api.iconFor(name)'));
 });
 
 test('champions from the stored match histories all resolve to a real illustration', () => {

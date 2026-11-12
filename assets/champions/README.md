@@ -10,8 +10,8 @@ por campeón, en su apariencia base. Cada pareja representa el mismo personaje:
 
 El repositorio se puede explorar desde `../../campeones.html`. La portada calcula
 el campeón destacado usando las partidas actuales y busca su retrato por nombre.
-Las tablas, el historial, los perfiles y el selector de emparejamientos utilizan
-las caras de esta misma colección. Ninguna imagen de campeón necesita el CDN de Riot.
+Las caras de esta colección se usan solo en la portada. Las tablas, el historial, los
+perfiles y el selector de emparejamientos usan el icono oficial (Riot Data Dragon).
 
 ## Producción
 
