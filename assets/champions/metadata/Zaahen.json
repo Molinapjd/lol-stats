@@ -1,0 +1,14 @@
+{
+  "id": "Zaahen",
+  "name": "Zaahen",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zaahen.svg",
+  "face": "assets/champions/faces/Zaahen.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5102,
+    "centerY": 0.375,
+    "widthFraction": 0.68
+  }
+}

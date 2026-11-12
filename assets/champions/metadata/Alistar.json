@@ -1,0 +1,14 @@
+{
+  "id": "Alistar",
+  "name": "Alistar",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Alistar.svg",
+  "face": "assets/champions/faces/Alistar.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5007,
+    "centerY": 0.4369,
+    "widthFraction": 0.68
+  }
+}

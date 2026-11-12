@@ -1,0 +1,14 @@
+{
+  "id": "Singed",
+  "name": "Singed",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Singed.svg",
+  "face": "assets/champions/faces/Singed.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4947,
+    "centerY": 0.4111,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Smolder",
+  "name": "Smolder",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Smolder.svg",
+  "face": "assets/champions/faces/Smolder.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4912,
+    "centerY": 0.4931,
+    "widthFraction": 0.68
+  }
+}

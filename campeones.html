@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repositorio de campeones · LoL Stats</title>
+  <link rel="stylesheet" href="style.css?v=champions-1">
+  <link rel="stylesheet" href="champion-gallery.css?v=champions-1">
+</head>
+<body data-view="gallery">
+  <main id="app">
+    <a class="back" href="index.html">← Volver a los invocadores</a>
+    <header class="gallery-hero"><p>EL REPARTO DE LA GRIETA</p><h1>Un campeón.<br><span>Una cara conocida.</span></h1><p class="gallery-intro">Repositorio propio de campeones en estilo South Park. Una ilustración para la portada y una miniatura facial para cada campeón.</p></header>
+    <section class="gallery-toolbar" aria-label="Buscar imágenes"><div><label for="champion-search">Encuentra tu campeón</label><input id="champion-search" type="search" placeholder="Jinx, Wukong, Vel'Koz…" autocomplete="off"></div><nav aria-label="Formato de las imágenes"><button type="button" data-mode="face" aria-pressed="true">Caras</button><button type="button" data-mode="portrait" aria-pressed="false">Retratos</button></nav></section>
+    <p id="gallery-count" role="status" aria-live="polite"></p>
+    <section id="champion-gallery" aria-label="Imágenes de campeones"></section>
+    <p class="gallery-note">Las miniaturas muestran el rostro del mismo retrato que se utiliza en la portada. Las imágenes se sirven desde este proyecto y no dependen de un CDN de campeones.</p>
+  </main>
+  <script src="champion-images.js?v=champions-1"></script>
+  <script src="champion-gallery.js?v=champions-1"></script>
+</body>
+</html>

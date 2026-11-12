@@ -1,0 +1,14 @@
+{
+  "id": "TahmKench",
+  "name": "Tahm Kench",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/TahmKench.svg",
+  "face": "assets/champions/faces/TahmKench.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4931,
+    "centerY": 0.423,
+    "widthFraction": 0.68
+  }
+}

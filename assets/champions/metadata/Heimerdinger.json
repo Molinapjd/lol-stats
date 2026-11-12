@@ -1,0 +1,14 @@
+{
+  "id": "Heimerdinger",
+  "name": "Heimerdinger",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Heimerdinger.svg",
+  "face": "assets/champions/faces/Heimerdinger.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4986,
+    "centerY": 0.5459,
+    "widthFraction": 0.68
+  }
+}

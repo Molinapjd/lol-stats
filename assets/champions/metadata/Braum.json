@@ -1,0 +1,14 @@
+{
+  "id": "Braum",
+  "name": "Braum",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Braum.svg",
+  "face": "assets/champions/faces/Braum.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.496,
+    "centerY": 0.3749,
+    "widthFraction": 0.68
+  }
+}

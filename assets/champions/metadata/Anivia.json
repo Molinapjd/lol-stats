@@ -1,0 +1,14 @@
+{
+  "id": "Anivia",
+  "name": "Anivia",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Anivia.svg",
+  "face": "assets/champions/faces/Anivia.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4971,
+    "centerY": 0.4894,
+    "widthFraction": 0.68
+  }
+}

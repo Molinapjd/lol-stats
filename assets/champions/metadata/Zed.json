@@ -1,0 +1,14 @@
+{
+  "id": "Zed",
+  "name": "Zed",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zed.svg",
+  "face": "assets/champions/faces/Zed.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4966,
+    "centerY": 0.4306,
+    "widthFraction": 0.68
+  }
+}

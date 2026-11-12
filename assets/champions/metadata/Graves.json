@@ -1,0 +1,14 @@
+{
+  "id": "Graves",
+  "name": "Graves",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Graves.svg",
+  "face": "assets/champions/faces/Graves.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5008,
+    "centerY": 0.4304,
+    "widthFraction": 0.68
+  }
+}

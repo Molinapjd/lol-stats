@@ -1,0 +1,14 @@
+{
+  "id": "Malphite",
+  "name": "Malphite",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Malphite.svg",
+  "face": "assets/champions/faces/Malphite.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4983,
+    "centerY": 0.5042,
+    "widthFraction": 0.68
+  }
+}

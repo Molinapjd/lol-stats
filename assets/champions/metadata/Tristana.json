@@ -1,0 +1,14 @@
+{
+  "id": "Tristana",
+  "name": "Tristana",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Tristana.svg",
+  "face": "assets/champions/faces/Tristana.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4974,
+    "centerY": 0.4721,
+    "widthFraction": 0.68
+  }
+}

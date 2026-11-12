@@ -1,0 +1,14 @@
+{
+  "id": "Shaco",
+  "name": "Shaco",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Shaco.svg",
+  "face": "assets/champions/faces/Shaco.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5015,
+    "centerY": 0.4844,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Samira",
+  "name": "Samira",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Samira.svg",
+  "face": "assets/champions/faces/Samira.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4786,
+    "centerY": 0.4676,
+    "widthFraction": 0.68
+  }
+}

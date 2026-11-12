@@ -1,0 +1,14 @@
+{
+  "id": "Zac",
+  "name": "Zac",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zac.svg",
+  "face": "assets/champions/faces/Zac.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4962,
+    "centerY": 0.4583,
+    "widthFraction": 0.68
+  }
+}

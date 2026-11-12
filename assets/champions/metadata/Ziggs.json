@@ -1,0 +1,14 @@
+{
+  "id": "Ziggs",
+  "name": "Ziggs",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Ziggs.svg",
+  "face": "assets/champions/faces/Ziggs.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4983,
+    "centerY": 0.5218,
+    "widthFraction": 0.68
+  }
+}

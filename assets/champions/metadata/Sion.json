@@ -1,0 +1,14 @@
+{
+  "id": "Sion",
+  "name": "Sion",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Sion.svg",
+  "face": "assets/champions/faces/Sion.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4978,
+    "centerY": 0.4454,
+    "widthFraction": 0.68
+  }
+}

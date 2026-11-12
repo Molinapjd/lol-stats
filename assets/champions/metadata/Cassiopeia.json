@@ -1,0 +1,14 @@
+{
+  "id": "Cassiopeia",
+  "name": "Cassiopeia",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Cassiopeia.svg",
+  "face": "assets/champions/faces/Cassiopeia.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4974,
+    "centerY": 0.4085,
+    "widthFraction": 0.68
+  }
+}

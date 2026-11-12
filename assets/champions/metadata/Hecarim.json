@@ -1,0 +1,14 @@
+{
+  "id": "Hecarim",
+  "name": "Hecarim",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Hecarim.svg",
+  "face": "assets/champions/faces/Hecarim.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4916,
+    "centerY": 0.4139,
+    "widthFraction": 0.68
+  }
+}

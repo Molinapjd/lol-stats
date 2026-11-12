@@ -1,0 +1,14 @@
+{
+  "id": "Rammus",
+  "name": "Rammus",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Rammus.svg",
+  "face": "assets/champions/faces/Rammus.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5028,
+    "centerY": 0.5088,
+    "widthFraction": 0.68
+  }
+}

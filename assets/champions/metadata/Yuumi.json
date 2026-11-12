@@ -1,0 +1,14 @@
+{
+  "id": "Yuumi",
+  "name": "Yuumi",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Yuumi.svg",
+  "face": "assets/champions/faces/Yuumi.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4974,
+    "centerY": 0.4785,
+    "widthFraction": 0.68
+  }
+}

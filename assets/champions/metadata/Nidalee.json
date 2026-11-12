@@ -1,0 +1,14 @@
+{
+  "id": "Nidalee",
+  "name": "Nidalee",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Nidalee.svg",
+  "face": "assets/champions/faces/Nidalee.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4968,
+    "centerY": 0.4954,
+    "widthFraction": 0.68
+  }
+}

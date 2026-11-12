@@ -1,0 +1,14 @@
+{
+  "id": "Teemo",
+  "name": "Teemo",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Teemo.svg",
+  "face": "assets/champions/faces/Teemo.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4946,
+    "centerY": 0.536,
+    "widthFraction": 0.68
+  }
+}

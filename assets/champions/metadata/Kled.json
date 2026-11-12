@@ -1,0 +1,14 @@
+{
+  "id": "Kled",
+  "name": "Kled",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Kled.svg",
+  "face": "assets/champions/faces/Kled.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5049,
+    "centerY": 0.3859,
+    "widthFraction": 0.68
+  }
+}

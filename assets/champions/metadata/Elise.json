@@ -1,0 +1,14 @@
+{
+  "id": "Elise",
+  "name": "Elise",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Elise.svg",
+  "face": "assets/champions/faces/Elise.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4958,
+    "centerY": 0.476,
+    "widthFraction": 0.68
+  }
+}

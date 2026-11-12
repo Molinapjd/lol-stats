@@ -1,0 +1,14 @@
+{
+  "id": "Soraka",
+  "name": "Soraka",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Soraka.svg",
+  "face": "assets/champions/faces/Soraka.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5031,
+    "centerY": 0.3299,
+    "widthFraction": 0.68
+  }
+}

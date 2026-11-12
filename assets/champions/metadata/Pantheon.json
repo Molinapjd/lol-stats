@@ -1,0 +1,14 @@
+{
+  "id": "Pantheon",
+  "name": "Pantheon",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Pantheon.svg",
+  "face": "assets/champions/faces/Pantheon.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4959,
+    "centerY": 0.4879,
+    "widthFraction": 0.68
+  }
+}

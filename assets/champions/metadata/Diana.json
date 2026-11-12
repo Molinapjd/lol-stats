@@ -1,0 +1,14 @@
+{
+  "id": "Diana",
+  "name": "Diana",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Diana.svg",
+  "face": "assets/champions/faces/Diana.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5126,
+    "centerY": 0.4546,
+    "widthFraction": 0.68
+  }
+}

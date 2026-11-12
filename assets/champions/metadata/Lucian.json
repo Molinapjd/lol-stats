@@ -1,0 +1,14 @@
+{
+  "id": "Lucian",
+  "name": "Lucian",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Lucian.svg",
+  "face": "assets/champions/faces/Lucian.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5164,
+    "centerY": 0.446,
+    "widthFraction": 0.68
+  }
+}

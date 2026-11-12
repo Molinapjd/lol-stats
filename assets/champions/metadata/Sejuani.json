@@ -1,0 +1,14 @@
+{
+  "id": "Sejuani",
+  "name": "Sejuani",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Sejuani.svg",
+  "face": "assets/champions/faces/Sejuani.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5001,
+    "centerY": 0.4411,
+    "widthFraction": 0.68
+  }
+}

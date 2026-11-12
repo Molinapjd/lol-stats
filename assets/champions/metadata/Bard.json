@@ -1,0 +1,14 @@
+{
+  "id": "Bard",
+  "name": "Bard",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Bard.svg",
+  "face": "assets/champions/faces/Bard.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5138,
+    "centerY": 0.4572,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Viego",
+  "name": "Viego",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Viego.svg",
+  "face": "assets/champions/faces/Viego.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4967,
+    "centerY": 0.4335,
+    "widthFraction": 0.68
+  }
+}

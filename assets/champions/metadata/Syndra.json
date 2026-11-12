@@ -1,0 +1,14 @@
+{
+  "id": "Syndra",
+  "name": "Syndra",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Syndra.svg",
+  "face": "assets/champions/faces/Syndra.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.498,
+    "centerY": 0.5116,
+    "widthFraction": 0.68
+  }
+}

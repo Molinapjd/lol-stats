@@ -1,0 +1,14 @@
+{
+  "id": "Leblanc",
+  "name": "LeBlanc",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Leblanc.svg",
+  "face": "assets/champions/faces/Leblanc.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4998,
+    "centerY": 0.4576,
+    "widthFraction": 0.68
+  }
+}

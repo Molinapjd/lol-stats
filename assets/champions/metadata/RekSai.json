@@ -1,0 +1,14 @@
+{
+  "id": "RekSai",
+  "name": "Rek'Sai",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/RekSai.svg",
+  "face": "assets/champions/faces/RekSai.svg",
+  "faceCrop": {
+    "detector": "reviewed-framing",
+    "centerX": 0.5,
+    "centerY": 0.53,
+    "widthFraction": 0.8
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Mel",
+  "name": "Mel",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Mel.svg",
+  "face": "assets/champions/faces/Mel.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5026,
+    "centerY": 0.492,
+    "widthFraction": 0.68
+  }
+}

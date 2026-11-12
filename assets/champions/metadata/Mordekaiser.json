@@ -1,0 +1,14 @@
+{
+  "id": "Mordekaiser",
+  "name": "Mordekaiser",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Mordekaiser.svg",
+  "face": "assets/champions/faces/Mordekaiser.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5439,
+    "centerY": 0.4907,
+    "widthFraction": 0.68
+  }
+}

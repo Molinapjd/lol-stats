@@ -1,0 +1,14 @@
+{
+  "id": "Trundle",
+  "name": "Trundle",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Trundle.svg",
+  "face": "assets/champions/faces/Trundle.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5269,
+    "centerY": 0.4765,
+    "widthFraction": 0.68
+  }
+}

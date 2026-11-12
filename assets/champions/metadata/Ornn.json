@@ -1,0 +1,14 @@
+{
+  "id": "Ornn",
+  "name": "Ornn",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Ornn.svg",
+  "face": "assets/champions/faces/Ornn.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.501,
+    "centerY": 0.4617,
+    "widthFraction": 0.68
+  }
+}

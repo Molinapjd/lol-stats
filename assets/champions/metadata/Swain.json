@@ -1,0 +1,14 @@
+{
+  "id": "Swain",
+  "name": "Swain",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Swain.svg",
+  "face": "assets/champions/faces/Swain.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4976,
+    "centerY": 0.4164,
+    "widthFraction": 0.68
+  }
+}

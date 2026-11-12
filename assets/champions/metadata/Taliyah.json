@@ -1,0 +1,14 @@
+{
+  "id": "Taliyah",
+  "name": "Taliyah",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Taliyah.svg",
+  "face": "assets/champions/faces/Taliyah.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4985,
+    "centerY": 0.464,
+    "widthFraction": 0.68
+  }
+}

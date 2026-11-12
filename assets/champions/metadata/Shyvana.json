@@ -1,0 +1,14 @@
+{
+  "id": "Shyvana",
+  "name": "Shyvana",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Shyvana.svg",
+  "face": "assets/champions/faces/Shyvana.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5035,
+    "centerY": 0.4659,
+    "widthFraction": 0.68
+  }
+}

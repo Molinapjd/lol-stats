@@ -1,0 +1,14 @@
+{
+  "id": "Zyra",
+  "name": "Zyra",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zyra.svg",
+  "face": "assets/champions/faces/Zyra.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.499,
+    "centerY": 0.4872,
+    "widthFraction": 0.68
+  }
+}

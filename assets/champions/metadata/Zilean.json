@@ -1,0 +1,14 @@
+{
+  "id": "Zilean",
+  "name": "Zilean",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zilean.svg",
+  "face": "assets/champions/faces/Zilean.svg",
+  "faceCrop": {
+    "detector": "reviewed-framing",
+    "centerX": 0.5,
+    "centerY": 0.55,
+    "widthFraction": 0.8
+  }
+}

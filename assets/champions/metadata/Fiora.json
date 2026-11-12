@@ -1,0 +1,14 @@
+{
+  "id": "Fiora",
+  "name": "Fiora",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Fiora.svg",
+  "face": "assets/champions/faces/Fiora.svg",
+  "faceCrop": {
+    "detector": "framing-fallback",
+    "centerX": 0.5,
+    "centerY": 0.34,
+    "widthFraction": 0.68
+  }
+}

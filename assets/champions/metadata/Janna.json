@@ -1,0 +1,14 @@
+{
+  "id": "Janna",
+  "name": "Janna",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Janna.svg",
+  "face": "assets/champions/faces/Janna.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5029,
+    "centerY": 0.4964,
+    "widthFraction": 0.68
+  }
+}

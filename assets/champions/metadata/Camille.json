@@ -1,0 +1,14 @@
+{
+  "id": "Camille",
+  "name": "Camille",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Camille.svg",
+  "face": "assets/champions/faces/Camille.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4978,
+    "centerY": 0.3893,
+    "widthFraction": 0.68
+  }
+}

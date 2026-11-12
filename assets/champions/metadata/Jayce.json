@@ -1,0 +1,14 @@
+{
+  "id": "Jayce",
+  "name": "Jayce",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Jayce.svg",
+  "face": "assets/champions/faces/Jayce.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4966,
+    "centerY": 0.4492,
+    "widthFraction": 0.68
+  }
+}

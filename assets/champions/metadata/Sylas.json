@@ -1,0 +1,14 @@
+{
+  "id": "Sylas",
+  "name": "Sylas",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Sylas.svg",
+  "face": "assets/champions/faces/Sylas.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5022,
+    "centerY": 0.4535,
+    "widthFraction": 0.68
+  }
+}

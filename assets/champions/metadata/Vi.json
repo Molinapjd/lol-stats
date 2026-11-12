@@ -1,0 +1,14 @@
+{
+  "id": "Vi",
+  "name": "Vi",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Vi.svg",
+  "face": "assets/champions/faces/Vi.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4975,
+    "centerY": 0.3694,
+    "widthFraction": 0.68
+  }
+}

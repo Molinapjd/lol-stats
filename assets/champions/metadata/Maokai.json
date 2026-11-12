@@ -1,0 +1,14 @@
+{
+  "id": "Maokai",
+  "name": "Maokai",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Maokai.svg",
+  "face": "assets/champions/faces/Maokai.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.494,
+    "centerY": 0.4959,
+    "widthFraction": 0.68
+  }
+}

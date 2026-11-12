@@ -1,0 +1,14 @@
+{
+  "id": "Evelynn",
+  "name": "Evelynn",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Evelynn.svg",
+  "face": "assets/champions/faces/Evelynn.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.496,
+    "centerY": 0.5012,
+    "widthFraction": 0.68
+  }
+}

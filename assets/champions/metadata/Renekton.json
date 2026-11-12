@@ -1,0 +1,14 @@
+{
+  "id": "Renekton",
+  "name": "Renekton",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Renekton.svg",
+  "face": "assets/champions/faces/Renekton.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4987,
+    "centerY": 0.4025,
+    "widthFraction": 0.68
+  }
+}

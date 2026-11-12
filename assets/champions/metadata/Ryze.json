@@ -1,0 +1,14 @@
+{
+  "id": "Ryze",
+  "name": "Ryze",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Ryze.svg",
+  "face": "assets/champions/faces/Ryze.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4961,
+    "centerY": 0.3754,
+    "widthFraction": 0.68
+  }
+}

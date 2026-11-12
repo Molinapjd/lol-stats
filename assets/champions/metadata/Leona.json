@@ -1,0 +1,14 @@
+{
+  "id": "Leona",
+  "name": "Leona",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Leona.svg",
+  "face": "assets/champions/faces/Leona.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4964,
+    "centerY": 0.4535,
+    "widthFraction": 0.68
+  }
+}

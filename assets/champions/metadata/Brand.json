@@ -1,0 +1,14 @@
+{
+  "id": "Brand",
+  "name": "Brand",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Brand.svg",
+  "face": "assets/champions/faces/Brand.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4967,
+    "centerY": 0.4775,
+    "widthFraction": 0.68
+  }
+}

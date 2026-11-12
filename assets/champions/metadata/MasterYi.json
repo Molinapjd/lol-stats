@@ -1,0 +1,14 @@
+{
+  "id": "MasterYi",
+  "name": "Master Yi",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/MasterYi.svg",
+  "face": "assets/champions/faces/MasterYi.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4972,
+    "centerY": 0.4939,
+    "widthFraction": 0.68
+  }
+}

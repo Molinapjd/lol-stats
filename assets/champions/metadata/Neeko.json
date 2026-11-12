@@ -1,0 +1,14 @@
+{
+  "id": "Neeko",
+  "name": "Neeko",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Neeko.svg",
+  "face": "assets/champions/faces/Neeko.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4942,
+    "centerY": 0.5136,
+    "widthFraction": 0.68
+  }
+}

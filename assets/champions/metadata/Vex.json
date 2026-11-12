@@ -1,0 +1,14 @@
+{
+  "id": "Vex",
+  "name": "Vex",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Vex.svg",
+  "face": "assets/champions/faces/Vex.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5019,
+    "centerY": 0.5315,
+    "widthFraction": 0.68
+  }
+}

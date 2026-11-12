@@ -1,0 +1,14 @@
+{
+  "id": "Caitlyn",
+  "name": "Caitlyn",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Caitlyn.svg",
+  "face": "assets/champions/faces/Caitlyn.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5044,
+    "centerY": 0.4698,
+    "widthFraction": 0.68
+  }
+}

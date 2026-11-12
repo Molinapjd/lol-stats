@@ -1,0 +1,14 @@
+{
+  "id": "Karthus",
+  "name": "Karthus",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Karthus.svg",
+  "face": "assets/champions/faces/Karthus.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4955,
+    "centerY": 0.4366,
+    "widthFraction": 0.68
+  }
+}

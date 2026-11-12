@@ -1,0 +1,14 @@
+{
+  "id": "Khazix",
+  "name": "Kha'Zix",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Khazix.svg",
+  "face": "assets/champions/faces/Khazix.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4982,
+    "centerY": 0.5192,
+    "widthFraction": 0.68
+  }
+}

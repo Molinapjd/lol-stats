@@ -1,0 +1,14 @@
+{
+  "id": "Aatrox",
+  "name": "Aatrox",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Aatrox.svg",
+  "face": "assets/champions/faces/Aatrox.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4978,
+    "centerY": 0.5043,
+    "widthFraction": 0.68
+  }
+}

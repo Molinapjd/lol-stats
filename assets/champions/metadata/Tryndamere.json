@@ -1,0 +1,14 @@
+{
+  "id": "Tryndamere",
+  "name": "Tryndamere",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Tryndamere.svg",
+  "face": "assets/champions/faces/Tryndamere.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4977,
+    "centerY": 0.4526,
+    "widthFraction": 0.68
+  }
+}

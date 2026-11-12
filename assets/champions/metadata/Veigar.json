@@ -1,0 +1,14 @@
+{
+  "id": "Veigar",
+  "name": "Veigar",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Veigar.svg",
+  "face": "assets/champions/faces/Veigar.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4596,
+    "centerY": 0.5723,
+    "widthFraction": 0.68
+  }
+}

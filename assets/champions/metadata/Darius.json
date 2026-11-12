@@ -1,0 +1,14 @@
+{
+  "id": "Darius",
+  "name": "Darius",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Darius.svg",
+  "face": "assets/champions/faces/Darius.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.498,
+    "centerY": 0.453,
+    "widthFraction": 0.68
+  }
+}

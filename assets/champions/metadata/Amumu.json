@@ -1,0 +1,14 @@
+{
+  "id": "Amumu",
+  "name": "Amumu",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Amumu.svg",
+  "face": "assets/champions/faces/Amumu.svg",
+  "faceCrop": {
+    "detector": "framing-fallback",
+    "centerX": 0.5,
+    "centerY": 0.34,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Thresh",
+  "name": "Thresh",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Thresh.svg",
+  "face": "assets/champions/faces/Thresh.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4991,
+    "centerY": 0.3989,
+    "widthFraction": 0.68
+  }
+}

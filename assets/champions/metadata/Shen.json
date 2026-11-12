@@ -1,0 +1,14 @@
+{
+  "id": "Shen",
+  "name": "Shen",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Shen.svg",
+  "face": "assets/champions/faces/Shen.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4976,
+    "centerY": 0.4319,
+    "widthFraction": 0.68
+  }
+}

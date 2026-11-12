@@ -2,7 +2,6 @@
 (function () {
   'use strict';
 
-  const DD = 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/champion/';
   const KEYFIX = { 'Wukong': 'MonkeyKing', 'Nunu & Willump': 'Nunu', 'Renata Glasc': 'Renata', 'LeBlanc': 'Leblanc', "Cho'Gath": 'Chogath', "Kha'Zix": 'Khazix', "Vel'Koz": 'Velkoz', "Bel'Veth": 'Belveth', "Kai'Sa": 'Kaisa' };
   const QUEUES = [
     { id: 'all', q: null, label: 'Todas' },
@@ -60,7 +59,12 @@
   const timeFmt = t => new Date(t).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
   const short = n => n.replace(/\s*#.*$/, '');
   const champKey = n => KEYFIX[n] || n.replace(/[^A-Za-z]/g, '');
-  const icon = (n, cls) => `<img class="ci ${cls || ''}" src="${DD}${champKey(n)}.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
+  const imageFor = (n, kind = 'face') => {
+    const assets = window.LOL_CHAMPION_IMAGES;
+    const entry = assets && assets.champions[n];
+    return entry ? entry[kind] : 'assets/champions/unknown.svg';
+  };
+  const icon = (n, cls) => `<img class="ci ${cls || ''}" src="${imageFor(n)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='assets/champions/unknown.svg'">`;
   const champ = n => `<span class="champ">${icon(n)}<span>${esc(n)}</span></span>`;
   const wrClass = (wr, n) => (n != null && n < 3) ? 'mid' : wr >= 55 ? 'good' : wr <= 45 ? 'bad' : 'mid';
   const wrBar = (wr, n) => `<span class="wr ${wrClass(wr, n)}"><span class="wr-track"><span class="wr-fill" style="width:${Math.max(2, wr)}%"></span></span><b>${pct(wr)}</b></span>`;
@@ -610,7 +614,13 @@
     return window.LOL_PAGES || Object.keys(all).map(id => ({ page: id + '.html', ids: [id] }));
   }
 
-  // Ilustraciones individuales de la muestra del 11/11/2026.
+  function featuredChampion(games) {
+    const pool = groupStats(games, g => g.champ);
+    const eligible = pool.filter(c => c.n >= 5);
+    return (eligible.length ? eligible : pool).sort((a, b) => b.wr - a.wr || b.n - a.n || b.kda - a.kda)[0] || null;
+  }
+
+  // Identidad editorial de cada invocador; la foto se decide con las partidas actuales.
   const PORTRAITS = {
     'j3pi-euw.html': { champion: 'Jinx', nickname: 'El gancho travieso', story: 'Llegó a la Grieta con un gancho y ganas de liarla. Con Thresh como favorito, alterna entre proteger al equipo y ponerse en primera línea: si hay pelea, j3pi ya está dentro.', slot: 0, color: '#75baff' },
     'josiso.html': { champion: 'Wukong', nickname: 'El terror de la jungla', story: 'Se sabe los caminos de la jungla, pero también tiene cuentas pendientes en las demás líneas. Con Wukong al frente de su repertorio, Josiso aparece entre los árboles cuando la partida pide una buena pelea.', slot: 1, color: '#edbd68' },
@@ -636,6 +646,9 @@
       a.href = 'preparando.html?invocador=' + encodeURIComponent(id);
       draftPlayers.appendChild(a);
     });
+    const collectionLink = el('a', '', 'Colección de campeones ↗');
+    collectionLink.href = 'campeones.html';
+    draftPlayers.appendChild(collectionLink);
     draft.appendChild(draftPlayers);
     app.appendChild(draft);
     app.appendChild(el('div', 'roster-heading', '<h2>Elige a tu invocador</h2><p>Últimas 100 partidas por persona · sin ARAM</p>'));
@@ -644,9 +657,7 @@
     pages.forEach((pg, i) => {
       const Ds = pg.ids.map(id => all[id]).filter(Boolean);
       const multi = Ds.length > 1, P = prepare(Ds), A = agg(P.valid);
-      const pool = groupStats(P.valid, g => g.champ);
-      const eligible = pool.filter(c => c.n >= 5);
-      const best = (eligible.length ? eligible : pool).sort((a, b) => b.wr - a.wr || b.n - a.n || b.kda - a.kda)[0];
+      const best = featuredChampion(P.valid);
       const art = PORTRAITS[pg.page];
       const name = pg.name || (multi ? Ds.map(D => D.name).join(' + ') : Ds[0].name);
       const accounts = Ds.map(D => esc(D.name) + ' #' + esc(D.tag)).join(' · ');
@@ -654,10 +665,7 @@
         const a = agg(P.valid.filter(g => g.q === q.q));
         return a.n ? `<div class="sq"><span>${q.label}</span>${wrBar(a.wr, a.n)}<small>${a.n} partidas</small></div>` : '';
       }).join('');
-      const illustrated = art && best && art.champion === best.key;
-      const portrait = illustrated
-        ? `<svg class="roster-art" viewBox="${art.slot * 434.4} 0 434.4 724" role="img" aria-label="${esc(best.key)}, campeón de ${esc(name)}, estilo South Park" preserveAspectRatio="xMidYMid meet"><image href="assets/squad-portraits.png" width="2172" height="724" /></svg>`
-        : best ? `<img class="roster-fallback" src="${DD}${champKey(best.key)}.png" alt="${esc(best.key)}">` : '<span class="portrait-empty">?</span>';
+      const portrait = best ? `<img class="roster-fallback" src="${imageFor(best.key, 'portrait')}" alt="${esc(best.key)}, campeón destacado de ${esc(name)}, estilo South Park" onerror="this.onerror=null;this.src='assets/champions/unknown.svg'">` : '<span class="portrait-empty">?</span>';
       const link = el('a', 'card summoner player-card', `
         <div class="player-identity">
           <div class="portrait-window">${portrait}</div>
@@ -675,11 +683,11 @@
       list.appendChild(link);
     });
     app.appendChild(list);
-    app.appendChild(el('p', 'roster-note', 'Campeón destacado: mayor porcentaje de victorias con al menos 5 partidas; desempate por partidas y KDA. Si no hay 5, se utiliza la muestra disponible. Ilustraciones de la selección del 11/11/2026.'));
+    app.appendChild(el('p', 'roster-note', 'Campeón destacado: mayor porcentaje de victorias con al menos 5 partidas; desempate por partidas y KDA. Si no hay 5, se utiliza la muestra disponible. El retrato cambia automáticamente al cambiar el campeón destacado. <a href="campeones.html">Ver repositorio de imágenes de campeones ↗</a>'));
   }
 
   // La preparación reutiliza exactamente el mismo límite, alias y exclusiones.
-  window.LOL_STATS = Object.freeze({ prepare, agg, champKey, portraits: PORTRAITS });
+  window.LOL_STATS = Object.freeze({ prepare, agg, champKey, imageFor, featuredChampion, portraits: PORTRAITS });
   document.addEventListener('DOMContentLoaded', () => {
     if (document.body.dataset.view === 'preparation') return;
     const all = window.LOL_DATA || {};

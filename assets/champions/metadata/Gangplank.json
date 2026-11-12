@@ -1,0 +1,14 @@
+{
+  "id": "Gangplank",
+  "name": "Gangplank",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Gangplank.svg",
+  "face": "assets/champions/faces/Gangplank.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5003,
+    "centerY": 0.4726,
+    "widthFraction": 0.68
+  }
+}

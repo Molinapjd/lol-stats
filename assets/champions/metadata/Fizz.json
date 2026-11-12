@@ -1,0 +1,14 @@
+{
+  "id": "Fizz",
+  "name": "Fizz",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Fizz.svg",
+  "face": "assets/champions/faces/Fizz.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5047,
+    "centerY": 0.4693,
+    "widthFraction": 0.68
+  }
+}

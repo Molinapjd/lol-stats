@@ -1,0 +1,14 @@
+{
+  "id": "Vladimir",
+  "name": "Vladimir",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Vladimir.svg",
+  "face": "assets/champions/faces/Vladimir.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5026,
+    "centerY": 0.415,
+    "widthFraction": 0.68
+  }
+}

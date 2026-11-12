@@ -1,0 +1,872 @@
+{
+  "version": "south-park-1",
+  "updated": "2026-11-12",
+  "count": 173,
+  "champions": {
+    "Aatrox": {
+      "id": "Aatrox",
+      "face": "assets/champions/faces/Aatrox.svg",
+      "portrait": "assets/champions/portraits/Aatrox.svg"
+    },
+    "Ahri": {
+      "id": "Ahri",
+      "face": "assets/champions/faces/Ahri.svg",
+      "portrait": "assets/champions/portraits/Ahri.svg"
+    },
+    "Akali": {
+      "id": "Akali",
+      "face": "assets/champions/faces/Akali.svg",
+      "portrait": "assets/champions/portraits/Akali.svg"
+    },
+    "Akshan": {
+      "id": "Akshan",
+      "face": "assets/champions/faces/Akshan.svg",
+      "portrait": "assets/champions/portraits/Akshan.svg"
+    },
+    "Alistar": {
+      "id": "Alistar",
+      "face": "assets/champions/faces/Alistar.svg",
+      "portrait": "assets/champions/portraits/Alistar.svg"
+    },
+    "Ambessa": {
+      "id": "Ambessa",
+      "face": "assets/champions/faces/Ambessa.svg",
+      "portrait": "assets/champions/portraits/Ambessa.svg"
+    },
+    "Amumu": {
+      "id": "Amumu",
+      "face": "assets/champions/faces/Amumu.svg",
+      "portrait": "assets/champions/portraits/Amumu.svg"
+    },
+    "Anivia": {
+      "id": "Anivia",
+      "face": "assets/champions/faces/Anivia.svg",
+      "portrait": "assets/champions/portraits/Anivia.svg"
+    },
+    "Annie": {
+      "id": "Annie",
+      "face": "assets/champions/faces/Annie.svg",
+      "portrait": "assets/champions/portraits/Annie.svg"
+    },
+    "Aphelios": {
+      "id": "Aphelios",
+      "face": "assets/champions/faces/Aphelios.svg",
+      "portrait": "assets/champions/portraits/Aphelios.svg"
+    },
+    "Ashe": {
+      "id": "Ashe",
+      "face": "assets/champions/faces/Ashe.svg",
+      "portrait": "assets/champions/portraits/Ashe.svg"
+    },
+    "Aurelion Sol": {
+      "id": "AurelionSol",
+      "face": "assets/champions/faces/AurelionSol.svg",
+      "portrait": "assets/champions/portraits/AurelionSol.svg"
+    },
+    "Aurora": {
+      "id": "Aurora",
+      "face": "assets/champions/faces/Aurora.svg",
+      "portrait": "assets/champions/portraits/Aurora.svg"
+    },
+    "Azir": {
+      "id": "Azir",
+      "face": "assets/champions/faces/Azir.svg",
+      "portrait": "assets/champions/portraits/Azir.svg"
+    },
+    "Bard": {
+      "id": "Bard",
+      "face": "assets/champions/faces/Bard.svg",
+      "portrait": "assets/champions/portraits/Bard.svg"
+    },
+    "Bel'Veth": {
+      "id": "Belveth",
+      "face": "assets/champions/faces/Belveth.svg",
+      "portrait": "assets/champions/portraits/Belveth.svg"
+    },
+    "Blitzcrank": {
+      "id": "Blitzcrank",
+      "face": "assets/champions/faces/Blitzcrank.svg",
+      "portrait": "assets/champions/portraits/Blitzcrank.svg"
+    },
+    "Brand": {
+      "id": "Brand",
+      "face": "assets/champions/faces/Brand.svg",
+      "portrait": "assets/champions/portraits/Brand.svg"
+    },
+    "Braum": {
+      "id": "Braum",
+      "face": "assets/champions/faces/Braum.svg",
+      "portrait": "assets/champions/portraits/Braum.svg"
+    },
+    "Briar": {
+      "id": "Briar",
+      "face": "assets/champions/faces/Briar.svg",
+      "portrait": "assets/champions/portraits/Briar.svg"
+    },
+    "Caitlyn": {
+      "id": "Caitlyn",
+      "face": "assets/champions/faces/Caitlyn.svg",
+      "portrait": "assets/champions/portraits/Caitlyn.svg"
+    },
+    "Camille": {
+      "id": "Camille",
+      "face": "assets/champions/faces/Camille.svg",
+      "portrait": "assets/champions/portraits/Camille.svg"
+    },
+    "Cassiopeia": {
+      "id": "Cassiopeia",
+      "face": "assets/champions/faces/Cassiopeia.svg",
+      "portrait": "assets/champions/portraits/Cassiopeia.svg"
+    },
+    "Cho'Gath": {
+      "id": "Chogath",
+      "face": "assets/champions/faces/Chogath.svg",
+      "portrait": "assets/champions/portraits/Chogath.svg"
+    },
+    "Corki": {
+      "id": "Corki",
+      "face": "assets/champions/faces/Corki.svg",
+      "portrait": "assets/champions/portraits/Corki.svg"
+    },
+    "Darius": {
+      "id": "Darius",
+      "face": "assets/champions/faces/Darius.svg",
+      "portrait": "assets/champions/portraits/Darius.svg"
+    },
+    "Diana": {
+      "id": "Diana",
+      "face": "assets/champions/faces/Diana.svg",
+      "portrait": "assets/champions/portraits/Diana.svg"
+    },
+    "Dr. Mundo": {
+      "id": "DrMundo",
+      "face": "assets/champions/faces/DrMundo.svg",
+      "portrait": "assets/champions/portraits/DrMundo.svg"
+    },
+    "Draven": {
+      "id": "Draven",
+      "face": "assets/champions/faces/Draven.svg",
+      "portrait": "assets/champions/portraits/Draven.svg"
+    },
+    "Ekko": {
+      "id": "Ekko",
+      "face": "assets/champions/faces/Ekko.svg",
+      "portrait": "assets/champions/portraits/Ekko.svg"
+    },
+    "Elise": {
+      "id": "Elise",
+      "face": "assets/champions/faces/Elise.svg",
+      "portrait": "assets/champions/portraits/Elise.svg"
+    },
+    "Evelynn": {
+      "id": "Evelynn",
+      "face": "assets/champions/faces/Evelynn.svg",
+      "portrait": "assets/champions/portraits/Evelynn.svg"
+    },
+    "Ezreal": {
+      "id": "Ezreal",
+      "face": "assets/champions/faces/Ezreal.svg",
+      "portrait": "assets/champions/portraits/Ezreal.svg"
+    },
+    "Fiddlesticks": {
+      "id": "Fiddlesticks",
+      "face": "assets/champions/faces/Fiddlesticks.svg",
+      "portrait": "assets/champions/portraits/Fiddlesticks.svg"
+    },
+    "Fiora": {
+      "id": "Fiora",
+      "face": "assets/champions/faces/Fiora.svg",
+      "portrait": "assets/champions/portraits/Fiora.svg"
+    },
+    "Fizz": {
+      "id": "Fizz",
+      "face": "assets/champions/faces/Fizz.svg",
+      "portrait": "assets/champions/portraits/Fizz.svg"
+    },
+    "Galio": {
+      "id": "Galio",
+      "face": "assets/champions/faces/Galio.svg",
+      "portrait": "assets/champions/portraits/Galio.svg"
+    },
+    "Gangplank": {
+      "id": "Gangplank",
+      "face": "assets/champions/faces/Gangplank.svg",
+      "portrait": "assets/champions/portraits/Gangplank.svg"
+    },
+    "Garen": {
+      "id": "Garen",
+      "face": "assets/champions/faces/Garen.svg",
+      "portrait": "assets/champions/portraits/Garen.svg"
+    },
+    "Gnar": {
+      "id": "Gnar",
+      "face": "assets/champions/faces/Gnar.svg",
+      "portrait": "assets/champions/portraits/Gnar.svg"
+    },
+    "Gragas": {
+      "id": "Gragas",
+      "face": "assets/champions/faces/Gragas.svg",
+      "portrait": "assets/champions/portraits/Gragas.svg"
+    },
+    "Graves": {
+      "id": "Graves",
+      "face": "assets/champions/faces/Graves.svg",
+      "portrait": "assets/champions/portraits/Graves.svg"
+    },
+    "Gwen": {
+      "id": "Gwen",
+      "face": "assets/champions/faces/Gwen.svg",
+      "portrait": "assets/champions/portraits/Gwen.svg"
+    },
+    "Hecarim": {
+      "id": "Hecarim",
+      "face": "assets/champions/faces/Hecarim.svg",
+      "portrait": "assets/champions/portraits/Hecarim.svg"
+    },
+    "Heimerdinger": {
+      "id": "Heimerdinger",
+      "face": "assets/champions/faces/Heimerdinger.svg",
+      "portrait": "assets/champions/portraits/Heimerdinger.svg"
+    },
+    "Hwei": {
+      "id": "Hwei",
+      "face": "assets/champions/faces/Hwei.svg",
+      "portrait": "assets/champions/portraits/Hwei.svg"
+    },
+    "Illaoi": {
+      "id": "Illaoi",
+      "face": "assets/champions/faces/Illaoi.svg",
+      "portrait": "assets/champions/portraits/Illaoi.svg"
+    },
+    "Irelia": {
+      "id": "Irelia",
+      "face": "assets/champions/faces/Irelia.svg",
+      "portrait": "assets/champions/portraits/Irelia.svg"
+    },
+    "Ivern": {
+      "id": "Ivern",
+      "face": "assets/champions/faces/Ivern.svg",
+      "portrait": "assets/champions/portraits/Ivern.svg"
+    },
+    "Janna": {
+      "id": "Janna",
+      "face": "assets/champions/faces/Janna.svg",
+      "portrait": "assets/champions/portraits/Janna.svg"
+    },
+    "Jarvan IV": {
+      "id": "JarvanIV",
+      "face": "assets/champions/faces/JarvanIV.svg",
+      "portrait": "assets/champions/portraits/JarvanIV.svg"
+    },
+    "Jax": {
+      "id": "Jax",
+      "face": "assets/champions/faces/Jax.svg",
+      "portrait": "assets/champions/portraits/Jax.svg"
+    },
+    "Jayce": {
+      "id": "Jayce",
+      "face": "assets/champions/faces/Jayce.svg",
+      "portrait": "assets/champions/portraits/Jayce.svg"
+    },
+    "Jhin": {
+      "id": "Jhin",
+      "face": "assets/champions/faces/Jhin.svg",
+      "portrait": "assets/champions/portraits/Jhin.svg"
+    },
+    "Jinx": {
+      "id": "Jinx",
+      "face": "assets/champions/faces/Jinx.svg",
+      "portrait": "assets/champions/portraits/Jinx.svg"
+    },
+    "K'Sante": {
+      "id": "KSante",
+      "face": "assets/champions/faces/KSante.svg",
+      "portrait": "assets/champions/portraits/KSante.svg"
+    },
+    "Kai'Sa": {
+      "id": "Kaisa",
+      "face": "assets/champions/faces/Kaisa.svg",
+      "portrait": "assets/champions/portraits/Kaisa.svg"
+    },
+    "Kalista": {
+      "id": "Kalista",
+      "face": "assets/champions/faces/Kalista.svg",
+      "portrait": "assets/champions/portraits/Kalista.svg"
+    },
+    "Karma": {
+      "id": "Karma",
+      "face": "assets/champions/faces/Karma.svg",
+      "portrait": "assets/champions/portraits/Karma.svg"
+    },
+    "Karthus": {
+      "id": "Karthus",
+      "face": "assets/champions/faces/Karthus.svg",
+      "portrait": "assets/champions/portraits/Karthus.svg"
+    },
+    "Kassadin": {
+      "id": "Kassadin",
+      "face": "assets/champions/faces/Kassadin.svg",
+      "portrait": "assets/champions/portraits/Kassadin.svg"
+    },
+    "Katarina": {
+      "id": "Katarina",
+      "face": "assets/champions/faces/Katarina.svg",
+      "portrait": "assets/champions/portraits/Katarina.svg"
+    },
+    "Kayle": {
+      "id": "Kayle",
+      "face": "assets/champions/faces/Kayle.svg",
+      "portrait": "assets/champions/portraits/Kayle.svg"
+    },
+    "Kayn": {
+      "id": "Kayn",
+      "face": "assets/champions/faces/Kayn.svg",
+      "portrait": "assets/champions/portraits/Kayn.svg"
+    },
+    "Kennen": {
+      "id": "Kennen",
+      "face": "assets/champions/faces/Kennen.svg",
+      "portrait": "assets/champions/portraits/Kennen.svg"
+    },
+    "Kha'Zix": {
+      "id": "Khazix",
+      "face": "assets/champions/faces/Khazix.svg",
+      "portrait": "assets/champions/portraits/Khazix.svg"
+    },
+    "Kindred": {
+      "id": "Kindred",
+      "face": "assets/champions/faces/Kindred.svg",
+      "portrait": "assets/champions/portraits/Kindred.svg"
+    },
+    "Kled": {
+      "id": "Kled",
+      "face": "assets/champions/faces/Kled.svg",
+      "portrait": "assets/champions/portraits/Kled.svg"
+    },
+    "Kog'Maw": {
+      "id": "KogMaw",
+      "face": "assets/champions/faces/KogMaw.svg",
+      "portrait": "assets/champions/portraits/KogMaw.svg"
+    },
+    "LeBlanc": {
+      "id": "Leblanc",
+      "face": "assets/champions/faces/Leblanc.svg",
+      "portrait": "assets/champions/portraits/Leblanc.svg"
+    },
+    "Lee Sin": {
+      "id": "LeeSin",
+      "face": "assets/champions/faces/LeeSin.svg",
+      "portrait": "assets/champions/portraits/LeeSin.svg"
+    },
+    "Leona": {
+      "id": "Leona",
+      "face": "assets/champions/faces/Leona.svg",
+      "portrait": "assets/champions/portraits/Leona.svg"
+    },
+    "Lillia": {
+      "id": "Lillia",
+      "face": "assets/champions/faces/Lillia.svg",
+      "portrait": "assets/champions/portraits/Lillia.svg"
+    },
+    "Lissandra": {
+      "id": "Lissandra",
+      "face": "assets/champions/faces/Lissandra.svg",
+      "portrait": "assets/champions/portraits/Lissandra.svg"
+    },
+    "Locke": {
+      "id": "Locke",
+      "face": "assets/champions/faces/Locke.svg",
+      "portrait": "assets/champions/portraits/Locke.svg"
+    },
+    "Lucian": {
+      "id": "Lucian",
+      "face": "assets/champions/faces/Lucian.svg",
+      "portrait": "assets/champions/portraits/Lucian.svg"
+    },
+    "Lulu": {
+      "id": "Lulu",
+      "face": "assets/champions/faces/Lulu.svg",
+      "portrait": "assets/champions/portraits/Lulu.svg"
+    },
+    "Lux": {
+      "id": "Lux",
+      "face": "assets/champions/faces/Lux.svg",
+      "portrait": "assets/champions/portraits/Lux.svg"
+    },
+    "Malphite": {
+      "id": "Malphite",
+      "face": "assets/champions/faces/Malphite.svg",
+      "portrait": "assets/champions/portraits/Malphite.svg"
+    },
+    "Malzahar": {
+      "id": "Malzahar",
+      "face": "assets/champions/faces/Malzahar.svg",
+      "portrait": "assets/champions/portraits/Malzahar.svg"
+    },
+    "Maokai": {
+      "id": "Maokai",
+      "face": "assets/champions/faces/Maokai.svg",
+      "portrait": "assets/champions/portraits/Maokai.svg"
+    },
+    "Master Yi": {
+      "id": "MasterYi",
+      "face": "assets/champions/faces/MasterYi.svg",
+      "portrait": "assets/champions/portraits/MasterYi.svg"
+    },
+    "Mel": {
+      "id": "Mel",
+      "face": "assets/champions/faces/Mel.svg",
+      "portrait": "assets/champions/portraits/Mel.svg"
+    },
+    "Milio": {
+      "id": "Milio",
+      "face": "assets/champions/faces/Milio.svg",
+      "portrait": "assets/champions/portraits/Milio.svg"
+    },
+    "Miss Fortune": {
+      "id": "MissFortune",
+      "face": "assets/champions/faces/MissFortune.svg",
+      "portrait": "assets/champions/portraits/MissFortune.svg"
+    },
+    "Mordekaiser": {
+      "id": "Mordekaiser",
+      "face": "assets/champions/faces/Mordekaiser.svg",
+      "portrait": "assets/champions/portraits/Mordekaiser.svg"
+    },
+    "Morgana": {
+      "id": "Morgana",
+      "face": "assets/champions/faces/Morgana.svg",
+      "portrait": "assets/champions/portraits/Morgana.svg"
+    },
+    "Naafiri": {
+      "id": "Naafiri",
+      "face": "assets/champions/faces/Naafiri.svg",
+      "portrait": "assets/champions/portraits/Naafiri.svg"
+    },
+    "Nami": {
+      "id": "Nami",
+      "face": "assets/champions/faces/Nami.svg",
+      "portrait": "assets/champions/portraits/Nami.svg"
+    },
+    "Nasus": {
+      "id": "Nasus",
+      "face": "assets/champions/faces/Nasus.svg",
+      "portrait": "assets/champions/portraits/Nasus.svg"
+    },
+    "Nautilus": {
+      "id": "Nautilus",
+      "face": "assets/champions/faces/Nautilus.svg",
+      "portrait": "assets/champions/portraits/Nautilus.svg"
+    },
+    "Neeko": {
+      "id": "Neeko",
+      "face": "assets/champions/faces/Neeko.svg",
+      "portrait": "assets/champions/portraits/Neeko.svg"
+    },
+    "Nidalee": {
+      "id": "Nidalee",
+      "face": "assets/champions/faces/Nidalee.svg",
+      "portrait": "assets/champions/portraits/Nidalee.svg"
+    },
+    "Nilah": {
+      "id": "Nilah",
+      "face": "assets/champions/faces/Nilah.svg",
+      "portrait": "assets/champions/portraits/Nilah.svg"
+    },
+    "Nocturne": {
+      "id": "Nocturne",
+      "face": "assets/champions/faces/Nocturne.svg",
+      "portrait": "assets/champions/portraits/Nocturne.svg"
+    },
+    "Nunu & Willump": {
+      "id": "Nunu",
+      "face": "assets/champions/faces/Nunu.svg",
+      "portrait": "assets/champions/portraits/Nunu.svg"
+    },
+    "Olaf": {
+      "id": "Olaf",
+      "face": "assets/champions/faces/Olaf.svg",
+      "portrait": "assets/champions/portraits/Olaf.svg"
+    },
+    "Orianna": {
+      "id": "Orianna",
+      "face": "assets/champions/faces/Orianna.svg",
+      "portrait": "assets/champions/portraits/Orianna.svg"
+    },
+    "Ornn": {
+      "id": "Ornn",
+      "face": "assets/champions/faces/Ornn.svg",
+      "portrait": "assets/champions/portraits/Ornn.svg"
+    },
+    "Pantheon": {
+      "id": "Pantheon",
+      "face": "assets/champions/faces/Pantheon.svg",
+      "portrait": "assets/champions/portraits/Pantheon.svg"
+    },
+    "Poppy": {
+      "id": "Poppy",
+      "face": "assets/champions/faces/Poppy.svg",
+      "portrait": "assets/champions/portraits/Poppy.svg"
+    },
+    "Pyke": {
+      "id": "Pyke",
+      "face": "assets/champions/faces/Pyke.svg",
+      "portrait": "assets/champions/portraits/Pyke.svg"
+    },
+    "Qiyana": {
+      "id": "Qiyana",
+      "face": "assets/champions/faces/Qiyana.svg",
+      "portrait": "assets/champions/portraits/Qiyana.svg"
+    },
+    "Quinn": {
+      "id": "Quinn",
+      "face": "assets/champions/faces/Quinn.svg",
+      "portrait": "assets/champions/portraits/Quinn.svg"
+    },
+    "Rakan": {
+      "id": "Rakan",
+      "face": "assets/champions/faces/Rakan.svg",
+      "portrait": "assets/champions/portraits/Rakan.svg"
+    },
+    "Rammus": {
+      "id": "Rammus",
+      "face": "assets/champions/faces/Rammus.svg",
+      "portrait": "assets/champions/portraits/Rammus.svg"
+    },
+    "Rek'Sai": {
+      "id": "RekSai",
+      "face": "assets/champions/faces/RekSai.svg",
+      "portrait": "assets/champions/portraits/RekSai.svg"
+    },
+    "Rell": {
+      "id": "Rell",
+      "face": "assets/champions/faces/Rell.svg",
+      "portrait": "assets/champions/portraits/Rell.svg"
+    },
+    "Renata Glasc": {
+      "id": "Renata",
+      "face": "assets/champions/faces/Renata.svg",
+      "portrait": "assets/champions/portraits/Renata.svg"
+    },
+    "Renekton": {
+      "id": "Renekton",
+      "face": "assets/champions/faces/Renekton.svg",
+      "portrait": "assets/champions/portraits/Renekton.svg"
+    },
+    "Rengar": {
+      "id": "Rengar",
+      "face": "assets/champions/faces/Rengar.svg",
+      "portrait": "assets/champions/portraits/Rengar.svg"
+    },
+    "Riven": {
+      "id": "Riven",
+      "face": "assets/champions/faces/Riven.svg",
+      "portrait": "assets/champions/portraits/Riven.svg"
+    },
+    "Rumble": {
+      "id": "Rumble",
+      "face": "assets/champions/faces/Rumble.svg",
+      "portrait": "assets/champions/portraits/Rumble.svg"
+    },
+    "Ryze": {
+      "id": "Ryze",
+      "face": "assets/champions/faces/Ryze.svg",
+      "portrait": "assets/champions/portraits/Ryze.svg"
+    },
+    "Samira": {
+      "id": "Samira",
+      "face": "assets/champions/faces/Samira.svg",
+      "portrait": "assets/champions/portraits/Samira.svg"
+    },
+    "Sejuani": {
+      "id": "Sejuani",
+      "face": "assets/champions/faces/Sejuani.svg",
+      "portrait": "assets/champions/portraits/Sejuani.svg"
+    },
+    "Senna": {
+      "id": "Senna",
+      "face": "assets/champions/faces/Senna.svg",
+      "portrait": "assets/champions/portraits/Senna.svg"
+    },
+    "Seraphine": {
+      "id": "Seraphine",
+      "face": "assets/champions/faces/Seraphine.svg",
+      "portrait": "assets/champions/portraits/Seraphine.svg"
+    },
+    "Sett": {
+      "id": "Sett",
+      "face": "assets/champions/faces/Sett.svg",
+      "portrait": "assets/champions/portraits/Sett.svg"
+    },
+    "Shaco": {
+      "id": "Shaco",
+      "face": "assets/champions/faces/Shaco.svg",
+      "portrait": "assets/champions/portraits/Shaco.svg"
+    },
+    "Shen": {
+      "id": "Shen",
+      "face": "assets/champions/faces/Shen.svg",
+      "portrait": "assets/champions/portraits/Shen.svg"
+    },
+    "Shyvana": {
+      "id": "Shyvana",
+      "face": "assets/champions/faces/Shyvana.svg",
+      "portrait": "assets/champions/portraits/Shyvana.svg"
+    },
+    "Singed": {
+      "id": "Singed",
+      "face": "assets/champions/faces/Singed.svg",
+      "portrait": "assets/champions/portraits/Singed.svg"
+    },
+    "Sion": {
+      "id": "Sion",
+      "face": "assets/champions/faces/Sion.svg",
+      "portrait": "assets/champions/portraits/Sion.svg"
+    },
+    "Sivir": {
+      "id": "Sivir",
+      "face": "assets/champions/faces/Sivir.svg",
+      "portrait": "assets/champions/portraits/Sivir.svg"
+    },
+    "Skarner": {
+      "id": "Skarner",
+      "face": "assets/champions/faces/Skarner.svg",
+      "portrait": "assets/champions/portraits/Skarner.svg"
+    },
+    "Smolder": {
+      "id": "Smolder",
+      "face": "assets/champions/faces/Smolder.svg",
+      "portrait": "assets/champions/portraits/Smolder.svg"
+    },
+    "Sona": {
+      "id": "Sona",
+      "face": "assets/champions/faces/Sona.svg",
+      "portrait": "assets/champions/portraits/Sona.svg"
+    },
+    "Soraka": {
+      "id": "Soraka",
+      "face": "assets/champions/faces/Soraka.svg",
+      "portrait": "assets/champions/portraits/Soraka.svg"
+    },
+    "Swain": {
+      "id": "Swain",
+      "face": "assets/champions/faces/Swain.svg",
+      "portrait": "assets/champions/portraits/Swain.svg"
+    },
+    "Sylas": {
+      "id": "Sylas",
+      "face": "assets/champions/faces/Sylas.svg",
+      "portrait": "assets/champions/portraits/Sylas.svg"
+    },
+    "Syndra": {
+      "id": "Syndra",
+      "face": "assets/champions/faces/Syndra.svg",
+      "portrait": "assets/champions/portraits/Syndra.svg"
+    },
+    "Tahm Kench": {
+      "id": "TahmKench",
+      "face": "assets/champions/faces/TahmKench.svg",
+      "portrait": "assets/champions/portraits/TahmKench.svg"
+    },
+    "Taliyah": {
+      "id": "Taliyah",
+      "face": "assets/champions/faces/Taliyah.svg",
+      "portrait": "assets/champions/portraits/Taliyah.svg"
+    },
+    "Talon": {
+      "id": "Talon",
+      "face": "assets/champions/faces/Talon.svg",
+      "portrait": "assets/champions/portraits/Talon.svg"
+    },
+    "Taric": {
+      "id": "Taric",
+      "face": "assets/champions/faces/Taric.svg",
+      "portrait": "assets/champions/portraits/Taric.svg"
+    },
+    "Teemo": {
+      "id": "Teemo",
+      "face": "assets/champions/faces/Teemo.svg",
+      "portrait": "assets/champions/portraits/Teemo.svg"
+    },
+    "Thresh": {
+      "id": "Thresh",
+      "face": "assets/champions/faces/Thresh.svg",
+      "portrait": "assets/champions/portraits/Thresh.svg"
+    },
+    "Tristana": {
+      "id": "Tristana",
+      "face": "assets/champions/faces/Tristana.svg",
+      "portrait": "assets/champions/portraits/Tristana.svg"
+    },
+    "Trundle": {
+      "id": "Trundle",
+      "face": "assets/champions/faces/Trundle.svg",
+      "portrait": "assets/champions/portraits/Trundle.svg"
+    },
+    "Tryndamere": {
+      "id": "Tryndamere",
+      "face": "assets/champions/faces/Tryndamere.svg",
+      "portrait": "assets/champions/portraits/Tryndamere.svg"
+    },
+    "Twisted Fate": {
+      "id": "TwistedFate",
+      "face": "assets/champions/faces/TwistedFate.svg",
+      "portrait": "assets/champions/portraits/TwistedFate.svg"
+    },
+    "Twitch": {
+      "id": "Twitch",
+      "face": "assets/champions/faces/Twitch.svg",
+      "portrait": "assets/champions/portraits/Twitch.svg"
+    },
+    "Udyr": {
+      "id": "Udyr",
+      "face": "assets/champions/faces/Udyr.svg",
+      "portrait": "assets/champions/portraits/Udyr.svg"
+    },
+    "Urgot": {
+      "id": "Urgot",
+      "face": "assets/champions/faces/Urgot.svg",
+      "portrait": "assets/champions/portraits/Urgot.svg"
+    },
+    "Varus": {
+      "id": "Varus",
+      "face": "assets/champions/faces/Varus.svg",
+      "portrait": "assets/champions/portraits/Varus.svg"
+    },
+    "Vayne": {
+      "id": "Vayne",
+      "face": "assets/champions/faces/Vayne.svg",
+      "portrait": "assets/champions/portraits/Vayne.svg"
+    },
+    "Veigar": {
+      "id": "Veigar",
+      "face": "assets/champions/faces/Veigar.svg",
+      "portrait": "assets/champions/portraits/Veigar.svg"
+    },
+    "Vel'Koz": {
+      "id": "Velkoz",
+      "face": "assets/champions/faces/Velkoz.svg",
+      "portrait": "assets/champions/portraits/Velkoz.svg"
+    },
+    "Vex": {
+      "id": "Vex",
+      "face": "assets/champions/faces/Vex.svg",
+      "portrait": "assets/champions/portraits/Vex.svg"
+    },
+    "Vi": {
+      "id": "Vi",
+      "face": "assets/champions/faces/Vi.svg",
+      "portrait": "assets/champions/portraits/Vi.svg"
+    },
+    "Viego": {
+      "id": "Viego",
+      "face": "assets/champions/faces/Viego.svg",
+      "portrait": "assets/champions/portraits/Viego.svg"
+    },
+    "Viktor": {
+      "id": "Viktor",
+      "face": "assets/champions/faces/Viktor.svg",
+      "portrait": "assets/champions/portraits/Viktor.svg"
+    },
+    "Vladimir": {
+      "id": "Vladimir",
+      "face": "assets/champions/faces/Vladimir.svg",
+      "portrait": "assets/champions/portraits/Vladimir.svg"
+    },
+    "Volibear": {
+      "id": "Volibear",
+      "face": "assets/champions/faces/Volibear.svg",
+      "portrait": "assets/champions/portraits/Volibear.svg"
+    },
+    "Warwick": {
+      "id": "Warwick",
+      "face": "assets/champions/faces/Warwick.svg",
+      "portrait": "assets/champions/portraits/Warwick.svg"
+    },
+    "Wukong": {
+      "id": "MonkeyKing",
+      "face": "assets/champions/faces/MonkeyKing.svg",
+      "portrait": "assets/champions/portraits/MonkeyKing.svg"
+    },
+    "Xayah": {
+      "id": "Xayah",
+      "face": "assets/champions/faces/Xayah.svg",
+      "portrait": "assets/champions/portraits/Xayah.svg"
+    },
+    "Xerath": {
+      "id": "Xerath",
+      "face": "assets/champions/faces/Xerath.svg",
+      "portrait": "assets/champions/portraits/Xerath.svg"
+    },
+    "Xin Zhao": {
+      "id": "XinZhao",
+      "face": "assets/champions/faces/XinZhao.svg",
+      "portrait": "assets/champions/portraits/XinZhao.svg"
+    },
+    "Yasuo": {
+      "id": "Yasuo",
+      "face": "assets/champions/faces/Yasuo.svg",
+      "portrait": "assets/champions/portraits/Yasuo.svg"
+    },
+    "Yone": {
+      "id": "Yone",
+      "face": "assets/champions/faces/Yone.svg",
+      "portrait": "assets/champions/portraits/Yone.svg"
+    },
+    "Yorick": {
+      "id": "Yorick",
+      "face": "assets/champions/faces/Yorick.svg",
+      "portrait": "assets/champions/portraits/Yorick.svg"
+    },
+    "Yunara": {
+      "id": "Yunara",
+      "face": "assets/champions/faces/Yunara.svg",
+      "portrait": "assets/champions/portraits/Yunara.svg"
+    },
+    "Yuumi": {
+      "id": "Yuumi",
+      "face": "assets/champions/faces/Yuumi.svg",
+      "portrait": "assets/champions/portraits/Yuumi.svg"
+    },
+    "Zaahen": {
+      "id": "Zaahen",
+      "face": "assets/champions/faces/Zaahen.svg",
+      "portrait": "assets/champions/portraits/Zaahen.svg"
+    },
+    "Zac": {
+      "id": "Zac",
+      "face": "assets/champions/faces/Zac.svg",
+      "portrait": "assets/champions/portraits/Zac.svg"
+    },
+    "Zed": {
+      "id": "Zed",
+      "face": "assets/champions/faces/Zed.svg",
+      "portrait": "assets/champions/portraits/Zed.svg"
+    },
+    "Zeri": {
+      "id": "Zeri",
+      "face": "assets/champions/faces/Zeri.svg",
+      "portrait": "assets/champions/portraits/Zeri.svg"
+    },
+    "Ziggs": {
+      "id": "Ziggs",
+      "face": "assets/champions/faces/Ziggs.svg",
+      "portrait": "assets/champions/portraits/Ziggs.svg"
+    },
+    "Zilean": {
+      "id": "Zilean",
+      "face": "assets/champions/faces/Zilean.svg",
+      "portrait": "assets/champions/portraits/Zilean.svg"
+    },
+    "Zoe": {
+      "id": "Zoe",
+      "face": "assets/champions/faces/Zoe.svg",
+      "portrait": "assets/champions/portraits/Zoe.svg"
+    },
+    "Zyra": {
+      "id": "Zyra",
+      "face": "assets/champions/faces/Zyra.svg",
+      "portrait": "assets/champions/portraits/Zyra.svg"
+    }
+  }
+}

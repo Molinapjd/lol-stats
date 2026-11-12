@@ -1,0 +1,14 @@
+{
+  "id": "Yunara",
+  "name": "Yunara",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Yunara.svg",
+  "face": "assets/champions/faces/Yunara.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4968,
+    "centerY": 0.3875,
+    "widthFraction": 0.68
+  }
+}

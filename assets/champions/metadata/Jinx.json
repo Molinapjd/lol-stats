@@ -1,0 +1,14 @@
+{
+  "id": "Jinx",
+  "name": "Jinx",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Jinx.svg",
+  "face": "assets/champions/faces/Jinx.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4983,
+    "centerY": 0.3699,
+    "widthFraction": 0.68
+  }
+}

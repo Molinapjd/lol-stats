@@ -1,0 +1,14 @@
+{
+  "id": "Skarner",
+  "name": "Skarner",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Skarner.svg",
+  "face": "assets/champions/faces/Skarner.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4982,
+    "centerY": 0.5967,
+    "widthFraction": 0.68
+  }
+}

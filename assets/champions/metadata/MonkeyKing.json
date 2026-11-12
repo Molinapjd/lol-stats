@@ -1,0 +1,14 @@
+{
+  "id": "MonkeyKing",
+  "name": "Wukong",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/MonkeyKing.svg",
+  "face": "assets/champions/faces/MonkeyKing.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4962,
+    "centerY": 0.378,
+    "widthFraction": 0.68
+  }
+}

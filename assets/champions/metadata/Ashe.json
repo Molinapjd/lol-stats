@@ -1,0 +1,14 @@
+{
+  "id": "Ashe",
+  "name": "Ashe",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Ashe.svg",
+  "face": "assets/champions/faces/Ashe.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5021,
+    "centerY": 0.4368,
+    "widthFraction": 0.68
+  }
+}

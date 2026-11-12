@@ -1,0 +1,14 @@
+{
+  "id": "Lillia",
+  "name": "Lillia",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Lillia.svg",
+  "face": "assets/champions/faces/Lillia.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4913,
+    "centerY": 0.4361,
+    "widthFraction": 0.68
+  }
+}

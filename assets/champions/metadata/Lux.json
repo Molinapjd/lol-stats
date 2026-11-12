@@ -1,0 +1,14 @@
+{
+  "id": "Lux",
+  "name": "Lux",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Lux.svg",
+  "face": "assets/champions/faces/Lux.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5071,
+    "centerY": 0.4541,
+    "widthFraction": 0.68
+  }
+}

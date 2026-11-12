@@ -1,0 +1,14 @@
+{
+  "id": "KSante",
+  "name": "K'Sante",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/KSante.svg",
+  "face": "assets/champions/faces/KSante.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4971,
+    "centerY": 0.4469,
+    "widthFraction": 0.68
+  }
+}

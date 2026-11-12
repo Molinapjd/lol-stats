@@ -1,0 +1,14 @@
+{
+  "id": "AurelionSol",
+  "name": "Aurelion Sol",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/AurelionSol.svg",
+  "face": "assets/champions/faces/AurelionSol.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4955,
+    "centerY": 0.4834,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Nilah",
+  "name": "Nilah",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Nilah.svg",
+  "face": "assets/champions/faces/Nilah.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4979,
+    "centerY": 0.4631,
+    "widthFraction": 0.68
+  }
+}

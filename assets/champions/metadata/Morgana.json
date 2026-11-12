@@ -1,0 +1,14 @@
+{
+  "id": "Morgana",
+  "name": "Morgana",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Morgana.svg",
+  "face": "assets/champions/faces/Morgana.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5049,
+    "centerY": 0.4501,
+    "widthFraction": 0.68
+  }
+}

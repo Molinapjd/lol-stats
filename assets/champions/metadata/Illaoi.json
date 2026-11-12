@@ -1,0 +1,14 @@
+{
+  "id": "Illaoi",
+  "name": "Illaoi",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Illaoi.svg",
+  "face": "assets/champions/faces/Illaoi.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4998,
+    "centerY": 0.4595,
+    "widthFraction": 0.68
+  }
+}

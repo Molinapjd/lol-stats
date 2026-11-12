@@ -1,0 +1,14 @@
+{
+  "id": "Xerath",
+  "name": "Xerath",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Xerath.svg",
+  "face": "assets/champions/faces/Xerath.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4886,
+    "centerY": 0.4521,
+    "widthFraction": 0.68
+  }
+}

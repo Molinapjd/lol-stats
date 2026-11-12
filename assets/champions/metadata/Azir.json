@@ -1,0 +1,14 @@
+{
+  "id": "Azir",
+  "name": "Azir",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Azir.svg",
+  "face": "assets/champions/faces/Azir.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.512,
+    "centerY": 0.4494,
+    "widthFraction": 0.68
+  }
+}

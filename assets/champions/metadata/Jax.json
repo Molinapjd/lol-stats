@@ -1,0 +1,14 @@
+{
+  "id": "Jax",
+  "name": "Jax",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Jax.svg",
+  "face": "assets/champions/faces/Jax.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5177,
+    "centerY": 0.5224,
+    "widthFraction": 0.68
+  }
+}

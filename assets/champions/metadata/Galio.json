@@ -1,0 +1,14 @@
+{
+  "id": "Galio",
+  "name": "Galio",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Galio.svg",
+  "face": "assets/champions/faces/Galio.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4974,
+    "centerY": 0.366,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Kindred",
+  "name": "Kindred",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Kindred.svg",
+  "face": "assets/champions/faces/Kindred.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5005,
+    "centerY": 0.536,
+    "widthFraction": 0.68
+  }
+}

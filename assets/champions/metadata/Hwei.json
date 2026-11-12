@@ -1,0 +1,14 @@
+{
+  "id": "Hwei",
+  "name": "Hwei",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Hwei.svg",
+  "face": "assets/champions/faces/Hwei.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4976,
+    "centerY": 0.4737,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Locke",
+  "name": "Locke",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Locke.svg",
+  "face": "assets/champions/faces/Locke.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4966,
+    "centerY": 0.3542,
+    "widthFraction": 0.68
+  }
+}

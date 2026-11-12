@@ -1,0 +1,14 @@
+{
+  "id": "Gwen",
+  "name": "Gwen",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Gwen.svg",
+  "face": "assets/champions/faces/Gwen.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4989,
+    "centerY": 0.5199,
+    "widthFraction": 0.68
+  }
+}

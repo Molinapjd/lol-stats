@@ -1,0 +1,14 @@
+{
+  "id": "Karma",
+  "name": "Karma",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Karma.svg",
+  "face": "assets/champions/faces/Karma.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4974,
+    "centerY": 0.5044,
+    "widthFraction": 0.68
+  }
+}

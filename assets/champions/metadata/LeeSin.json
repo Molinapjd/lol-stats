@@ -1,0 +1,14 @@
+{
+  "id": "LeeSin",
+  "name": "Lee Sin",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/LeeSin.svg",
+  "face": "assets/champions/faces/LeeSin.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4846,
+    "centerY": 0.4501,
+    "widthFraction": 0.68
+  }
+}

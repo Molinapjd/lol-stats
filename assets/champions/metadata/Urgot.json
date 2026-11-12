@@ -1,0 +1,14 @@
+{
+  "id": "Urgot",
+  "name": "Urgot",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Urgot.svg",
+  "face": "assets/champions/faces/Urgot.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5018,
+    "centerY": 0.3814,
+    "widthFraction": 0.68
+  }
+}

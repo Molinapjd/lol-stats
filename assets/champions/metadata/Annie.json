@@ -1,0 +1,14 @@
+{
+  "id": "Annie",
+  "name": "Annie",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Annie.svg",
+  "face": "assets/champions/faces/Annie.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4961,
+    "centerY": 0.4835,
+    "widthFraction": 0.68
+  }
+}

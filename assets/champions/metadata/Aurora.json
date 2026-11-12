@@ -1,0 +1,14 @@
+{
+  "id": "Aurora",
+  "name": "Aurora",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Aurora.svg",
+  "face": "assets/champions/faces/Aurora.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.482,
+    "centerY": 0.5262,
+    "widthFraction": 0.68
+  }
+}

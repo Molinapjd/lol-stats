@@ -1,0 +1,14 @@
+{
+  "id": "Zoe",
+  "name": "Zoe",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Zoe.svg",
+  "face": "assets/champions/faces/Zoe.svg",
+  "faceCrop": {
+    "detector": "reviewed-framing",
+    "centerX": 0.5,
+    "centerY": 0.5,
+    "widthFraction": 0.7
+  }
+}

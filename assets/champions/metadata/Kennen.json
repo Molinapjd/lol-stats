@@ -1,0 +1,14 @@
+{
+  "id": "Kennen",
+  "name": "Kennen",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Kennen.svg",
+  "face": "assets/champions/faces/Kennen.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4972,
+    "centerY": 0.4733,
+    "widthFraction": 0.68
+  }
+}

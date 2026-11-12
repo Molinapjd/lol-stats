@@ -1,0 +1,14 @@
+{
+  "id": "Briar",
+  "name": "Briar",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Briar.svg",
+  "face": "assets/champions/faces/Briar.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4903,
+    "centerY": 0.4304,
+    "widthFraction": 0.68
+  }
+}

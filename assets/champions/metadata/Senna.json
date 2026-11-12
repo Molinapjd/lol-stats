@@ -1,0 +1,14 @@
+{
+  "id": "Senna",
+  "name": "Senna",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Senna.svg",
+  "face": "assets/champions/faces/Senna.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.5,
+    "centerY": 0.3717,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Irelia",
+  "name": "Irelia",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Irelia.svg",
+  "face": "assets/champions/faces/Irelia.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.497,
+    "centerY": 0.4448,
+    "widthFraction": 0.68
+  }
+}

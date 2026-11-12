@@ -1,0 +1,14 @@
+{
+  "id": "Akali",
+  "name": "Akali",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Akali.svg",
+  "face": "assets/champions/faces/Akali.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4519,
+    "centerY": 0.4986,
+    "widthFraction": 0.68
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Nami",
+  "name": "Nami",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Nami.svg",
+  "face": "assets/champions/faces/Nami.svg",
+  "faceCrop": {
+    "detector": "framing-fallback",
+    "centerX": 0.5,
+    "centerY": 0.34,
+    "widthFraction": 0.68
+  }
+}

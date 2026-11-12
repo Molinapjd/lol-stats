@@ -1,0 +1,14 @@
+{
+  "id": "Gnar",
+  "name": "Gnar",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Gnar.svg",
+  "face": "assets/champions/faces/Gnar.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4984,
+    "centerY": 0.5606,
+    "widthFraction": 0.68
+  }
+}

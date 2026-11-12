@@ -1,0 +1,14 @@
+{
+  "id": "Akshan",
+  "name": "Akshan",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Akshan.svg",
+  "face": "assets/champions/faces/Akshan.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.507,
+    "centerY": 0.4697,
+    "widthFraction": 0.68
+  }
+}

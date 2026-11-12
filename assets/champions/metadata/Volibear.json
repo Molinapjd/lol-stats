@@ -1,0 +1,14 @@
+{
+  "id": "Volibear",
+  "name": "Volibear",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Volibear.svg",
+  "face": "assets/champions/faces/Volibear.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4981,
+    "centerY": 0.4119,
+    "widthFraction": 0.68
+  }
+}

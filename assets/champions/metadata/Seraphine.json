@@ -1,0 +1,14 @@
+{
+  "id": "Seraphine",
+  "name": "Seraphine",
+  "style": "south-park-paper-cutout",
+  "generated": "2026-11-12",
+  "portrait": "assets/champions/portraits/Seraphine.svg",
+  "face": "assets/champions/faces/Seraphine.svg",
+  "faceCrop": {
+    "detector": "eyes-v1",
+    "centerX": 0.4965,
+    "centerY": 0.4299,
+    "widthFraction": 0.68
+  }
+}
