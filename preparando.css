@@ -164,3 +164,13 @@ body[data-view="preparation"] #app { max-width: 1360px; padding: 28px 32px 40px;
   .draft-method { padding: 16px; } .draft-method summary span { display: none; }
   .draft-footer { flex-wrap: wrap; line-height: 1.7; } .tier-sample { display: none; }
 }
+
+/* Counter teórico: cuando el repertorio del invocador no tiene un counter directo */
+.theory-counter { margin-top: 16px; padding: 16px 18px; border: 1px dashed color-mix(in srgb, var(--draft-accent, #d2a85a) 55%, #3b465d); border-radius: 12px; background: #131c2b; }
+.theory-counter .theory-intro { color: #c7d3e3; font-size: 13px; line-height: 1.6; margin: 6px 0 12px; }
+.theory-counter article { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid #2a3547; }
+.theory-counter article .draft-icon { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+.theory-counter h4 { margin: 0 0 4px; font-size: 15px; }
+.theory-counter h4 small { color: var(--draft-accent, #d2a85a); font-weight: 600; font-size: 11px; margin-left: 6px; }
+.theory-counter p { margin: 0; font-size: 13px; line-height: 1.55; color: #aebbd0; }
+.theory-counter .theory-note { margin-top: 6px; font-size: 12px; color: #8d9bb0; font-style: italic; }

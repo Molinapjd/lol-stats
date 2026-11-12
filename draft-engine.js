@@ -1,10 +1,12 @@
 /* Motor local de selección: historial personal + reglas de estilo, nunca winrates globales inventados. */
 (function (root, factory) {
-  const coach = typeof module === 'object' && module.exports ? require('./matchup-coach.js') : root.LOL_MATCHUP_COACH;
-  const api = factory(coach);
+  const node = typeof module === 'object' && module.exports;
+  const coach = node ? require('./matchup-coach.js') : root.LOL_MATCHUP_COACH;
+  const roles = node ? require('./matchup-roles.js') : root.LOL_MATCHUP_ROLES;
+  const api = factory(coach, roles);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.LOL_DRAFT_ENGINE = api;
-})(typeof window !== 'undefined' ? window : globalThis, function (coach) {
+})(typeof window !== 'undefined' ? window : globalThis, function (coach, roleData) {
   'use strict';
   const ROLES = ['Top', 'Jungla', 'Mid', 'ADC', 'Support'];
   const POOLS = {
@@ -37,13 +39,24 @@
     return Object.keys(catalog).find(n => normalize(n) === key || normalize(catalog[n].id) === key) || null;
   }
 
+  // Un campeón entra en un rol si es una posición habitual suya o si el invocador lo ha
+  // jugado ahí 3 veces o más (pick propio fuera de lo común). Una partida suelta en otra
+  // posición suele ser un error de orden del equipo en normales, no un pick real.
+  const OFF_ROLE_MIN = 3;
+  const standardRole = (name, role, catalog) => roleData.rolesOf(name, catalog).includes(role);
+  function fitsRole(name, role, games, catalog) {
+    if (standardRole(name, role, catalog)) return true;
+    const mine = games.filter(g => g.champ === name), here = mine.filter(g => g.role === role).length;
+    return here >= OFF_ROLE_MIN && here >= mine.length * 0.3; // y al menos el 30% de sus partidas con él
+  }
+  const isCounter = (name, enemy) => roleData.countersFor(enemy).some(c => c.name === name);
+
   function tierList(games, role, catalog) {
     if (!ROLES.includes(role)) return [];
-    const lane = games.filter(g => g.role === role);
     const candidates = new Set(POOLS[role]);
-    lane.forEach(g => candidates.add(g.champ));
-    const rows = [...candidates].filter(name => catalog[name]).map(name => {
-      const personal = stats(lane.filter(g => g.champ === name));
+    games.forEach(g => candidates.add(g.champ));
+    const rows = [...candidates].filter(name => catalog[name] && fitsRole(name, role, games, catalog)).map(name => {
+      const personal = stats(games.filter(g => g.role === role && g.champ === name));
       const overall = stats(games.filter(g => g.champ === name));
       // 10 partidas virtuales al 50% moderan las muestras pequeñas.
       const adjusted = (personal.w + 5) / (personal.n + 10);
@@ -79,7 +92,12 @@
     if (foe.tags.includes('Tank') && name === 'Jhin') value -= 12;
     if (has('antiAuto', enemy) && has('auto', name)) value -= 14;
     const feedback = coach.explain(name, enemy, role);
-    return { score: clamp(value, 0, 100), ...feedback };
+    const known = roleData.countersFor(enemy).find(c => c.name === name);
+    if (known) {
+      value += 20;
+      feedback.reasons = [`Counter conocido de ${enemy}: ${known.why}`].concat(feedback.reasons);
+    }
+    return { score: clamp(value, 0, 100), counter: !!known, ...feedback };
   }
 
   function duelSummary(games) {
@@ -117,5 +135,33 @@
       return { ...c, kit, head, history, score };
     }).sort((a, b) => b.score - a.score || b.personal.n - a.personal.n || a.name.localeCompare(b.name));
   }
-  return { ROLES, POOLS, stats, normalize, resolveChampion, tierList, recommend, mechanics, duelSummary, matchupHistory };
+
+  // Counters teóricos del rival para ese rol: primero los conocidos y, si no hay, los de
+  // mejor encaje por kit entre los campeones habituales del rol. No usa el historial.
+  function theoreticalCounters(role, enemy, catalog, limit = 2) {
+    if (!catalog[enemy] || !ROLES.includes(role)) return [];
+    const known = roleData.countersFor(enemy).filter(c => c.name !== enemy && catalog[c.name] && standardRole(c.name, role, catalog))
+      .map(c => ({ name: c.name, why: c.why, known: true, kit: mechanics(c.name, enemy, role, catalog) }));
+    if (known.length) return known.slice(0, limit);
+    return Object.keys(catalog).filter(n => n !== enemy && standardRole(n, role, catalog))
+      .map(n => ({ name: n, known: false, kit: mechanics(n, enemy, role, catalog) }))
+      .filter(c => c.kit.score >= 60)
+      .sort((a, b) => b.kit.score - a.kit.score || a.name.localeCompare(b.name)).slice(0, limit)
+      .map(c => ({ ...c, why: c.kit.reasons[0] }));
+  }
+
+  // Plan del emparejamiento: el pick sale SIEMPRE del repertorio real del invocador en ese
+  // rol (campeones jugados). Si ninguno es counter directo, se añade el counter teórico.
+  function matchupPlan(games, role, enemy, catalog) {
+    const ranked = recommend(games, role, enemy, catalog);
+    if (!ranked.length) return { ranked, pick: null, fromPool: false, counter: false, theory: [] };
+    const pool = ranked.filter(c => c.personal.n > 0 || c.overall.n > 0);
+    const pick = pool[0] || ranked[0];
+    // Counter directo = counter conocido del rival que ya juega. Un buen encaje por habilidades no basta.
+    const counter = pool.length > 0 && pick.kit.counter;
+    const theory = counter ? [] : theoreticalCounters(role, enemy, catalog)
+      .filter(c => c.name !== pick.name && (c.known || c.kit.score > pick.kit.score));
+    return { ranked, pick, fromPool: pool.length > 0, counter, theory };
+  }
+  return { ROLES, POOLS, stats, normalize, resolveChampion, tierList, recommend, mechanics, duelSummary, matchupHistory, fitsRole, isCounter, theoreticalCounters, matchupPlan };
 });

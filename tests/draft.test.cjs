@@ -62,6 +62,32 @@ test('catalog normalization and invalid inputs are deterministic and safe', () =
   assert.deepEqual(E.tierList([], 'unknown', C), []);
 });
 
+test('champions only enter a role they are played in, never from one misordered game', () => {
+  const rustu = profiles.find(p => p.id === 'rustu.html');
+  const top = E.tierList(rustu.games, 'Top', C).map(c => c.name);
+  assert(!top.includes('Senna'), 'Senna (support/ADC) no puede salir en Top por una partida suelta');
+  // Off-meta real: 3 o más partidas en la posición sí cuentan.
+  const offMeta = Array.from({ length: 3 }, () => ({ role: 'Top', champ: 'Senna', opp: 'Garen', win: true }));
+  assert(E.tierList(offMeta, 'Top', C).some(c => c.name === 'Senna'));
+  assert(!E.tierList(offMeta.slice(0, 2), 'Top', C).some(c => c.name === 'Senna'));
+});
+
+test('matchup plan picks from the real pool and adds a theoretical counter when needed', () => {
+  const rustu = profiles.find(p => p.id === 'rustu.html');
+  const garen = E.matchupPlan(rustu.games, 'Top', 'Garen', C);
+  assert.notEqual(garen.pick.name, 'Senna');
+  assert(garen.pick.personal.n > 0 || garen.pick.overall.n > 0, 'el pick debe ser un campeón que el invocador ya juega');
+  assert(E.isCounter('Teemo', 'Garen'));
+  // Sin counter en el repertorio: pick del repertorio + counter teórico del rol.
+  const pool = Array.from({ length: 6 }, () => ({ role: 'Top', champ: 'Malphite', opp: 'Ornn', win: true }));
+  const plan = E.matchupPlan(pool, 'Top', 'Garen', C);
+  assert.equal(plan.pick.name, 'Malphite');
+  assert.equal(plan.counter, false);
+  assert(plan.theory.length >= 1 && plan.theory.every(t => t.known && t.why));
+  // Sin partidas en el rol: no hay repertorio, se muestran counters para practicar.
+  assert.equal(E.matchupPlan([], 'Top', 'Garen', C).fromPool, false);
+});
+
 test('tier lists differ between summoners in their familiar positions', () => {
   const josiso = profiles.find(p => p.id === 'josiso.html');
   const nachete = profiles.find(p => p.id === 'nachete.html');

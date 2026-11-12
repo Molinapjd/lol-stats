@@ -133,16 +133,26 @@
         target.innerHTML = '<div class="matchup-empty"><span aria-hidden="true">VS</span><h3>El rival pone la pregunta.<br>Tu repertorio tiene la respuesta.</h3><p>Selecciona un campeón para comparar tus opciones, ver el pick recomendado y preparar el duelo.</p></div>';
         return;
       }
-      const ranked = E.recommend(player.games, role, enemy, catalog);
+      const plan = E.matchupPlan(player.games, role, enemy, catalog);
+      const ranked = plan.ranked;
       if (!ranked.length) { target.innerHTML = '<p class="empty">No quedan opciones para este emparejamiento.</p>'; return; }
-      const best = ranked.find(c => c.name === inspectedPick) || ranked[0];
-      const recommended = best.name === ranked[0].name;
+      const best = ranked.find(c => c.name === inspectedPick) || plan.pick;
+      const recommended = best.name === plan.pick.name;
+      const eyebrow = !recommended ? 'ALTERNATIVA CONSULTADA' : plan.counter ? 'COUNTER DIRECTO DE TU REPERTORIO' : plan.fromPool ? 'LO MEJOR DE TU REPERTORIO' : 'OPCIÓN PARA PRACTICAR';
+      const pickRecord = c => c.personal.n ? `${record(c.personal)} en ${labels[role]}` : `${c.overall.n} ${c.overall.n === 1 ? 'partida' : 'partidas'} en otras posiciones`;
+      const theoryIntro = plan.fromPool
+        ? `Ninguno de los campeones que juegas en ${labels[role]} es un counter directo de ${enemy}. ${plan.pick.name} es el que mejor se adapta de tu repertorio (${pickRecord(plan.pick)}): te da experiencia y un plan sólido aunque el duelo no le favorezca de entrada.`
+        : `No tienes partidas con campeones de ${labels[role]}, así que no hay repertorio propio que recomendar. Estos son los counters de manual para practicar.`;
+      const theoryHtml = recommended && plan.theory.length ? `<section class="theory-counter" aria-label="Counter teórico">
+          <p class="draft-eyebrow">COUNTER TEÓRICO</p><p class="theory-intro">${esc(theoryIntro)}</p>
+          ${plan.theory.map(t => { const played = player.games.filter(g => g.champ === t.name).length; return `<article>${icon(t.name)}<div><h4>${esc(t.name)} <small>${t.known ? 'counter conocido' : 'buen encaje por habilidades'}</small></h4><p>${esc(t.why)}</p><p class="theory-note">${played ? `Lo has jugado ${played} ${played === 1 ? 'vez' : 'veces'}, pero no en esta posición.` : 'No está en tu repertorio: pruébalo en normales antes de llevarlo a ranked.'}</p></div></article>`; }).join('')}
+        </section>` : '';
       const trusted = best.personal.n >= 5;
       const explanation = best.personal.n ? `${best.personal.n} ${best.personal.n === 1 ? 'partida' : 'partidas'} en ${labels[role]} con ${best.name}: ${record(best.personal)}. ${best.head.n ? `Dentro de esa muestra, contra ${enemy}: ${best.head.n} ${best.head.n === 1 ? 'partida' : 'partidas'}, ${record(best.head)}.` : `Dentro de esa muestra no hay duelos con este campeón contra ${enemy}.`}` : best.overall.n ? `Tienes ${best.overall.n} partidas con ${best.name} en otras posiciones. No hay resultados personales en ${labels[role]}: el plan de este duelo se basa en sus habilidades.` : `No hay partidas guardadas con ${best.name}. Esta opción requiere práctica: el plan del duelo se basa en las habilidades de ambos campeones.`;
       target.innerHTML = `
         <div class="draft-versus">${icon(enemy)}<div><small>EL RIVAL · ${labels[role]}</small><b>${esc(enemy)}</b></div><span>VS</span></div>
         <article class="recommended-pick">
-          <p class="draft-eyebrow">${!recommended ? 'ALTERNATIVA CONSULTADA' : trusted ? 'TU PRIMERA OPCIÓN' : 'OPCIÓN PARA PRACTICAR'}</p>
+          <p class="draft-eyebrow">${eyebrow}</p>
           <div class="pick-title">${icon(best.name, 'winner-icon')}<div><span class="pick-tier">TIER ${best.tier} PERSONAL</span><h3>${esc(best.name)}</h3><p>Para ${esc(player.name)} · ${labels[role]}</p></div><div class="pick-score"><b>${Math.round(best.score)}</b><span>/ 100<br>encaje</span></div></div>
           <p class="confidence-note">${best.head.n >= 10 && trusted ? 'Con historial personal del duelo; sigue siendo orientativo.' : 'Confianza limitada · muestra de duelos escasa o inexistente.'}</p>
           <p class="pick-experience">${esc(explanation)}</p>
@@ -154,9 +164,10 @@
           <p class="matchup-sources">Habilidades de Riot · ${esc(best.kit.version || '')} · revisadas el ${esc(best.kit.checked || '')}: ${(best.kit.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(' · ')}. El plan táctico es una interpretación, no una recomendación oficial de Riot.</p>
           <div class="score-breakdown"><span>Preparación <b>${Math.round(best.base)}</b><small>40% del índice</small></span><span>Kit frente al rival <b>${Math.round(best.kit.score)}</b><small>50% del índice</small></span><span>Historial del duelo <b>${best.head.n ? Math.round(50 + ((best.head.w + 5) / (best.head.n + 10) - 0.5) * 100) : '50 · neutro'}</b><small>10% del índice</small></span></div>
         </article>
-        ${!recommended ? `<button type="button" class="inspect-pick return-pick" data-inspect-pick="${esc(ranked[0].name)}">Volver a la recomendación: ${esc(ranked[0].name)}</button>` : ''}
+        ${theoryHtml}
+        ${!recommended ? `<button type="button" class="inspect-pick return-pick" data-inspect-pick="${esc(plan.pick.name)}">Volver a la recomendación: ${esc(plan.pick.name)}</button>` : ''}
         <div class="alternatives"><h3>Otras cartas sobre la mesa</h3>${ranked.filter(c => c.name !== best.name).slice(0, 3).map(c => `<article>${icon(c.name)}<div><h4>${esc(c.name)} <small>Tier ${c.tier}</small></h4><p>${esc(championMeta(c))}</p><p>${c.head.n ? `${c.head.n} ${c.head.n === 1 ? 'duelo' : 'duelos'} contra ${esc(enemy)} · ${c.head.w}V/${c.head.l}D` : 'Sin duelos guardados con este campeón frente al rival'}</p><p class="alternative-reason">${esc(c.kit.reasons[0])}</p><button type="button" class="inspect-pick" data-inspect-pick="${esc(c.name)}">Ver plan de ${esc(c.name)}</button></div><span class="alternative-score">${Math.round(c.score)}<small>encaje</small></span></article>`).join('')}</div>
-        <p class="result-footnote">Índice orientativo, no porcentaje de victoria. Se comparan únicamente los 8 campeones de tu tier list de ${labels[role]}. El campeón enemigo queda excluido.</p>`;
+        <p class="result-footnote">Índice orientativo, no porcentaje de victoria. Se comparan los campeones de tu tier list de ${labels[role]}: solo los que se juegan en esa posición (o que tú has jugado ahí 3 veces o más). El pick sale de los campeones que ya juegas; el campeón enemigo queda excluido.</p>`;
       target.querySelectorAll('[data-inspect-pick]').forEach(button => button.addEventListener('click', () => {
         inspectedPick = button.dataset.inspectPick;
         renderMatchup();
