@@ -6,7 +6,7 @@
     if (!api || !E || !C) { app.textContent = 'No se ha podido cargar la preparación. Recarga la página.'; return; }
     const catalog = C.champions;
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-    const image = name => api.iconFor(name); // icono oficial; las caras South Park quedan para la portada
+    const image = name => api.imageFor(name); // caras South Park locales, sin servidor externo
     const icon = (name, cls = '') => `<img class="draft-icon ${cls}" src="${image(name)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='assets/champions/unknown.svg'">`;
     const labels = { Top: 'Superior', Jungla: 'Jungla', Mid: 'Medio', ADC: 'ADC', Support: 'Support' };
     const roleIds = { Top: 'top', Jungla: 'jungla', Mid: 'mid', ADC: 'adc', Support: 'support' };
