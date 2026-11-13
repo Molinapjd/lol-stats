@@ -9,10 +9,18 @@ window.LOL_DATA["yan-diomande-yan-d"] = {
   tag: "Yan D",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Yan%20Diomand%C3%A9-Yan%20D",
-  updated: "2026-11-11",
+  updated: "2026-11-13 10:06",
   rank: { solo: "Gold 3 · 86 LP" },
   names: [], champs: [], badges: [],
   raw: `
+A|29908538|W|1151|Vex|18|17|16|38|70|40||0|Leader|2|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;Filosofofo #dncia;;AllMuted49 #EUW;Joeker Mexicano #Yowi;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
+F|29908514|W|1725|Dr. Mundo|18|5|2|10|45|230|58|4|Unstoppable|0|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|;DonPimPon #Espin;Filosofofo #dncia;AllMuted49 #EUW;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
+F|29908480|D|2168|Senna|17|6|5|10|59|271|51|0|Unlucky|8|Renekton;Shaco;Veigar;Caitlyn;Nautilus;Akali;Shyvana;Vel'Koz;Senna;Thresh|Sebesebe2 #EUW;katharsis #004;KaiserBeneros #EUW;OTP Txirrisklas #INT;Ser5gioG #EUW;Chimi #meows;pyrdee #6767;Filosofofo #dncia;;j3pi #EUW
+N|29907149|W|2153|Quinn|19|12|11|12|52|194|59|5|Victor|5|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;;7thpalacetank #akay;Filosofofo #dncia;AllMuted49 #EUW;DonPimPon #Espin
+F|29907103|D|1469|Senna|12|5|6|12|85|35|65|0|Unlucky|9|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;DonPimPon #Espin;Filosofofo #dncia;AllMuted49 #EUW;
+A|29907066|D|1404|Tristana|18|27|17|15|66|96||5|Unlucky|2|Urgot;Miss Fortune;Tristana;Xerath;Nami;Akshan;Seraphine;Vel'Koz;Ziggs;Xayah|j3pi #EUW;Filosofofo #dncia;;Ivory Ebony #EUW;ErSilvionePazzo #7629;Idomeneo #26999;SampleText #1468;Sylar142 #EUW;Akimitsu #8454;Chidori #934
+A|29907035|W|1344|Darius|18|23|12|21|73|59||4|Late bloomer|3|Senna;Galio;Malphite;Darius;Ashe;Wukong;Pyke;Rumble;Zilean;Zyra|j3pi #EUW;Filosofofo #dncia;DonPimPon #Espin;;pbp16pablo #EUW;Sadowsick #EUW;Karl Ludwig #EUW;xSuechtigx #EUW;Isonalam0 #5261;Broshavi3 #9230
+A|29907009|D|1250|Lillia|17|10|13|17|69|46||10|Struggle|8|Fizz;Ezreal;Janna;Nautilus;Milio;Graves;Kayle;Fiora;Lillia;Yorick|High ôn Bush #92687;Baptman5 #EUW;ItWasLuckx #EUW;MoTRoD #3009;ıIı Azrael ıIı #EUW;j3pi #EUW;Filosofofo #dncia;DonPimPon #Espin;;Ned #LMD
 N|29904266|D|1985|Miss Fortune|15|7|10|19|57|55|64|6|Unlucky|9|Urgot;Viego;Veigar;Yasuo;Malphite;Trundle;Qiyana;Galio;Kai'Sa;Miss Fortune|AdAbsurdum #HUR;Quiezzy #UWU;Blackjackbird #EUW;Segetario #EUW;Sime039 #EUW;j3pi #EUW;NoddyBelle #LOVEU;Filosofofo #dncia;Nosigasalguiri #Yowi;
 F|29904226|D|2386|Dr. Mundo|18|8|7|11|46|217|62|6|Downfall|6|Vayne;Qiyana;Orianna;Miss Fortune;Leona;Malphite;Dr. Mundo;Vel'Koz;Lux;Twitch|Sulyy7 #EUW;Jef Klak #3007;Dikke Tas #420;LilDonkey21 #BALD;Snoepjeskoning #SNOEP;j3pi #EUW;;Filosofofo #dncia;scissoring queen #femmy;Nele10 #EUW
 F|29902323|D|1407|Teemo|15|4|3|2|46|195|59|0|Unlucky|0|Teemo;Zed;Aurora;Tristana;Thresh;Yasuo;Lillia;Naafiri;Miss Fortune;Blitzcrank|;ZOOLDDIK #EUW;3vilon #EUW;DonPimPon #Espin;j3pi #EUW;One Shot By Me #EUW;o Black Light o #EUW;M0rtic1an #333;SirEsteves #AK935;daynean #phel

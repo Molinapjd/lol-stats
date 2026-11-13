@@ -9,10 +9,19 @@ window.LOL_DATA["filosofofo-dncia"] = {
   tag: "dncia",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Filosofofo-dncia",
-  updated: "2026-11-11",
+  updated: "2026-11-13 10:06",
   rank: { solo: "Bronze 3 · 61 LP" },
   names: [], champs: [], badges: [],
   raw: `
+A|29908538|W|1151|Morgana|18|9|15|44|67|35||4|Victor|1|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;;Yan Diomandé #Yan D;AllMuted49 #EUW;Joeker Mexicano #Yowi;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
+F|29908514|W|1725|Vel'Koz|16|4|3|5|27|201|44|5|Resilient|2|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;DonPimPon #Espin;;AllMuted49 #EUW;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
+F|29908480|D|2168|Vel'Koz|17|5|7|7|44|227|47|7|Struggle|7|Renekton;Shaco;Veigar;Caitlyn;Nautilus;Akali;Shyvana;Vel'Koz;Senna;Thresh|Sebesebe2 #EUW;katharsis #004;KaiserBeneros #EUW;OTP Txirrisklas #INT;Ser5gioG #EUW;Chimi #meows;pyrdee #6767;;Yan Diomandé #Yan D;j3pi #EUW
+S|29907233|W|1787|Vel'Koz|15|10|5|5|38|206|64|4|Victor|7|Yorick;Viego;Aurelion Sol;Miss Fortune;Karma;Yone;Warwick;Vel'Koz;Senna;Nami|00Fies #0000;tatouille #4248;luiginuspower #EUW;NWA KYKY #77220;Loneinduo #EUW;Shrawo #4065;GhostOfPesre #2353;;elquenuncahacena #EUW;Detsu #meep
+N|29907149|W|2153|Galio|17|0|8|23|50|129|50|6|Resilient|7|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;;AllMuted49 #EUW;DonPimPon #Espin
+F|29907103|D|1469|Malzahar|13|2|11|6|40|145|22|10|Struggle|7|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;DonPimPon #Espin;;AllMuted49 #EUW;Yan Diomandé #Yan D
+A|29907066|D|1404|Miss Fortune|18|8|13|26|53|50||10|Downfall|1|Urgot;Miss Fortune;Tristana;Xerath;Nami;Akshan;Seraphine;Vel'Koz;Ziggs;Xayah|j3pi #EUW;;Yan Diomandé #Yan D;Ivory Ebony #EUW;ErSilvionePazzo #7629;Idomeneo #26999;SampleText #1468;Sylar142 #EUW;Akimitsu #8454;Chidori #934
+A|29907035|W|1344|Galio|18|6|13|41|78|47||5|Resilient|1|Senna;Galio;Malphite;Darius;Ashe;Wukong;Pyke;Rumble;Zilean;Zyra|j3pi #EUW;;DonPimPon #Espin;Yan Diomandé #Yan D;pbp16pablo #EUW;Sadowsick #EUW;Karl Ludwig #EUW;xSuechtigx #EUW;Isonalam0 #5261;Broshavi3 #9230
+A|29907009|D|1250|Kayle|18|5|9|26|79|53||7|Downfall|6|Fizz;Ezreal;Janna;Nautilus;Milio;Graves;Kayle;Fiora;Lillia;Yorick|High ôn Bush #92687;Baptman5 #EUW;ItWasLuckx #EUW;MoTRoD #3009;ıIı Azrael ıIı #EUW;j3pi #EUW;;DonPimPon #Espin;Yan Diomandé #Yan D;Ned #LMD
 A|29905638|W|1097|Morgana|18|7|10|35|75|31||0|Victor|7|Zac;Elise;Zilean;Anivia;Sivir;Karthus;Jinx;Morgana;Olaf;Caitlyn|johny97 #4750;B1oodwork #EUW;Occiffect #EUW;gweig #EUW;Niephanium #EUW;Str4Njr #IND;j3pi #EUW;;DonPimPon #Espin;elquenuncahacena #EUW
 N|29905614|W|1953|Galio|17|1|7|15|28|170|35|5|Resilient|7|K'Sante;Qiyana;Yone;Azir;Zyra;Malphite;Jarvan IV;Galio;Miss Fortune;Lux|Maiden my Girl #EUW;AFK Angel #0410;TilliWilli69 #EUW;LilGeek #161;TomAltF4 #EUW;j3pi #EUW;Kalimba Táctico #OGT;;DonPimPon #Espin;elquenuncahacena #EUW
 N|29905573|W|1351|Galio|13|3|4|14|47|134|56|5|Victor|2|Malphite;Rengar;Galio;Ashe;Senna;Gwen;Vi;LeBlanc;Zeri;Lulu|j3pi #EUW;B2K2015 #EUW;;elquenuncahacena #EUW;DonPimPon #Espin;Dregsche Dan #EUW;MrTerminator #WEST;alTair #RMDN;kjcdshdae #8636;nayzjr #EUW

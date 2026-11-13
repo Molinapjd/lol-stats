@@ -8,10 +8,11 @@ window.LOL_DATA["donpimpon-espin"] = {
   tag: "Espin",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/DonPimPon-Espin",
-  updated: "2026-11-12 12:36",
+  updated: "2026-11-13 10:06",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `
+F|29908514|W|1725|Wukong|17|9|2|10|58|225|54|2|Unstoppable|1|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;;Filosofofo #dncia;AllMuted49 #EUW;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
 N|29907149|W|2153|Karma|16|3|9|26|63|49|50|4|Resilient|9|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;AllMuted49 #EUW;
 F|29907103|D|1469|Vi|14|2|7|11|65|140|33|6|Unlucky|6|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;;Filosofofo #dncia;AllMuted49 #EUW;Yan Diomandé #Yan D
 A|29907035|W|1344|Malphite|18|11|16|31|70|41||10|Struggle|2|Senna;Galio;Malphite;Darius;Ashe;Wukong;Pyke;Rumble;Zilean;Zyra|j3pi #EUW;Filosofofo #dncia;;Yan Diomandé #Yan D;pbp16pablo #EUW;Sadowsick #EUW;Karl Ludwig #EUW;xSuechtigx #EUW;Isonalam0 #5261;Broshavi3 #9230

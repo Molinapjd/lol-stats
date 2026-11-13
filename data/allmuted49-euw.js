@@ -9,10 +9,12 @@ window.LOL_DATA["allmuted49-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/AllMuted49-EUW",
-  updated: "2026-11-12 12:35",
+  updated: "2026-11-13 10:06",
   rank: { solo: "Platinum 2 · 42 LP" },
   names: [], champs: [], badges: [],
   raw: `
+A|29908538|W|1151|Irelia|18|29|13|20|62|67||3|Unstoppable|3|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;Filosofofo #dncia;Yan Diomandé #Yan D;;Joeker Mexicano #Yowi;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
+F|29908514|W|1725|Jhin|16|13|2|7|61|273|72|0|Unstoppable|3|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;DonPimPon #Espin;Filosofofo #dncia;;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
 N|29907149|W|2153|Jinx|18|18|7|11|63|293|51|0|Unstoppable|8|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;;DonPimPon #Espin
 F|29907103|D|1469|Jhin|13|11|7|4|75|176|69|4|Unlucky|8|Sylas;Kindred;Tristana;Ziggs;Veigar;Malphite;Vi;Malzahar;Jhin;Senna|MrNecro #EUW;oldfat fingers #lucky;nexus38 #EUW;MugiValoux #9479;illoup #EUW;j3pi #EUW;DonPimPon #Espin;Filosofofo #dncia;;Yan Diomandé #Yan D
 F|29904167|W|1271|Jhin|12|8|5|2|48|170|52|2|Leader|8|Kai'Sa;Nocturne;Sivir;Kalista;Zilean;Malphite;Vi;Galio;Jhin;Leona|Ra ghanbda nt3sb #zga;Dimmu Borgir #7096;Yasuos victim #juicy;Αρετή #EUW;GuessAllJuice271 #93598;j3pi #EUW;eastsidenibba #EUW;Filosofofo #dncia;;Choky #gen1

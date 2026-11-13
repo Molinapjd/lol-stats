@@ -9,7 +9,7 @@ window.LOL_DATA["rustu-rst"] = {
   tag: "rst",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Rustu-rst",
-  updated: "2026-11-11",
+  updated: "2026-11-13 10:06",
   rank: { solo: "Platinum 4 · 80 LP" },
   names: [], champs: [], badges: [],
   raw: `
