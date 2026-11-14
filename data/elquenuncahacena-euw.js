@@ -9,7 +9,7 @@ window.LOL_DATA["elquenuncahacena-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/elquenuncahacena-EUW",
-  updated: "2026-11-13 10:06",
+  updated: "2026-11-14 12:23",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `

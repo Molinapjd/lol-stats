@@ -9,7 +9,7 @@ window.LOL_DATA["yan-diomande-yan-d"] = {
   tag: "Yan D",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Yan%20Diomand%C3%A9-Yan%20D",
-  updated: "2026-11-13 10:06",
+  updated: "2026-11-14 12:23",
   rank: { solo: "Gold 3 · 86 LP" },
   names: [], champs: [], badges: [],
   raw: `

@@ -8,7 +8,7 @@ window.LOL_DATA["donpimpon-espin"] = {
   tag: "Espin",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/DonPimPon-Espin",
-  updated: "2026-11-13 10:06",
+  updated: "2026-11-14 12:23",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `

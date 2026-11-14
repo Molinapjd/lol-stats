@@ -9,10 +9,13 @@ window.LOL_DATA["allmuted49-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/AllMuted49-EUW",
-  updated: "2026-11-13 10:06",
+  updated: "2026-11-14 12:23",
   rank: { solo: "Platinum 2 · 42 LP" },
   names: [], champs: [], badges: [],
   raw: `
+S|29910105|D|2215|Jhin|17|17|8|8|54|270|63|4|Unlucky|3|Zaahen;Sylas;Qiyana;Jhin;Seraphine;Sion;Karthus;LeBlanc;Twitch;Bard|HB ABLIS #TOP;Z29vZCB2aWJleiBo #GOAT;AmazingAdam169 #333;;DaddyMbappé #EUW;3ternalShadow #EUW;GangsterboyTimbo #EUW;EkkoCarryLouL #EUW;GuiD #EUW;息をする #1729
+S|29910057|W|1959|Jhin|17|17|6|13|58|224|56|0|Unstoppable|8|Garen;Vi;Viktor;Samira;Thresh;Jayce;Sett;Zed;Jhin;Bard|PrinceJesus #EUW;1oco #EUW;RAHHHH #otp;Gelix #EUW;TheOnlyChick #EUW;Hide on Bush #99765;TakeItEasyDude #EUW;AKAZA #DMHG;;fiora456 #EUW
+S|29910020|R|72|Jhin|1|0|0|0|0|0||0||8|Gnar;Wukong;Vel'Koz;Kai'Sa;Pyke;Olaf;Diana;Galio;Jhin;Karma|Yosh #iii;Evolt3 #L8er;SKY #DOU;overyouKO #EUW;Neto #Euw2;SkyFish #6916;Ascent #ROCK;Helium #2830;;Haruuu #24434
 A|29908538|W|1151|Irelia|18|29|13|20|62|67||3|Unstoppable|3|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;Filosofofo #dncia;Yan Diomandé #Yan D;;Joeker Mexicano #Yowi;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
 F|29908514|W|1725|Jhin|16|13|2|7|61|273|72|0|Unstoppable|3|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;DonPimPon #Espin;Filosofofo #dncia;;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
 N|29907149|W|2153|Jinx|18|18|7|11|63|293|51|0|Unstoppable|8|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;;DonPimPon #Espin
