@@ -8,10 +8,13 @@ window.LOL_DATA['joeker-mexicano-yowi'] = {
   tag: 'Yowi',
   region: 'EUW',
   source: 'https://op.gg/lol/summoners/euw/Joeker%20Mexicano-Yowi',
-  updated: '2026-11-14 12:23',
+  updated: '2026-11-15 11:51',
   rank: { solo: 'Sin clasificar' },
   names: [], champs: [], badges: [],
   raw: `
+N|29911534|D|2075|Briar|17|8|15|9|37|202|49|8|Downfall|1|Trundle;Briar;Vex;Lulu;Pantheon;Sett;Zac;Sylas;Miss Fortune;Brand|Shadow Trickster #P5R;;Yan Diomandé #Yan D;3secondsInHeaven #MORG;JeTePasseLaBise #BEUTE;Abdk35 #EUW;Kellecii #TR1;xavier 04 #EUW;EDO #vo45;StarEater #6969
+N|29911493|W|935|Briar|9|1|4|3|27|100|49|6|Struggle|1|Trundle;Briar;Azir;Aphelios;Lulu;Rumble;Zac;Vladimir;Kai'Sa;Nautilus|Yan Diomandé #Yan D;;imnotbanned #3760;Inkie #2222;NoBeact #EUW;Abdk35 #EUW;arlingtonCchino #utah;xavier 04 #EUW;MarslIII #EUW;Luckyj0 #EUW
+N|29911473|D|1642|Briar|14|5|10|2|37|181|45|8|Struggle|1|Teemo;Briar;Katarina;Caitlyn;Yuumi;Tristana;Warwick;Zed;Jinx;Senna|Yan Diomandé #Yan D;;Sawie #EUW;Parnooo #EUW;AnomalyBanshee #6812;Coochimood #EUW;Kiado  #EUW;Trackers #None;TheBabySharky #EUW;Breese #EUW
 N|29909879|D|1647|Wukong|15|10|7|8|64|145|62|0|Unlucky|6|Ambessa;Master Yi;Katarina;Ezreal;Anivia;Ornn;Wukong;Aurora;Ashe;Seraphine|Lethal #aced;Valdels #2002;imjustdom #dom;Mr Large Wood #Wood;乂冈凶区囟乂冈凶区囟乂冈凶区囟乂 #chrys;Arcuballista21 #6372;;B20 #EUW;lumenlune #LUNE;tumarx #EUW
 A|29908538|W|1151|Ahri|18|6|15|40|58|36||9|Average|4|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;Filosofofo #dncia;Yan Diomandé #Yan D;AllMuted49 #EUW;;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
 N|29904266|D|1985|Kai'Sa|15|11|13|8|41|199|64|10|Downfall|8|Urgot;Viego;Veigar;Yasuo;Malphite;Trundle;Qiyana;Galio;Kai'Sa;Miss Fortune|AdAbsurdum #HUR;Quiezzy #UWU;Blackjackbird #EUW;Segetario #EUW;Sime039 #EUW;j3pi #EUW;NoddyBelle #LOVEU;Filosofofo #dncia;;Yan Diomandé #Yan D

@@ -9,10 +9,13 @@ window.LOL_DATA["allmuted49-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/AllMuted49-EUW",
-  updated: "2026-11-14 12:23",
+  updated: "2026-11-15 11:51",
   rank: { solo: "Platinum 2 · 42 LP" },
   names: [], champs: [], badges: [],
   raw: `
+S|29911206|W|1572|Jhin|14|8|4|9|47|224|59|3|Late bloomer|8|Irelia;Wukong;Syndra;Smolder;Nautilus;Darius;Warwick;Ahri;Jhin;Soraka|Vegetable Soups #00000;BlueFirefly10 #EUW;z3zao #ezzz;Discipline #FTW;katita46 #EUW;nmg rivers #RoB;rompebraguitas88 #0088;InDiana Jones #EUW2;;Nenwe #EUW
+S|29911028|W|1843|Jhin|16|17|6|9|57|248|65|0|Unstoppable|3|Jayce;Kindred;Galio;Jhin;Lux;Briar;Viego;Diana;Caitlyn;Seraphine|minor #0506;Don Azemi #AZEMI;Tarbinji #07597;;MikeZgZ #EUW;chubbywomenDMme #6767;Jotaro Kujo #187;manjiro Sano #寒いセブン;soheillol #9604;Gérard delaRive #EUW
+S|29910993|R|76|Jhin|1|0|0|0|0|1||0||3|Garen;Amumu;Zed;Jhin;Pantheon;Yone;Lee Sin;Lissandra;Xayah;Shaco|Stéphane Burne #Kiks;JamSlasher #EUW;Balrog272 #EUW;;igotnocake #sumyd;UTH #7845;Le inter Masqué #666;FairLight #FX8;Kayuzo #EUW;Mjolken #SWEDE
 S|29910105|D|2215|Jhin|17|17|8|8|54|270|63|4|Unlucky|3|Zaahen;Sylas;Qiyana;Jhin;Seraphine;Sion;Karthus;LeBlanc;Twitch;Bard|HB ABLIS #TOP;Z29vZCB2aWJleiBo #GOAT;AmazingAdam169 #333;;DaddyMbappé #EUW;3ternalShadow #EUW;GangsterboyTimbo #EUW;EkkoCarryLouL #EUW;GuiD #EUW;息をする #1729
 S|29910057|W|1959|Jhin|17|17|6|13|58|224|56|0|Unstoppable|8|Garen;Vi;Viktor;Samira;Thresh;Jayce;Sett;Zed;Jhin;Bard|PrinceJesus #EUW;1oco #EUW;RAHHHH #otp;Gelix #EUW;TheOnlyChick #EUW;Hide on Bush #99765;TakeItEasyDude #EUW;AKAZA #DMHG;;fiora456 #EUW
 S|29910020|R|72|Jhin|1|0|0|0|0|0||0||8|Gnar;Wukong;Vel'Koz;Kai'Sa;Pyke;Olaf;Diana;Galio;Jhin;Karma|Yosh #iii;Evolt3 #L8er;SKY #DOU;overyouKO #EUW;Neto #Euw2;SkyFish #6916;Ascent #ROCK;Helium #2830;;Haruuu #24434

@@ -9,7 +9,7 @@ window.LOL_DATA["filosofofo-dncia"] = {
   tag: "dncia",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Filosofofo-dncia",
-  updated: "2026-11-14 12:23",
+  updated: "2026-11-15 11:51",
   rank: { solo: "Bronze 3 · 61 LP" },
   names: [], champs: [], badges: [],
   raw: `
