@@ -9,7 +9,7 @@ window.LOL_DATA["allmuted49-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/AllMuted49-EUW",
-  updated: "2026-11-15 11:51",
+  updated: "2026-11-16 13:05",
   rank: { solo: "Platinum 2 · 42 LP" },
   names: [], champs: [], badges: [],
   raw: `

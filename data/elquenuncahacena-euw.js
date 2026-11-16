@@ -9,10 +9,13 @@ window.LOL_DATA["elquenuncahacena-euw"] = {
   tag: "EUW",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/elquenuncahacena-EUW",
-  updated: "2026-11-15 11:51",
+  updated: "2026-11-16 13:05",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `
+S|29912799|W|1681|Miss Fortune|14|6|4|12|49|54|54|0|Victor|9|Kayle;Master Yi;Syndra;Tristana;Morgana;Garen;Shaco;Malzahar;Ziggs;Miss Fortune|Diesbell #4114;要嘛重擊 #5314;Jaroda #F7TT3;Arcopro01 #3184;SuspiciousBread #12345;Egyptian41 #EUW;yesyesy000R #EUW;Filosofofo #dncia;ペ Tika ma ペ #TCT;
+S|29912766|R|75|Teemo|1|0|0|0|0|1||0||0|Teemo;Shyvana;Malzahar;Ashe;Seraphine;Heimerdinger;Zac;Yasuo;Jhin;Veigar|;xXサシャXx #EUU;Filosofofo #dncia;Basile #6314;Mabel #612;muxotron #EUW;kenderduu #hils;Amula9220 #EUW;BarkusSamurai #EUW;Lexel #EUW
+S|29912758|W|1697|Malzahar|19|7|4|12|44|245|59|2|Victor|5|Nasus;Diana;Irelia;Aphelios;Milio;Malzahar;Master Yi;Vel'Koz;Ezreal;Renata Glasc|Lockdown99 #eu99;kartoz #mcg;fardinstn #EUW;CloudCraker #himbo;Aśka007 #0007;;MarzoNero #2803;Filosofofo #dncia;Myrikae #EUW;Nottoosmartboi #7752
 S|29907233|W|1787|Senna|15|9|3|11|51|147|53|2|Late bloomer|8|Yorick;Viego;Aurelion Sol;Miss Fortune;Karma;Yone;Warwick;Vel'Koz;Senna;Nami|00Fies #0000;tatouille #4248;luiginuspower #EUW;NWA KYKY #77220;Loneinduo #EUW;Shrawo #4065;GhostOfPesre #2353;Filosofofo #dncia;;Detsu #meep
 A|29905638|W|1097|Caitlyn|18|10|13|27|66|61||9|Struggle|9|Zac;Elise;Zilean;Anivia;Sivir;Karthus;Jinx;Morgana;Olaf;Caitlyn|johny97 #4750;B1oodwork #EUW;Occiffect #EUW;gweig #EUW;Niephanium #EUW;Str4Njr #IND;j3pi #EUW;Filosofofo #dncia;DonPimPon #Espin;
 N|29905614|W|1953|Lux|17|14|3|27|72|58|73|2|Unstoppable|9|K'Sante;Qiyana;Yone;Azir;Zyra;Malphite;Jarvan IV;Galio;Miss Fortune;Lux|Maiden my Girl #EUW;AFK Angel #0410;TilliWilli69 #EUW;LilGeek #161;TomAltF4 #EUW;j3pi #EUW;Kalimba Táctico #OGT;Filosofofo #dncia;DonPimPon #Espin;

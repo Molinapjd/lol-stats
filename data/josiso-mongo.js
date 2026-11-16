@@ -8,7 +8,7 @@ window.LOL_DATA["josiso-mongo"] = {
   tag: "Mongo",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Josiso-Mongo",
-  updated: "2026-11-15 11:51",
+  updated: "2026-11-16 13:05",
   rank: { solo: "Gold 2 · 28 LP" },
   names: [], champs: [], badges: [],
   raw: `

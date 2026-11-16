@@ -9,10 +9,18 @@ window.LOL_DATA["filosofofo-dncia"] = {
   tag: "dncia",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Filosofofo-dncia",
-  updated: "2026-11-15 11:51",
+  updated: "2026-11-16 13:05",
   rank: { solo: "Bronze 3 · 61 LP" },
   names: [], champs: [], badges: [],
   raw: `
+A|29913036|W|1253|Janna|18|4|9|44|81|15||5|Late bloomer|7|Yone;Hwei;Blitzcrank;Cho'Gath;Vel'Koz;Talon;Thresh;Janna;Ezreal;Sylas|Wiiime #123;Matt Budi #128;Payana #EUW;fullsidestep #EUW;Payane #8528;CaptaínKaracho #6391;j3pi #EUW;;Yan Diomandé #Yan D;Joeker Mexicano #Yowi
+N|29913012|D|2012|Vel'Koz|17|6|7|14|59|233|56|0|Unlucky|7|Qiyana;Rammus;Ahri;Brand;Amumu;Zac;Briar;Vel'Koz;Jinx;Ashe|QZDSGSDFQSD #QSD;Zhongli #GE0;Fleur #Insta;Berrry2020 #EUW;aMaaZe #2342;DoOwY #7789;Joeker Mexicano #Yowi;;j3pi #EUW;Yan Diomandé #Yan D
+N|29912970|D|2056|Galio|16|2|10|14|43|171|59|9|Downfall|2|Tryndamere;Briar;Galio;Miss Fortune;Nautilus;Garen;Ekko;Zoe;Jinx;Leona|Nénuphar De Cire #EUW;Joeker Mexicano #Yowi;;j3pi #EUW;Yan Diomandé #Yan D;Lécheur de Pied #KIFF;Aventurine #ODDS;Anorak #BIRD;PowPowsMommy #JINX;OpiumOtter #SUCHT
+S|29912799|W|1681|Malzahar|15|4|5|11|41|172|47|6|Resilient|7|Kayle;Master Yi;Syndra;Tristana;Morgana;Garen;Shaco;Malzahar;Ziggs;Miss Fortune|Diesbell #4114;要嘛重擊 #5314;Jaroda #F7TT3;Arcopro01 #3184;SuspiciousBread #12345;Egyptian41 #EUW;yesyesy000R #EUW;;ペ Tika ma ペ #TCT;elquenuncahacena #EUW
+S|29912766|R|75|Malzahar|1|0|0|0|0|4||0||2|Teemo;Shyvana;Malzahar;Ashe;Seraphine;Heimerdinger;Zac;Yasuo;Jhin;Veigar|elquenuncahacena #EUW;xXサシャXx #EUU;;Basile #6314;Mabel #612;muxotron #EUW;kenderduu #hils;Amula9220 #EUW;BarkusSamurai #EUW;Lexel #EUW
+S|29912758|W|1697|Vel'Koz|17|11|5|5|37|176|65|3|Leader|7|Nasus;Diana;Irelia;Aphelios;Milio;Malzahar;Master Yi;Vel'Koz;Ezreal;Renata Glasc|Lockdown99 #eu99;kartoz #mcg;fardinstn #EUW;CloudCraker #himbo;Aśka007 #0007;elquenuncahacena #EUW;MarzoNero #2803;;Myrikae #EUW;Nottoosmartboi #7752
+S|29912429|W|1942|Malzahar|16|3|8|6|23|194|43|9|Resilient|7|Brand;Shaco;LeBlanc;Caitlyn;Ashe;Nasus;Wukong;Malzahar;Swain;Pantheon|Salvationof #044;RealSlimy #1001;InSomnia25 #EUW;Dorrrrr #EUW;Pepperys #EUW;MannenJalla #EUW;DonPimPon #Espin;;Farleex #EUW;neutarim #EUW
+S|29912390|W|1757|Vel'Koz|15|6|8|10|39|151|51|5|Victor|2|Nasus;Jarvan IV;Vel'Koz;Caitlyn;Zyra;Teemo;Olaf;Veigar;Ashe;Neeko|MasterHamburger #fluff;ShamZ #OUI;;Marli3343 #EUW;NezumiPT #EUW;Depauula #EUW;King0fBlades #EUW;Avengator #EUW;김상은 #긴 밤;ScoobyDoo #WTH
 A|29908538|W|1151|Morgana|18|9|15|44|67|35||4|Victor|1|Yunara;Morgana;Vex;Irelia;Ahri;Akshan;Zed;Lux;LeBlanc;Mordekaiser|j3pi #EUW;;Yan Diomandé #Yan D;AllMuted49 #EUW;Joeker Mexicano #Yowi;Maka Merkel #zaza;The Jinxed #0001;Speedy Sabbah #LBR1;Mordekaiser Bot #LBR1;celestia #cs2
 F|29908514|W|1725|Vel'Koz|16|4|3|5|27|201|44|5|Resilient|2|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;DonPimPon #Espin;;AllMuted49 #EUW;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
 F|29908480|D|2168|Vel'Koz|17|5|7|7|44|227|47|7|Struggle|7|Renekton;Shaco;Veigar;Caitlyn;Nautilus;Akali;Shyvana;Vel'Koz;Senna;Thresh|Sebesebe2 #EUW;katharsis #004;KaiserBeneros #EUW;OTP Txirrisklas #INT;Ser5gioG #EUW;Chimi #meows;pyrdee #6767;;Yan Diomandé #Yan D;j3pi #EUW

@@ -9,10 +9,13 @@ window.LOL_DATA["yan-diomande-yan-d"] = {
   tag: "Yan D",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/Yan%20Diomand%C3%A9-Yan%20D",
-  updated: "2026-11-15 11:51",
+  updated: "2026-11-16 13:05",
   rank: { solo: "Gold 3 · 86 LP" },
   names: [], champs: [], badges: [],
   raw: `
+A|29913036|W|1253|Ezreal|18|20|5|23|73|69||0|Late bloomer|8|Yone;Hwei;Blitzcrank;Cho'Gath;Vel'Koz;Talon;Thresh;Janna;Ezreal;Sylas|Wiiime #123;Matt Budi #128;Payana #EUW;fullsidestep #EUW;Payane #8528;CaptaínKaracho #6391;j3pi #EUW;Filosofofo #dncia;;Joeker Mexicano #Yowi
+N|29913012|D|2012|Ashe|14|6|13|17|68|36|71|7|Unlucky|9|Qiyana;Rammus;Ahri;Brand;Amumu;Zac;Briar;Vel'Koz;Jinx;Ashe|QZDSGSDFQSD #QSD;Zhongli #GE0;Fleur #Insta;Berrry2020 #EUW;aMaaZe #2342;DoOwY #7789;Joeker Mexicano #Yowi;Filosofofo #dncia;j3pi #EUW;
+N|29912970|D|2056|Nautilus|15|3|9|21|65|40|61|5|Unlucky|4|Tryndamere;Briar;Galio;Miss Fortune;Nautilus;Garen;Ekko;Zoe;Jinx;Leona|Nénuphar De Cire #EUW;Joeker Mexicano #Yowi;Filosofofo #dncia;j3pi #EUW;;Lécheur de Pied #KIFF;Aventurine #ODDS;Anorak #BIRD;PowPowsMommy #JINX;OpiumOtter #SUCHT
 N|29911534|D|2075|Vex|17|14|9|10|52|222|64|4|Unlucky|2|Trundle;Briar;Vex;Lulu;Pantheon;Sett;Zac;Sylas;Miss Fortune;Brand|Shadow Trickster #P5R;Joeker Mexicano #Yowi;;3secondsInHeaven #MORG;JeTePasseLaBise #BEUTE;Abdk35 #EUW;Kellecii #TR1;xavier 04 #EUW;EDO #vo45;StarEater #6969
 N|29911493|W|935|Trundle|13|6|2|0|40|108|66|4|Leader|0|Trundle;Briar;Azir;Aphelios;Lulu;Rumble;Zac;Vladimir;Kai'Sa;Nautilus|;Joeker Mexicano #Yowi;imnotbanned #3760;Inkie #2222;NoBeact #EUW;Abdk35 #EUW;arlingtonCchino #utah;xavier 04 #EUW;MarslIII #EUW;Luckyj0 #EUW
 N|29911473|D|1642|Teemo|16|7|7|7|74|157|71|0|Unlucky|0|Teemo;Briar;Katarina;Caitlyn;Yuumi;Tristana;Warwick;Zed;Jinx;Senna|;Joeker Mexicano #Yowi;Sawie #EUW;Parnooo #EUW;AnomalyBanshee #6812;Coochimood #EUW;Kiado  #EUW;Trackers #None;TheBabySharky #EUW;Breese #EUW
