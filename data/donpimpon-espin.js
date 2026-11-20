@@ -8,10 +8,13 @@ window.LOL_DATA["donpimpon-espin"] = {
   tag: "Espin",
   region: "EUW",
   source: "https://op.gg/lol/summoners/euw/DonPimPon-Espin",
-  updated: "2026-11-16 13:05",
+  updated: "2026-11-20 12:05",
   rank: {},
   names: [], champs: [], badges: [],
   raw: `
+F|29917202|D|2330|Karma|16|1|11|23|39|46|54|6|Downfall|4|Teemo;Briar;Akali;Jhin;Karma;Diana;Graves;Yone;Miss Fortune;Poppy|elquenuncahacena #EUW;Otp Fakêr #EUW;Panic QQ #EUW;AllMuted49 #EUW;;FRCH MEDGUEMRI #EUW;TTN RAY #TTN;Hodggg #2848;TTNightMareTT #EUW;ABDERAHMEN #444
+F|29915733|D|2256|Wukong|18|10|8|17|56|233|52|4|Unlucky|1|Malphite;Wukong;Vel'Koz;Jhin;Lux;Gnar;Jarvan IV;Sylas;Xayah;Rakan|j3pi #EUW;;Filosofofo #dncia;AllMuted49 #EUW;elquenuncahacena #EUW;Ryuni #6969;Diablo #malo;Pabluten #EUW;misaka #fent;CarlosKirollos #6969
+F|29914352|W|1677|Wukong|15|7|6|15|54|147|30|3|Unstoppable|1|Malphite;Wukong;Vel'Koz;Jhin;Senna;Volibear;Xin Zhao;Xerath;Lucian;Leona|j3pi #EUW;;Filosofofo #dncia;AllMuted49 #EUW;elquenuncahacena #EUW;HughJass123HD #EUW;ColdWaluigi #EUW;Coco270501 #EUW;Kaaminaru #666;minibav #EUW
 S|29912429|W|1942|Wukong|17|3|2|9|30|224|50|4|Victor|6|Brand;Shaco;LeBlanc;Caitlyn;Ashe;Nasus;Wukong;Malzahar;Swain;Pantheon|Salvationof #044;RealSlimy #1001;InSomnia25 #EUW;Dorrrrr #EUW;Pepperys #EUW;MannenJalla #EUW;;Filosofofo #dncia;Farleex #EUW;neutarim #EUW
 F|29908514|W|1725|Wukong|17|9|2|10|58|225|54|2|Unstoppable|1|Dr. Mundo;Wukong;Vel'Koz;Jhin;Thresh;Vayne;Nunu & Willump;Viktor;Caitlyn;Milio|Yan Diomandé #Yan D;;Filosofofo #dncia;AllMuted49 #EUW;j3pi #EUW;Elmo Stacho #EUW;nkuroyo #nunu;training day #sheri;HORUXINES #EUW;KOWALSKI #URSS
 N|29907149|W|2153|Karma|16|3|9|26|63|49|50|4|Resilient|9|Nasus;Bel'Veth;Viktor;Sion;Pantheon;Quinn;Zaahen;Galio;Jinx;Karma|zuckyborg #EUW;S3XUALPR3DAT0R #EUW;Sendranomor #EUW;Ste1nnes #EUW;WhiteMonket #EUW;Yan Diomandé #Yan D;7thpalacetank #akay;Filosofofo #dncia;AllMuted49 #EUW;

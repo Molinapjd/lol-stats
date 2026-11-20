@@ -8,10 +8,16 @@ window.LOL_DATA['joeker-mexicano-yowi'] = {
   tag: 'Yowi',
   region: 'EUW',
   source: 'https://op.gg/lol/summoners/euw/Joeker%20Mexicano-Yowi',
-  updated: '2026-11-16 13:05',
+  updated: '2026-11-20 12:25',
   rank: { solo: 'Sin clasificar' },
   names: [], champs: [], badges: [],
   raw: `
+A|29918634|D|832|Zed|14|4|15|23|63|21||10|Unyielding|9|Xin Zhao;Kennen;Corki;Kalista;Gragas;Malzahar;Tristana;Cho'Gath;Blitzcrank;Zed|6DexteR9 #EUW;Woodinho #EUW;pathetic looser #KCORP;Speechless3210 #EUW;Curupira #1006;Filosofofo #dncia;elquenuncahacena #EUW;NL2years #EUW;AllMuted49 #EUW;
+N|29918617|D|917|Briar|9|0|6|1|13|87|33|9|Struggle|6|Kled;Tryndamere;Akshan;Viktor;Janna;Gwen;Briar;Vel'Koz;Caitlyn;Miss Fortune|abolfazl13cs #EUW;JhingleBalls4444 #4444;tarnished #korn;ylaxx #2514;Arnica #0142;Sheep003 #EUW;;Filosofofo #dncia;AllMuted49 #EUW;elquenuncahacena #EUW
+N|29918591|D|1638|Briar|16|17|8|4|68|164|57|0|Average|1|Ashe;Briar;Galio;Lucian;Nami;Darius;Jayce;Yone;Kai'Sa;Zoe|elquenuncahacena #EUW;;Filosofofo #dncia;AllMuted49 #EUW;MetaPolice #EU17;Kwik #UWU;欧阳绪木 #1201;СunnyLover #UWOOH;LittleAngel67 #tasty;Always Dreaming #ImGay
+N|29918557|W|1122|Jarvan IV|13|4|1|11|48|139|60|0|Unstoppable|6|Pantheon;Qiyana;Cassiopeia;Aphelios;Sona;Teemo;Jarvan IV;Galio;Caitlyn;Nautilus|Nihilus #gwen;SonPepito0 #KCwin;Hodenkobold #Gnom;Frost #4266;Carbu002 #6260;elquenuncahacena #EUW;;Filosofofo #dncia;AllMuted49 #EUW;PartyForth #EUW
+N|29918533|W|1218|Briar|12|7|4|2|26|127|57|4|Victor|1|Quinn;Briar;Galio;Caitlyn;Neeko;Teemo;Shyvana;Ahri;Jhin;Seraphine|elquenuncahacena #EUW;;Filosofofo #dncia;AllMuted49 #EUW;chefboirdeez #EUW;SpookyCadt #6639;Tolyev #Drac;Rapid #Perry;Wooddy #Cool;Metelis #owo
+A|29914381|W|1462|Viktor|18|8|17|37|58|43||8|Resilient|9|Quinn;Neeko;Ahri;Sivir;Morgana;Tryndamere;Karma;Caitlyn;Blitzcrank;Viktor|kouvaleiro #EUW;Trknk13 #3400;k0mplexity #EUW;tytann #EUW;John Carmack #Id SW;j3pi #EUW;Filosofofo #dncia;elquenuncahacena #EUW;TürkologM #EUW;
 A|29913036|W|1253|Sylas|18|15|14|40|93|32||3|Unstoppable|9|Yone;Hwei;Blitzcrank;Cho'Gath;Vel'Koz;Talon;Thresh;Janna;Ezreal;Sylas|Wiiime #123;Matt Budi #128;Payana #EUW;fullsidestep #EUW;Payane #8528;CaptaínKaracho #6391;j3pi #EUW;Filosofofo #dncia;Yan Diomandé #Yan D;
 N|29913012|D|2012|Briar|16|9|14|10|56|178|49|9|Struggle|6|Qiyana;Rammus;Ahri;Brand;Amumu;Zac;Briar;Vel'Koz;Jinx;Ashe|QZDSGSDFQSD #QSD;Zhongli #GE0;Fleur #Insta;Berrry2020 #EUW;aMaaZe #2342;DoOwY #7789;;Filosofofo #dncia;j3pi #EUW;Yan Diomandé #Yan D
 N|29912970|D|2056|Briar|17|9|11|8|46|221|57|8|Struggle|1|Tryndamere;Briar;Galio;Miss Fortune;Nautilus;Garen;Ekko;Zoe;Jinx;Leona|Nénuphar De Cire #EUW;;Filosofofo #dncia;j3pi #EUW;Yan Diomandé #Yan D;Lécheur de Pied #KIFF;Aventurine #ODDS;Anorak #BIRD;PowPowsMommy #JINX;OpiumOtter #SUCHT
